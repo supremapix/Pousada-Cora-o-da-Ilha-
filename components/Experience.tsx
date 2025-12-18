@@ -55,22 +55,22 @@ const Experience: React.FC = () => {
 
           <div className="lg:w-1/2 grid grid-cols-2 gap-4">
             <img 
-              src="https://coracaodailha.com.br/site/assets/images/galeria/pousada-coracao-da-ilha-encantadas-ilha-do-mel-parana-08.jpg" 
+              src="/images/hospedagem/hospedagem-4.jpg" 
               alt="Gruta das Encantadas - Ilha do Mel" 
               className="rounded-2xl w-full h-64 object-cover shadow-2xl border-2 border-white/10"
             />
             <img 
-              src="https://coracaodailha.com.br/site/assets/images/galeria/pousada-coracao-da-ilha-encantadas-ilha-do-mel-parana-09.jpg" 
+              src="/images/hospedagem/hospedagem-5.jpg" 
               alt="Caminho para o Farol" 
               className="rounded-2xl w-full h-64 object-cover mt-8 shadow-2xl border-2 border-white/10"
             />
             <img 
-              src="https://coracaodailha.com.br/site/assets/images/galeria/pousada-coracao-da-ilha-encantadas-ilha-do-mel-parana-10.jpg" 
+              src="/images/hospedagem/hospedagem-6.jpg" 
               alt="Fortaleza de Nossa Senhora dos Prazeres" 
               className="rounded-2xl w-full h-64 object-cover shadow-2xl border-2 border-white/10"
             />
             <img 
-              src="https://coracaodailha.com.br/site/assets/images/galeria/pousada-coracao-da-ilha-encantadas-ilha-do-mel-parana-03.jpg" 
+              src="/images/hospedagem/hospedagem-7.jpg" 
               alt="Vista Mar de Dentro" 
               className="rounded-2xl w-full h-64 object-cover mt-8 shadow-2xl border-2 border-white/10"
             />

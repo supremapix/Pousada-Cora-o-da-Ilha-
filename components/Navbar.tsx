@@ -31,7 +31,7 @@ const Navbar: React.FC = () => {
       <div className="container mx-auto px-4 flex justify-between items-center">
         <a href="#" className="flex items-center gap-2 group transition-transform hover:scale-105" aria-label="Ir para o topo">
           <img 
-            src="https://coracaodailha.com.br/site/assets/images/pousada-coracao-da-ilha-encantadas-ilha-do-mel-parana-360x371.png" 
+            src="/images/logo.png" 
             alt="Pousada Coração da Ilha" 
             className={`transition-all duration-300 object-contain drop-shadow-[0_2px_10px_rgba(57,255,20,0.4)] ${isScrolled ? 'h-14 md:h-16' : 'h-20 md:h-24'}`}
           />

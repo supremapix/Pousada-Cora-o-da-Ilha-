@@ -12,7 +12,7 @@ const About: React.FC = () => {
             <div className="relative group">
               <div className="absolute -inset-4 bg-lime/10 rounded-3xl -z-10 transition-all group-hover:bg-lime/20"></div>
               <img 
-                src="https://coracaodailha.com.br/site/assets/images/galeria/pousada-coracao-da-ilha-encantadas-ilha-do-mel-parana-02.jpg" 
+                src="/images/acomodacao-1.jpg" 
                 alt="Fachada Pousada Coração da Ilha" 
                 className="rounded-3xl shadow-2xl w-full object-cover h-[600px] border-8 border-deep-navy-50"
               />

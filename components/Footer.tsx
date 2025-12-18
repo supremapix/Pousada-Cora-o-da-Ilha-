@@ -8,7 +8,7 @@ const Footer: React.FC = () => {
       {/* Parallax Background */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-fixed opacity-5 grayscale"
-        style={{ backgroundImage: "url('https://coracaodailha.com.br/site/assets/images/praia-encantadas-background.jpg')" }}
+        style={{ backgroundImage: "url('/images/acomodacao-2.jpg')" }}
       ></div>
       <div className="absolute inset-0 bg-gradient-to-t from-deep-navy via-deep-navy/90 to-transparent"></div>
 
@@ -18,7 +18,7 @@ const Footer: React.FC = () => {
           {/* Brand & Social */}
           <div className="flex flex-col items-center md:items-start">
             <img 
-              src="https://coracaodailha.com.br/site/assets/images/pousada-coracao-da-ilha-encantadas-ilha-do-mel-parana-360x371.png" 
+              src="/images/logo.png" 
               alt="Pousada Coração da Ilha" 
               className="w-48 mb-8 transition-transform hover:scale-105 drop-shadow-[0_5px_15px_rgba(57,255,20,0.3)]"
             />
