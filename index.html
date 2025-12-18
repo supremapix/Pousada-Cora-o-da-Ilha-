@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pousada Coração da Ilha | Hospedagem na Praia de Encantadas - Ilha do Mel</title>
+    <meta name="description" content="Hospede-se na Pousada Coração da Ilha e aproveite conforto e localização privilegiada na Ilha do Mel. Golfinhos e belas paisagens esperam por você!">
+    <meta name="keywords" content="pousada ilha do mel, hospedagem encantadas, hotel ilha do mel, chalé luxo paraná">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Pousada Coração da Ilha">
+    <meta property="og:description" content="Seu refúgio à beira-mar na Ilha do Mel">
+    <meta property="og:image" content="https://coracaodailha.com.br/site/assets/images/pousada-coracao-da-ilha-encantadas-ilha-do-mel-parana-360x371.png">
+    <meta property="og:url" content="https://coracaodailha.com.br">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              lime: {
+                DEFAULT: '#39ff14', // Vibrant lime green from reference
+                50: '#f0fff0',
+                100: '#d9ffd4',
+                200: '#b2ffaa',
+                300: '#7aff75',
+                400: '#39ff14',
+                500: '#22e600',
+                600: '#19b300',
+                700: '#148a00',
+              },
+              'deep-navy': {
+                DEFAULT: '#0d1b2a', // Deep navy from reference
+                50: '#eef2f6',
+                900: '#0d1b2a',
+                950: '#060d15',
+              }
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              serif: ['Playfair Display', 'serif'],
+            },
+            backgroundImage: {
+              'tropical-pattern': "url('https://www.transparenttextures.com/patterns/cubes.png')",
+            }
+          }
+        }
+      }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0d1b2a;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #39ff14;
+        border-radius: 5px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #22e600;
+      }
+      
+      .animated-heart {
+        animation: heartbeat 1.5s infinite;
+        display: inline-block;
+      }
+      
+      @keyframes heartbeat {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.2); }
+        100% { transform: scale(1); }
+      }
+
+      .btn-lime {
+        background-color: #39ff14;
+        color: #0d1b2a;
+        font-weight: bold;
+        transition: all 0.3s ease;
+      }
+      .btn-lime:hover {
+        background-color: #22e600;
+        transform: translateY(-2px);
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.561.0"
+  }
+}
+</script>
+</head>
+  <body class="bg-deep-navy-50 text-deep-navy font-sans antialiased">
+    <div id="root"></div>
+  </body>
+</html>
