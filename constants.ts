@@ -11,9 +11,7 @@ export const HERO_IMAGES = [
   "/images/hero-main.png",
   "/images/acomodacao-1.jpg",
   "/images/acomodacao-2.jpg",
-  "/images/acomodacao-3.jpg",
-  "/images/hospedagem/hospedagem-1.jpg",
-  "/images/hospedagem/hospedagem-2.jpg"
+  "/images/acomodacao-3.jpg"
 ];
 
 export const ACCOMMODATIONS: Accommodation[] = [
