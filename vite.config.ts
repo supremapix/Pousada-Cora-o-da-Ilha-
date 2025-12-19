@@ -10,6 +10,10 @@ export default defineConfig(({ mode }) => {
         host: '0.0.0.0',
         allowedHosts: true,
       },
+      preview: {
+        port: 5000,
+        host: '0.0.0.0',
+      },
       plugins: [react()],
       define: {
         'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
@@ -18,7 +22,13 @@ export default defineConfig(({ mode }) => {
       resolve: {
         alias: {
           '@': path.resolve(__dirname, '.'),
+          '@assets': path.resolve(__dirname, 'attached_assets'),
         }
-      }
+      },
+      build: {
+        outDir: 'dist',
+        copyPublicDir: true,
+      },
+      appType: 'spa',
     };
 });
