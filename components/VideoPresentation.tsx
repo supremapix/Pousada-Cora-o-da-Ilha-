@@ -62,7 +62,7 @@ const VideoPresentation: React.FC = () => {
               <div className="relative aspect-video bg-deep-navy-950 rounded-[2rem] overflow-hidden border-4 border-white/10 shadow-2xl">
                 {/* Embed do Vídeo (Usando Iframe para o link fornecido) */}
                 <iframe 
-                  src="https://www.youtube.com/embed/S2p0P4y6P-0" // Exemplo de embed, o link curto do usuário deve ser convertido ou usado um player compatível
+                  src="https://www.youtube.com/embed/EviS54Upy-o"
                   className="w-full h-full object-cover"
                   title="Vídeo Apresentação Pousada Coração da Ilha"
                   frameBorder="0"

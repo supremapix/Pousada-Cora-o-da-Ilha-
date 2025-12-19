@@ -40,21 +40,15 @@ const Hero: React.FC = () => {
               index === currentImageIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
             }`}
           >
-            <picture>
-              {/* Fallback para formatos modernos se disponível no futuro ou via CDN */}
-              <source srcSet={img.replace('.jpg', '.webp')} type="image/webp" />
-              <img
-                src={img}
-                alt={`Pousada Coração da Ilha - Vista ${index + 1}`}
-                className={`w-full h-full object-cover transform transition-transform duration-[8000ms] ease-linear ${
-                  index === currentImageIndex ? 'scale-105' : 'scale-100'
-                }`}
-                loading={index === 0 ? "eager" : "lazy"}
-                // @ts-ignore
-                fetchpriority={index === 0 ? "high" : "low"}
-                decoding="async"
-              />
-            </picture>
+            <img
+              src={img}
+              alt={`Pousada Coração da Ilha - Vista ${index + 1}`}
+              className={`w-full h-full object-cover transform transition-transform duration-[8000ms] ease-linear ${
+                index === currentImageIndex ? 'scale-105' : 'scale-100'
+              }`}
+              loading={index === 0 ? "eager" : "lazy"}
+              decoding="async"
+            />
             <div className="absolute inset-0 bg-deep-navy/40"></div>
             <div className="absolute inset-0 bg-gradient-to-b from-deep-navy/60 via-transparent to-deep-navy/90"></div>
           </div>
