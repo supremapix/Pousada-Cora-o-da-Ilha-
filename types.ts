@@ -5,6 +5,7 @@ export interface Accommodation {
   capacity: string;
   image: string;
   images?: string[];
+  imageAlts?: string[];
   features: string[];
 }
 

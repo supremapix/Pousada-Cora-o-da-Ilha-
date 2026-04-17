@@ -26,7 +26,24 @@ export const ACCOMMODATIONS: Accommodation[] = [
       "/images/hospedagem/pousada-na-ilha-do-mel-quarto-01_(2).jpg",
       "/images/hospedagem/pousada-na-ilha-do-mel-quarto-01_(3).jpg",
       "/images/hospedagem/pousada-na-ilha-do-mel-quarto-01_(4).jpg",
-      "/images/hospedagem/pousada-na-ilha-do-mel-quarto-01_(5).jpg"
+      "/images/hospedagem/pousada-na-ilha-do-mel-quarto-01_(5).jpg",
+      "/images/hospedagem/pousada-na-ilha-do-mel-quarto-01_(1)%20copy.jpg",
+      "/images/hospedagem/pousada-na-ilha-do-mel-quarto-01_(2)%20copy.jpg",
+      "/images/hospedagem/pousada-na-ilha-do-mel-quarto-01_(3)%20copy.jpg",
+      "/images/hospedagem/pousada-na-ilha-do-mel-quarto-01_(4)%20copy.jpg",
+      "/images/hospedagem/pousada-na-ilha-do-mel-quarto-01_(5)%20copy.jpg",
+    ],
+    imageAlts: [
+      "Quarto 1 da Pousada Coração da Ilha - vista geral com cama de casal, beliche e varanda - Ilha do Mel, Paraná",
+      "Quarto 1 Pousada Coração da Ilha - cama de casal com toalhas decoradas e beliche ao fundo - Ilha do Mel",
+      "Quarto 1 Pousada Ilha do Mel - interior com paredes e teto em madeira nobre e cama de casal",
+      "Quarto 1 Pousada Coração da Ilha - detalhe do frigobar, cômoda e decoração rústica tropical",
+      "Banheiro Quarto 1 Pousada Coração da Ilha - banheira, box e acabamentos em porcelanato - Ilha do Mel",
+      "Quarto 1 Pousada Ilha do Mel - ângulo da varanda com vista para área externa",
+      "Quarto 1 Pousada Coração da Ilha - cama de casal com cabeceira estofada e beliche",
+      "Quarto 1 Pousada Ilha do Mel - detalhes do interior com espelho e iluminação aconchegante",
+      "Quarto 1 Pousada Coração da Ilha - frigobar, cômoda e organização dos amenities",
+      "Banheiro Quarto 1 Pousada Coração da Ilha - banheira e acabamentos completos"
     ],
     features: ["Cama de Casal + Beliche", "Banheira", "Ar Condicionado", "Frigobar", "TV", "Varanda"]
   },
