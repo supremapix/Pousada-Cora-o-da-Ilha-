@@ -16,6 +16,28 @@ export const HERO_IMAGES = [
 
 export const ACCOMMODATIONS: Accommodation[] = [
   {
+    id: "quarto-1",
+    name: "Quarto 1",
+    description: "Acomodação aconchegante e bem equipada, perfeita para casais ou viajantes que buscam conforto e praticidade na Ilha do Mel. Com decoração harmoniosa e tudo que você precisa para uma estadia agradável.",
+    capacity: "Até 2 pessoas",
+    image: "https://drive.google.com/uc?export=view&id=1wroirx3OQPPjgoEUVWO4NoBhXKxp7TrQ",
+    images: [
+      "https://drive.google.com/uc?export=view&id=1wroirx3OQPPjgoEUVWO4NoBhXKxp7TrQ",
+      "https://drive.google.com/uc?export=view&id=1HzJ4o5r9RvaQR6jkN85oSUUDWZeNTkAE",
+      "https://drive.google.com/uc?export=view&id=1jCBGm4docl03_yG3atrhbCFELqGVVmib",
+      "https://drive.google.com/uc?export=view&id=1yVfiVTUEfU_CiZkXKF2FmqtHmGEszI52",
+      "https://drive.google.com/uc?export=view&id=1HwZQ2P9HEV2m8v_9dYijBhvekKrLA4aB",
+      "https://drive.google.com/uc?export=view&id=1yFDo4hzI1rmkPewna6XQD-0le7vckCMg",
+      "https://drive.google.com/uc?export=view&id=1DGAniMC1o9sxO3rUHRKwzkeF80c-qKsC",
+      "https://drive.google.com/uc?export=view&id=10SDBCFQePBXKy3T_d1Ata1fIkASOmAdy",
+      "https://drive.google.com/uc?export=view&id=1qw95i4FjFgAGAszRQom6eb2Xnr-u5aIZ",
+      "https://drive.google.com/uc?export=view&id=1DsJvZTi8IR1LduV3dc745U-Hu9vE-2Iy",
+      "https://drive.google.com/uc?export=view&id=1yRRQSb2T-Kzi4O-U0KHJiAtQAeHYCt2P",
+      "https://drive.google.com/uc?export=view&id=12CM92Vv-Jq--XNgtnlSXUCzFakNUfPT2"
+    ],
+    features: ["Cama de Casal", "Ar Condicionado", "Wi-Fi", "Banheiro Privativo", "Café da manhã incluso"]
+  },
+  {
     id: "chale-luxo",
     name: "Chalé Luxo",
     description: "Nossa experiência mais exclusiva. Chalé privativo com acabamentos em madeira nobre, ideal para quem busca privacidade total e contato direto com a natureza.",
