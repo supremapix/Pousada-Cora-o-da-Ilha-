@@ -18,7 +18,7 @@ export const ACCOMMODATIONS: Accommodation[] = [
   {
     id: "quarto-1",
     name: "Quarto 1",
-    description: "Acomodação espaçosa com cama de casal e beliche, ideal para famílias ou grupos de até 4 pessoas. Conta com banheiro com banheira, ar condicionado, frigobar, TV e varanda privativa com vista para a ilha.",
+    description: "Acomodação espaçosa com cama de casal e beliche, ideal para famílias ou grupos de até 4 pessoas. Conta com banheiro com banheira, ar condicionado, frigobar e TV.",
     capacity: "Até 4 pessoas",
     image: "/images/hospedagem/pousada-na-ilha-do-mel-quarto-01_(1).jpg",
     images: [
@@ -36,12 +36,12 @@ export const ACCOMMODATIONS: Accommodation[] = [
       "/images/hospedagem/pousada-na-ilha-do-mel-quarto-01_(12).jpg",
     ],
     imageAlts: [
-      "Quarto 1 Pousada Coração da Ilha - vista geral com cama de casal, beliche e varanda - Ilha do Mel, Paraná",
+      "Quarto 1 Pousada Coração da Ilha - vista geral com cama de casal e beliche - Ilha do Mel, Paraná",
       "Quarto 1 Pousada Coração da Ilha - cama de casal com toalhas decoradas e beliche ao fundo - Ilha do Mel",
       "Quarto 1 Pousada Ilha do Mel - interior com paredes e teto em madeira nobre e cama de casal",
       "Quarto 1 Pousada Coração da Ilha - detalhe do frigobar, cômoda e decoração rústica tropical",
       "Banheiro Quarto 1 Pousada Coração da Ilha - banheira, box e acabamentos em porcelanato - Ilha do Mel",
-      "Quarto 1 Pousada Coração da Ilha - beliche em madeira com vista para a varanda - Ilha do Mel",
+      "Quarto 1 Pousada Coração da Ilha - beliche em madeira - Ilha do Mel",
       "Quarto 1 Pousada Coração da Ilha - cama de casal e beliche com toalhas decoradas em coração",
       "Quarto 1 Pousada Ilha do Mel - cama de casal com frigobar e cômoda em madeira",
       "Banheiro Quarto 1 Pousada Coração da Ilha - banheira de alvenaria, box, pia e vaso sanitário",
@@ -49,12 +49,12 @@ export const ACCOMMODATIONS: Accommodation[] = [
       "Quarto 1 Pousada Coração da Ilha - cama de casal com cabeceira estofada, ar condicionado e TV - Ilha do Mel",
       "Quarto 1 Pousada Coração da Ilha - beliche em madeira com roupa de cama e toalhas decoradas em coração",
     ],
-    features: ["Cama de Casal + Beliche", "Banheira", "Ar Condicionado", "Frigobar", "TV", "Varanda"]
+    features: ["Cama de Casal + Beliche", "Banheira", "Ar Condicionado", "Frigobar", "TV"]
   },
   {
     id: "quarto-2",
     name: "Quarto 2",
-    description: "Acomodação aconchegante com decoração rústica em madeira, cama de casal e beliche. Perfeita para famílias que querem conforto e proximidade com a natureza da Ilha do Mel.",
+    description: "Acomodação aconchegante com decoração rústica em madeira e cama de casal. Perfeita para casais que querem conforto e proximidade com a natureza da Ilha do Mel.",
     capacity: "Até 2 pessoas",
     image: "/images/hospedagem/pousada-quarto02-coracao-da-ilha-na-ilha-do-mel-parana-brasil_(1).jpg",
     images: [
