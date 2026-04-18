@@ -13,13 +13,19 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [moreOpen, setMoreOpen] = useState(false);
 
+  const isHome = currentPage === '/';
+
   useEffect(() => {
+    setIsScrolled(window.scrollY > 50);
     const handleScroll = () => { setIsScrolled(window.scrollY > 50); };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [currentPage]);
 
-  const isHome = currentPage === '/';
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+    setMoreOpen(false);
+  }, [currentPage]);
 
   const mainLinks = [
     { name: 'A Pousada', href: isHome ? '#sobre' : '/#sobre' },
@@ -47,7 +53,11 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
   return (
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-        isScrolled ? 'bg-deep-navy/95 backdrop-blur-md shadow-2xl py-2' : 'bg-transparent py-6'
+        isScrolled
+          ? 'bg-deep-navy/95 backdrop-blur-md shadow-2xl py-2'
+          : isHome
+            ? 'bg-transparent py-6'
+            : 'bg-deep-navy/90 backdrop-blur-md py-2'
       }`}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
@@ -68,7 +78,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
             <button
               key={link.name}
               onClick={() => handleNav(link.href)}
-              className="font-black tracking-widest text-xs uppercase text-white hover:text-lime transition-all duration-300"
+              className="font-black tracking-widest text-xs uppercase text-white hover:text-lime transition-all duration-300 drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]"
             >
               {link.name}
             </button>
@@ -78,7 +88,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
             className={`font-black tracking-widest text-xs uppercase px-4 py-1.5 rounded-full border transition-all duration-300 ${
               currentPage === guiaLink.href
                 ? 'bg-ocean text-white border-ocean'
-                : 'text-ocean border-ocean/50 hover:bg-ocean hover:text-white hover:border-ocean'
+                : 'text-white border-white/60 hover:bg-white/10 hover:border-white'
             }`}
           >
             {guiaLink.name}
@@ -88,7 +98,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
             <button
               onClick={() => setMoreOpen(!moreOpen)}
               onBlur={() => setTimeout(() => setMoreOpen(false), 150)}
-              className="font-black tracking-widest text-xs uppercase text-white hover:text-lime transition-all duration-300 flex items-center gap-1"
+              className="font-black tracking-widest text-xs uppercase text-white hover:text-lime transition-all duration-300 flex items-center gap-1 drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]"
             >
               Mais <ChevronDown size={14} className={`transition-transform ${moreOpen ? 'rotate-180' : ''}`} />
             </button>
@@ -118,50 +128,75 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
         </div>
 
         <button
-          className="md:hidden text-lime p-2 focus:outline-none transition-transform active:scale-90"
+          className="md:hidden text-white bg-deep-navy/70 backdrop-blur-sm p-2 rounded-lg focus:outline-none transition-transform active:scale-90 border border-white/20"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label={isMobileMenuOpen ? "Fechar menu" : "Abrir menu"}
         >
-          {isMobileMenuOpen ? <X size={36} /> : <Menu size={36} />}
+          {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
 
       <div
-        className={`md:hidden absolute top-full left-0 w-full bg-deep-navy/98 backdrop-blur-xl border-t border-lime/10 transition-all duration-500 overflow-hidden ${
+        className={`md:hidden absolute top-full left-0 w-full bg-[#0a1628] border-t border-white/10 transition-all duration-500 overflow-hidden ${
           isMobileMenuOpen ? 'max-h-[90vh] opacity-100 overflow-y-auto' : 'max-h-0 opacity-0 pointer-events-none'
         }`}
       >
-        <div className="flex flex-col py-6 px-6 space-y-1">
+        <div className="flex flex-col py-4 px-4 space-y-1">
           <button
             onClick={() => handleNav(guiaLink.href)}
-            className={`text-left px-6 py-4 font-black text-base tracking-wider border rounded-xl transition-colors mb-1 ${
-              currentPage === guiaLink.href ? 'text-white bg-ocean border-ocean' : 'text-ocean border-ocean/40 bg-ocean/10 hover:bg-ocean/20'
+            className={`text-left px-5 py-4 font-black text-sm tracking-wider rounded-xl transition-colors mb-1 ${
+              currentPage === guiaLink.href
+                ? 'text-white bg-[#1A6B5A]'
+                : 'text-[#E8C96B] bg-[#1A6B5A]/15 hover:bg-[#1A6B5A]/30'
             }`}
           >
             Guia da Ilha do Mel
           </button>
-          {[...mainLinks, ...moreLinks].map((link) => (
-            <button
-              key={link.name}
-              onClick={() => handleNav(link.href)}
-              className={`text-left px-6 py-4 font-black text-base tracking-wider border-b border-white/5 last:border-0 rounded-xl transition-colors ${
-                currentPage === link.href ? 'text-lime bg-lime/10' : 'text-white hover:bg-white/5'
-              }`}
-            >
-              {link.name}
-            </button>
-          ))}
+
+          <div className="border-b border-white/10 pb-2 mb-2">
+            {mainLinks.map((link) => (
+              <button
+                key={link.name}
+                onClick={() => handleNav(link.href)}
+                className={`w-full text-left px-5 py-3.5 font-bold text-sm tracking-wide rounded-lg transition-colors ${
+                  currentPage === link.href
+                    ? 'text-[#57ff14] bg-white/10'
+                    : 'text-white hover:bg-white/8 hover:text-[#57ff14]'
+                }`}
+              >
+                {link.name}
+              </button>
+            ))}
+          </div>
+
+          <div className="border-b border-white/10 pb-2 mb-2">
+            {moreLinks.map((link) => (
+              <button
+                key={link.name}
+                onClick={() => handleNav(link.href)}
+                className={`w-full text-left px-5 py-3 font-semibold text-sm rounded-lg transition-colors ${
+                  currentPage === link.href
+                    ? 'text-[#57ff14] bg-white/10'
+                    : 'text-gray-300 hover:bg-white/8 hover:text-white'
+                }`}
+              >
+                {link.name}
+              </button>
+            ))}
+          </div>
+
           <button
             onClick={() => handleNav(isHome ? '#reservas' : '/#reservas')}
-            className="text-left px-6 py-4 font-black text-base tracking-wider text-lime bg-lime/10 rounded-xl"
+            className="text-left px-5 py-4 font-black text-sm tracking-wider text-[#0a1628] bg-[#57ff14] rounded-xl hover:bg-white transition-colors"
           >
             Reservas
           </button>
-          <div className="p-6 bg-lime/5 rounded-2xl mt-4 flex flex-col gap-2">
-            <span className="text-[10px] text-lime/60 uppercase font-black tracking-[0.2em]">Contato Imediato</span>
-            <div className="flex items-center gap-3 text-white">
-              <Phone size={20} className="text-lime" />
-              <a href={`tel:${PHONE_NUMBER}`} className="font-black text-lg">(41) 3426-9043</a>
+
+          <div className="p-5 bg-white/5 border border-white/10 rounded-xl mt-2 flex flex-col gap-2">
+            <span className="text-[10px] text-gray-400 uppercase font-black tracking-[0.2em]">Contato Imediato</span>
+            <div className="flex items-center gap-3">
+              <Phone size={18} className="text-[#57ff14] flex-shrink-0" />
+              <a href={`tel:${PHONE_NUMBER}`} className="font-black text-base text-white">(41) 3426-9043</a>
             </div>
           </div>
         </div>
