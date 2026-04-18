@@ -1,61 +1,111 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Phone } from 'lucide-react';
+import { Menu, X, Phone, ChevronDown } from 'lucide-react';
 import { PHONE_NUMBER } from '../constants';
+import { navigate } from '../utils/navigate';
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+  currentPage: string;
+  onNavigate: (page: string) => void;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [moreOpen, setMoreOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => { setIsScrolled(window.scrollY > 50); };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = [
-    { name: 'A Pousada', href: '#sobre' },
-    { name: 'Ilha do Mel', href: '#experiencia' },
-    { name: 'Acomodações', href: '#acomodacoes' },
-    { name: 'Políticas', href: '#politicas' },
-    { name: 'Reservas', href: '#reservas', isButton: true },
+  const isHome = currentPage === '/';
+
+  const mainLinks = [
+    { name: 'A Pousada', href: isHome ? '#sobre' : '/#sobre' },
+    { name: 'Ilha do Mel', href: isHome ? '#experiencia' : '/#experiencia' },
+    { name: 'Acomodações', href: isHome ? '#acomodacoes' : '/#acomodacoes' },
+    { name: 'Políticas', href: isHome ? '#politicas' : '/#politicas' },
   ];
 
+  const moreLinks = [
+    { name: 'Quem Somos', href: '/quem-somos' },
+    { name: 'Contato', href: '/contato' },
+    { name: 'Política de Privacidade', href: '/politica-privacidade' },
+    { name: 'Política de Cancelamento', href: '/politica-devolucao' },
+    { name: 'Mapa do Site', href: '/mapa-do-site' },
+  ];
+
+  const handleNav = (href: string) => {
+    setIsMobileMenuOpen(false);
+    setMoreOpen(false);
+    navigate(href, onNavigate);
+  };
+
   return (
-    <nav 
+    <nav
       className={`fixed top-0 w-full z-50 transition-all duration-500 ${
         isScrolled ? 'bg-deep-navy/95 backdrop-blur-md shadow-2xl py-2' : 'bg-transparent py-6'
       }`}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <a href="#" className="flex items-center gap-2 group transition-transform hover:scale-105" aria-label="Ir para o topo">
-          <img 
-            src="/images/logo.png" 
-            alt="Pousada Coração da Ilha" 
+        <button
+          onClick={() => handleNav('/')}
+          className="flex items-center gap-2 group transition-transform hover:scale-105"
+          aria-label="Ir para a página inicial"
+        >
+          <img
+            src="/images/logo.png"
+            alt="Pousada Coração da Ilha — Ilha do Mel, Paraná"
             className={`transition-all duration-300 object-contain drop-shadow-[0_2px_10px_rgba(57,255,20,0.4)] ${isScrolled ? 'h-14 md:h-16' : 'h-20 md:h-24'}`}
           />
-        </a>
+        </button>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <a
+        <div className="hidden md:flex items-center gap-6">
+          {mainLinks.map((link) => (
+            <button
               key={link.name}
-              href={link.href}
-              className={`font-black tracking-widest text-xs uppercase transition-all duration-300 ${
-                link.isButton
-                  ? 'bg-lime hover:bg-white text-deep-navy px-8 py-3 rounded-full shadow-[0_4px_20px_rgba(57,255,20,0.4)] hover:shadow-[0_4px_25px_rgba(255,255,255,0.4)] transform hover:-translate-y-0.5'
-                  : 'text-white hover:text-lime'
-              }`}
+              onClick={() => handleNav(link.href)}
+              className="font-black tracking-widest text-xs uppercase text-white hover:text-lime transition-all duration-300"
             >
               {link.name}
-            </a>
+            </button>
           ))}
+
+          <div className="relative">
+            <button
+              onClick={() => setMoreOpen(!moreOpen)}
+              onBlur={() => setTimeout(() => setMoreOpen(false), 150)}
+              className="font-black tracking-widest text-xs uppercase text-white hover:text-lime transition-all duration-300 flex items-center gap-1"
+            >
+              Mais <ChevronDown size={14} className={`transition-transform ${moreOpen ? 'rotate-180' : ''}`} />
+            </button>
+            {moreOpen && (
+              <div className="absolute top-full right-0 mt-3 bg-deep-navy/98 backdrop-blur-xl border border-lime/10 rounded-2xl py-2 min-w-[220px] shadow-2xl">
+                {moreLinks.map((link) => (
+                  <button
+                    key={link.name}
+                    onClick={() => handleNav(link.href)}
+                    className={`w-full text-left px-5 py-3 text-sm font-semibold transition-colors hover:bg-white/5 hover:text-lime ${
+                      currentPage === link.href ? 'text-lime' : 'text-gray-300'
+                    }`}
+                  >
+                    {link.name}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <button
+            onClick={() => handleNav(isHome ? '#reservas' : '/#reservas')}
+            className="font-black tracking-widest text-xs uppercase bg-lime hover:bg-white text-deep-navy px-8 py-3 rounded-full shadow-[0_4px_20px_rgba(57,255,20,0.4)] hover:shadow-[0_4px_25px_rgba(255,255,255,0.4)] transform hover:-translate-y-0.5 transition-all duration-300"
+          >
+            Reservas
+          </button>
         </div>
 
-        {/* Mobile Toggle */}
-        <button 
+        <button
           className="md:hidden text-lime p-2 focus:outline-none transition-transform active:scale-90"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label={isMobileMenuOpen ? "Fechar menu" : "Abrir menu"}
@@ -64,31 +114,35 @@ const Navbar: React.FC = () => {
         </button>
       </div>
 
-      {/* Mobile Menu */}
-      <div 
+      <div
         className={`md:hidden absolute top-full left-0 w-full bg-deep-navy/98 backdrop-blur-xl border-t border-lime/10 transition-all duration-500 overflow-hidden ${
-          isMobileMenuOpen ? 'max-h-[80vh] opacity-100' : 'max-h-0 opacity-0 pointer-events-none'
+          isMobileMenuOpen ? 'max-h-[90vh] opacity-100 overflow-y-auto' : 'max-h-0 opacity-0 pointer-events-none'
         }`}
       >
-        <div className="flex flex-col py-8 px-6 space-y-2">
-          {navLinks.map((link) => (
-            <a
+        <div className="flex flex-col py-6 px-6 space-y-1">
+          {[...mainLinks, ...moreLinks].map((link) => (
+            <button
               key={link.name}
-              href={link.href}
-              className={`px-6 py-4 font-black text-xl tracking-wider border-b border-white/5 last:border-0 rounded-xl transition-colors ${
-                 link.isButton ? 'text-lime bg-lime/10' : 'text-white hover:bg-white/5'
+              onClick={() => handleNav(link.href)}
+              className={`text-left px-6 py-4 font-black text-base tracking-wider border-b border-white/5 last:border-0 rounded-xl transition-colors ${
+                currentPage === link.href ? 'text-lime bg-lime/10' : 'text-white hover:bg-white/5'
               }`}
-              onClick={() => setIsMobileMenuOpen(false)}
             >
               {link.name}
-            </a>
+            </button>
           ))}
-          <div className="p-6 bg-lime/5 rounded-2xl mt-6 flex flex-col gap-2">
-               <span className="text-[10px] text-lime/60 uppercase font-black tracking-[0.2em]">Contato Imediato</span>
-               <div className="flex items-center gap-3 text-white">
-                 <Phone size={20} className="text-lime" />
-                 <span className="font-black text-lg">(41) 3426-9043</span>
-               </div>
+          <button
+            onClick={() => handleNav(isHome ? '#reservas' : '/#reservas')}
+            className="text-left px-6 py-4 font-black text-base tracking-wider text-lime bg-lime/10 rounded-xl"
+          >
+            Reservas
+          </button>
+          <div className="p-6 bg-lime/5 rounded-2xl mt-4 flex flex-col gap-2">
+            <span className="text-[10px] text-lime/60 uppercase font-black tracking-[0.2em]">Contato Imediato</span>
+            <div className="flex items-center gap-3 text-white">
+              <Phone size={20} className="text-lime" />
+              <a href={`tel:${PHONE_NUMBER}`} className="font-black text-lg">(41) 3426-9043</a>
+            </div>
           </div>
         </div>
       </div>
