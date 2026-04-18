@@ -32,6 +32,8 @@ export const ACCOMMODATIONS: Accommodation[] = [
       "/images/hospedagem/pousada-na-ilha-do-mel-quarto-01_(8).jpg",
       "/images/hospedagem/pousada-na-ilha-do-mel-quarto-01_(9).jpg",
       "/images/hospedagem/pousada-na-ilha-do-mel-quarto-01_(10).jpg",
+      "/images/hospedagem/pousada-na-ilha-do-mel-quarto-01_(11).jpg",
+      "/images/hospedagem/pousada-na-ilha-do-mel-quarto-01_(12).jpg",
     ],
     imageAlts: [
       "Quarto 1 Pousada Coração da Ilha - vista geral com cama de casal, beliche e varanda - Ilha do Mel, Paraná",
@@ -44,6 +46,8 @@ export const ACCOMMODATIONS: Accommodation[] = [
       "Quarto 1 Pousada Ilha do Mel - cama de casal com frigobar e cômoda em madeira",
       "Banheiro Quarto 1 Pousada Coração da Ilha - banheira de alvenaria, box, pia e vaso sanitário",
       "Quarto 1 Pousada Coração da Ilha - cama de casal com vista para TV, espelho e banheiro privativo",
+      "Quarto 1 Pousada Coração da Ilha - cama de casal com cabeceira estofada, ar condicionado e TV - Ilha do Mel",
+      "Quarto 1 Pousada Coração da Ilha - beliche em madeira com roupa de cama e toalhas decoradas em coração",
     ],
     features: ["Cama de Casal + Beliche", "Banheira", "Ar Condicionado", "Frigobar", "TV", "Varanda"]
   },
@@ -80,8 +84,8 @@ export const ACCOMMODATIONS: Accommodation[] = [
   {
     id: "quarto-4",
     name: "Quarto 4",
-    description: "Ambiente espaçoso e bem iluminado com decoração em madeira, oferecendo conforto ideal para casais. Cama de casal com roupa de cama de qualidade.",
-    capacity: "Até 2 pessoas",
+    description: "Acomodação espaçosa com cama de casal e beliche, perfeita para famílias ou grupos de até 4 pessoas. Conta com banheiro privativo com banheira, ar condicionado e frigobar.",
+    capacity: "Até 4 pessoas",
     image: "/images/hospedagem/pousada-quarto04-coracao-da-ilha-na-ilha-do-mel-parana-brasil_(1).jpg",
     images: [
       "/images/hospedagem/pousada-quarto04-coracao-da-ilha-na-ilha-do-mel-parana-brasil_(1).jpg",
@@ -90,7 +94,7 @@ export const ACCOMMODATIONS: Accommodation[] = [
       "/images/hospedagem/pousada-quarto04-coracao-da-ilha-na-ilha-do-mel-parana-brasil_(4).jpg",
       "/images/hospedagem/pousada-quarto04-coracao-da-ilha-na-ilha-do-mel-parana-brasil_(5).jpg"
     ],
-    features: ["Cama de Casal", "Ar Condicionado", "Frigobar", "TV", "Banheiro Privativo"]
+    features: ["Cama de Casal + Beliche", "Banheira", "Ar Condicionado", "Frigobar", "TV", "Banheiro Privativo"]
   },
   {
     id: "quarto-5",
