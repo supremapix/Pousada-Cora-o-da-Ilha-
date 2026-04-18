@@ -19,6 +19,7 @@ import Contato from './components/pages/Contato';
 import PoliticaPrivacidade from './components/pages/PoliticaPrivacidade';
 import PoliticaDevolucao from './components/pages/PoliticaDevolucao';
 import MapaSite from './components/pages/MapaSite';
+import GuiaIlha from './components/pages/GuiaIlha';
 
 function getPage(): string {
   return window.location.pathname.replace(/\/$/, '') || '/';
@@ -56,6 +57,7 @@ const App: React.FC = () => {
       case '/politica-privacidade': return <PoliticaPrivacidade />;
       case '/politica-devolucao': return <PoliticaDevolucao />;
       case '/mapa-do-site': return <MapaSite />;
+      case '/guia-ilha-do-mel': return <GuiaIlha onNavigate={setPage} />;
       default: return <HomePage />;
     }
   };

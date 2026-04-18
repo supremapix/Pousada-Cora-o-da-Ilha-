@@ -28,6 +28,8 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
     { name: 'Políticas', href: isHome ? '#politicas' : '/#politicas' },
   ];
 
+  const guiaLink = { name: 'Guia da Ilha', href: '/guia-ilha-do-mel' };
+
   const moreLinks = [
     { name: 'Quem Somos', href: '/quem-somos' },
     { name: 'Contato', href: '/contato' },
@@ -71,6 +73,16 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
               {link.name}
             </button>
           ))}
+          <button
+            onClick={() => handleNav(guiaLink.href)}
+            className={`font-black tracking-widest text-xs uppercase px-4 py-1.5 rounded-full border transition-all duration-300 ${
+              currentPage === guiaLink.href
+                ? 'bg-ocean text-white border-ocean'
+                : 'text-ocean border-ocean/50 hover:bg-ocean hover:text-white hover:border-ocean'
+            }`}
+          >
+            {guiaLink.name}
+          </button>
 
           <div className="relative">
             <button
@@ -120,6 +132,14 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
         }`}
       >
         <div className="flex flex-col py-6 px-6 space-y-1">
+          <button
+            onClick={() => handleNav(guiaLink.href)}
+            className={`text-left px-6 py-4 font-black text-base tracking-wider border rounded-xl transition-colors mb-1 ${
+              currentPage === guiaLink.href ? 'text-white bg-ocean border-ocean' : 'text-ocean border-ocean/40 bg-ocean/10 hover:bg-ocean/20'
+            }`}
+          >
+            Guia da Ilha do Mel
+          </button>
           {[...mainLinks, ...moreLinks].map((link) => (
             <button
               key={link.name}

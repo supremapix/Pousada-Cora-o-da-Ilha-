@@ -53,6 +53,15 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <li><button onClick={() => nav('/#politicas')} className="hover:text-lime transition-colors">Políticas de Reserva</button></li>
               <li><button onClick={() => nav('/contato')} className="hover:text-lime transition-colors">Contato</button></li>
               <li><button onClick={() => nav('/#reservas')} className="hover:text-lime transition-colors text-lime font-bold">Solicitar Orçamento</button></li>
+              <li>
+                <button
+                  onClick={() => nav('/guia-ilha-do-mel')}
+                  className="flex items-center gap-2 font-black text-ocean hover:text-lime transition-colors"
+                >
+                  <Map size={14} />
+                  Guia da Ilha do Mel
+                </button>
+              </li>
             </ul>
           </div>
 
