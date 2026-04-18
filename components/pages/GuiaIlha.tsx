@@ -2,6 +2,9 @@ import React, { useState, useRef, useEffect } from 'react';
 import { MapPin, Clock, ChevronDown, ChevronUp, Instagram, MessageCircle, Star, Anchor, Lightbulb, Landmark, Camera, Fish, Waves, Car, Sailboat, Footprints, Sun, Moon, Wifi, DollarSign, ShieldPlus, Calendar } from 'lucide-react';
 import { WHATSAPP_NUMBER } from '../../constants';
 import { navigate } from '../../utils/navigate';
+import SobreIlha from '../SobreIlha';
+import MapaInterativo from '../MapaInterativo';
+import PousadaDestaque from '../PousadaDestaque';
 
 interface GuiaIlhaProps {
   onNavigate: (page: string) => void;
@@ -186,6 +189,10 @@ const GuiaIlha: React.FC<GuiaIlhaProps> = ({ onNavigate }) => {
           </div>
         </div>
       </section>
+
+      <SobreIlha />
+      <MapaInterativo />
+      <PousadaDestaque />
 
       <section className="py-20">
         <div className="container mx-auto px-4">
