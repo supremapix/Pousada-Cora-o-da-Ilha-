@@ -4,7 +4,7 @@
 
   <url>
     <loc>https://coracaodailha.com.br/</loc>
-    <lastmod>2026-04-18</lastmod>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -14,38 +14,122 @@
   </url>
 
   <url>
-    <loc>https://coracaodailha.com.br/quem-somos</loc>
-    <lastmod>2026-04-18</lastmod>
+    <loc>https://coracaodailha.com.br/guia-ilha-do-mel</loc>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://coracaodailha.com.br/blog</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://coracaodailha.com.br/quem-somos</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://coracaodailha.com.br/contato</loc>
-    <lastmod>2026-04-18</lastmod>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://coracaodailha.com.br/politica-privacidade</loc>
-    <lastmod>2026-04-18</lastmod>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
 
   <url>
     <loc>https://coracaodailha.com.br/politica-devolucao</loc>
-    <lastmod>2026-04-18</lastmod>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://coracaodailha.com.br/mapa-do-site</loc>
-    <lastmod>2026-04-18</lastmod>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://coracaodailha.com.br/blog/ferias-de-julho-na-ilha-do-mel-2026</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://coracaodailha.com.br/blog/festivais-de-jazz-ilha-do-mel-agosto-2026</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://coracaodailha.com.br/blog/feriado-7-de-setembro-ilha-do-mel-2026</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://coracaodailha.com.br/blog/primavera-ilha-do-mel-trilhas-observacao-aves</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://coracaodailha.com.br/blog/feriado-12-de-outubro-dia-das-criancas-ilha-do-mel</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://coracaodailha.com.br/blog/feriados-de-novembro-ilha-do-mel-2026</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://coracaodailha.com.br/blog/natal-na-ilha-do-mel-2026</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://coracaodailha.com.br/blog/reveillon-ilha-do-mel-2027</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://coracaodailha.com.br/blog/como-chegar-na-ilha-do-mel-guia-completo</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://coracaodailha.com.br/blog/melhor-epoca-para-visitar-ilha-do-mel</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
   </url>
 
 </urlset>

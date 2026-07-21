@@ -37,6 +37,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
   const guiaLink = { name: 'Guia da Ilha', href: '/guia-ilha-do-mel' };
 
   const moreLinks = [
+    { name: 'Blog', href: '/blog' },
     { name: 'Quem Somos', href: '/quem-somos' },
     { name: 'Contato', href: '/contato' },
     { name: 'Política de Privacidade', href: '/politica-privacidade' },
