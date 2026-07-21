@@ -1,7 +1,11 @@
 import React from 'react';
 import { Heart, Award, Users, Leaf, Star, MapPin } from 'lucide-react';
+import { useSEO } from '../../utils/seo';
+import { PAGE_SEO } from '../../utils/pageSeo';
 
 const QuemSomos: React.FC = () => {
+  useSEO(PAGE_SEO.quemSomos);
+
   return (
     <main className="pt-24">
       <section className="bg-deep-navy text-white py-20">

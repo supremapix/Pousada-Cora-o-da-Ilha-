@@ -1,9 +1,13 @@
 import React from 'react';
 import { CircleAlert as AlertCircle, CircleCheck as CheckCircle, Circle as XCircle, Clock, MessageCircle, CreditCard } from 'lucide-react';
 import { WHATSAPP_NUMBER, EMAIL_ADDRESS } from '../../constants';
+import { useSEO } from '../../utils/seo';
+import { PAGE_SEO } from '../../utils/pageSeo';
 
 const PoliticaDevolucao: React.FC = () => {
   const lastUpdated = "18 de abril de 2026";
+
+  useSEO(PAGE_SEO.politicaDevolucao);
 
   return (
     <main className="pt-24">

@@ -20,26 +20,35 @@ import PoliticaPrivacidade from './components/pages/PoliticaPrivacidade';
 import PoliticaDevolucao from './components/pages/PoliticaDevolucao';
 import MapaSite from './components/pages/MapaSite';
 import GuiaIlha from './components/pages/GuiaIlha';
+import Blog from './components/pages/Blog';
+import BlogPost from './components/pages/BlogPost';
+import { getPostBySlug } from './data/blogPosts';
+import { useSEO } from './utils/seo';
+import { PAGE_SEO } from './utils/pageSeo';
 
 function getPage(): string {
   return window.location.pathname.replace(/\/$/, '') || '/';
 }
 
-const HomePage: React.FC = () => (
-  <main className="flex-grow">
-    <Hero />
-    <ShortVideoSection />
-    <About />
-    <VideoPresentation />
-    <Experience />
-    <IslandHistory />
-    <IslandGuide />
-    <Accommodations />
-    <Testimonials />
-    <Policies />
-    <BookingForm />
-  </main>
-);
+const HomePage: React.FC = () => {
+  useSEO(PAGE_SEO.home);
+
+  return (
+    <main className="flex-grow">
+      <Hero />
+      <ShortVideoSection />
+      <About />
+      <VideoPresentation />
+      <Experience />
+      <IslandHistory />
+      <IslandGuide />
+      <Accommodations />
+      <Testimonials />
+      <Policies />
+      <BookingForm />
+    </main>
+  );
+};
 
 const App: React.FC = () => {
   const [page, setPage] = useState(getPage());
@@ -51,6 +60,14 @@ const App: React.FC = () => {
   }, []);
 
   const renderPage = () => {
+    if (page === '/blog') return <Blog onNavigate={setPage} />;
+    if (page.startsWith('/blog/')) {
+      const slug = page.replace('/blog/', '');
+      const post = getPostBySlug(slug);
+      if (post) return <BlogPost post={post} onNavigate={setPage} />;
+      return <Blog onNavigate={setPage} />;
+    }
+
     switch (page) {
       case '/quem-somos': return <QuemSomos />;
       case '/contato': return <Contato />;

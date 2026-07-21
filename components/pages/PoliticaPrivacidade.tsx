@@ -1,9 +1,13 @@
 import React from 'react';
 import { Shield, Lock, Eye, FileText, Mail } from 'lucide-react';
 import { EMAIL_ADDRESS } from '../../constants';
+import { useSEO } from '../../utils/seo';
+import { PAGE_SEO } from '../../utils/pageSeo';
 
 const PoliticaPrivacidade: React.FC = () => {
   const lastUpdated = "18 de abril de 2026";
+
+  useSEO(PAGE_SEO.politicaPrivacidade);
 
   return (
     <main className="pt-24">

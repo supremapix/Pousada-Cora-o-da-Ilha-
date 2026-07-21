@@ -2,6 +2,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import { MapPin, Clock, ChevronDown, ChevronUp, Instagram, MessageCircle, Star, Anchor, Lightbulb, Landmark, Camera, Fish, Waves, Car, Sailboat, Footprints, Sun, Moon, Wifi, DollarSign, ShieldPlus, Calendar } from 'lucide-react';
 import { WHATSAPP_NUMBER } from '../../constants';
 import { navigate } from '../../utils/navigate';
+import { useSEO } from '../../utils/seo';
+import { PAGE_SEO } from '../../utils/pageSeo';
 import SobreIlha from '../SobreIlha';
 import MapaInterativo from '../MapaInterativo';
 import PousadaDestaque from '../PousadaDestaque';
@@ -156,6 +158,8 @@ const Counter: React.FC<{ end: number; suffix: string; label: string }> = ({ end
 };
 
 const GuiaIlha: React.FC<GuiaIlhaProps> = ({ onNavigate }) => {
+  useSEO(PAGE_SEO.guiaIlha);
+
   return (
     <main className="bg-deep-navy text-white min-h-screen">
 

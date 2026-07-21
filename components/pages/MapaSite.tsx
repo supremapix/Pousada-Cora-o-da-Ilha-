@@ -1,5 +1,7 @@
 import React from 'react';
 import { Map, ExternalLink } from 'lucide-react';
+import { useSEO } from '../../utils/seo';
+import { PAGE_SEO } from '../../utils/pageSeo';
 
 interface SitemapGroup {
   title: string;
@@ -19,10 +21,10 @@ const sitemapData: SitemapGroup[] = [
   {
     title: "Hospedagem",
     links: [
-      { label: "Acomodações", href: "/#acomodacoes", desc: "Quartos 1 a 8 e Chalé Premium" },
-      { label: "Quarto 1 — Família", href: "/#acomodacoes", desc: "Cama de casal + beliche, até 4 pessoas" },
-      { label: "Quartos Standard Casal", href: "/#acomodacoes", desc: "Quartos 2 a 8 para casais" },
-      { label: "Chalé Premium", href: "/#acomodacoes", desc: "Nossa acomodação mais exclusiva" },
+      { label: "Acomodações", href: "/#acomodacoes", desc: "Suítes 1 a 8 e Chalé Luxo 9" },
+      { label: "Suíte Top Luxo 1 — Família", href: "/#acomodacoes", desc: "Cama de casal + beliche, até 4 pessoas" },
+      { label: "Suítes Standard Casal", href: "/#acomodacoes", desc: "Suítes 3 a 8 para casais" },
+      { label: "Chalé Luxo 9", href: "/#acomodacoes", desc: "Nossa acomodação mais exclusiva" },
     ]
   },
   {
@@ -31,6 +33,22 @@ const sitemapData: SitemapGroup[] = [
       { label: "Ilha do Mel", href: "/#experiencia", desc: "Descubra as atrações da ilha" },
       { label: "Guia da Ilha", href: "/#guia", desc: "Praias, trilhas e pontos turísticos" },
       { label: "História da Ilha", href: "/#historia", desc: "A origem e patrimônio da Ilha do Mel" },
+    ]
+  },
+  {
+    title: "Blog da Ilha do Mel",
+    links: [
+      { label: "Blog (índice)", href: "/blog", desc: "Eventos, festas e guias da Ilha do Mel 2026" },
+      { label: "Férias de Julho na Ilha do Mel", href: "/blog/ferias-de-julho-na-ilha-do-mel-2026", desc: "Baixa temporada, tainha e tranquilidade" },
+      { label: "Festivais de Jazz em Agosto", href: "/blog/festivais-de-jazz-ilha-do-mel-agosto-2026", desc: "Guia completo dos festivais de jazz" },
+      { label: "Feriado de 7 de Setembro", href: "/blog/feriado-7-de-setembro-ilha-do-mel-2026", desc: "Feriadão de primavera na ilha" },
+      { label: "Primavera: Trilhas e Aves", href: "/blog/primavera-ilha-do-mel-trilhas-observacao-aves", desc: "Melhor época para trilhas e natureza" },
+      { label: "12 de Outubro em Família", href: "/blog/feriado-12-de-outubro-dia-das-criancas-ilha-do-mel", desc: "Feriadão com crianças" },
+      { label: "Feriados de Novembro", href: "/blog/feriados-de-novembro-ilha-do-mel-2026", desc: "3 feriadões pré-temporada" },
+      { label: "Natal na Ilha do Mel", href: "/blog/natal-na-ilha-do-mel-2026", desc: "Fim de ano pé na areia" },
+      { label: "Réveillon 2026/2027", href: "/blog/reveillon-ilha-do-mel-2027", desc: "Fogos, festas e virada na praia" },
+      { label: "Como Chegar na Ilha do Mel", href: "/blog/como-chegar-na-ilha-do-mel-guia-completo", desc: "Barco, horários e preços 2026" },
+      { label: "Melhor Época para Visitar", href: "/blog/melhor-epoca-para-visitar-ilha-do-mel", desc: "Guia mês a mês" },
     ]
   },
   {
@@ -52,6 +70,9 @@ const sitemapData: SitemapGroup[] = [
 ];
 
 const MapaSite: React.FC = () => {
+  // SEO centralizado em utils/pageSeo.ts (sincroniza SPA + prerender)
+  useSEO(PAGE_SEO.mapaSite);
+
   return (
     <main className="pt-24">
       <section className="bg-deep-navy text-white py-20">
