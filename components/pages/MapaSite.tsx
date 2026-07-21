@@ -70,6 +70,7 @@ const sitemapData: SitemapGroup[] = [
 ];
 
 const MapaSite: React.FC = () => {
+  // SEO centralizado em utils/pageSeo.ts (sincroniza SPA + prerender)
   useSEO(PAGE_SEO.mapaSite);
 
   return (
