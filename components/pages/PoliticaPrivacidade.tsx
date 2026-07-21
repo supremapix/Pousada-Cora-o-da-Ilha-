@@ -1,9 +1,17 @@
 import React from 'react';
 import { Shield, Lock, Eye, FileText, Mail } from 'lucide-react';
 import { EMAIL_ADDRESS } from '../../constants';
+import { useSEO } from '../../utils/seo';
 
 const PoliticaPrivacidade: React.FC = () => {
   const lastUpdated = "18 de abril de 2026";
+
+  useSEO({
+    title: 'Política de Privacidade | Pousada Coração da Ilha',
+    description:
+      'Saiba como a Pousada Coração da Ilha coleta, usa e protege seus dados pessoais em conformidade com a LGPD.',
+    canonical: '/politica-privacidade',
+  });
 
   return (
     <main className="pt-24">

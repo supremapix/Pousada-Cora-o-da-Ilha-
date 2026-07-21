@@ -1,7 +1,16 @@
 import React from 'react';
 import { Heart, Award, Users, Leaf, Star, MapPin } from 'lucide-react';
+import { useSEO, LODGING_SCHEMA } from '../../utils/seo';
 
 const QuemSomos: React.FC = () => {
+  useSEO({
+    title: 'Quem Somos | Pousada Coração da Ilha – Encantadas, Ilha do Mel',
+    description:
+      'Conheça a história da Pousada Coração da Ilha, sua pousada à beira-mar na Praia de Encantadas, Ilha do Mel. Hospitalidade, conforto e vista para o mar.',
+    canonical: '/quem-somos',
+    jsonLd: LODGING_SCHEMA,
+  });
+
   return (
     <main className="pt-24">
       <section className="bg-deep-navy text-white py-20">

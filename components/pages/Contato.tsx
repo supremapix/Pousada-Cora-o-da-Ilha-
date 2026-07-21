@@ -1,8 +1,17 @@
 import React from 'react';
 import { Phone, Mail, MapPin, MessageCircle, Clock, ExternalLink } from 'lucide-react';
 import { WHATSAPP_NUMBER, PHONE_NUMBER, EMAIL_ADDRESS, MAPS_LINK } from '../../constants';
+import { useSEO, LODGING_SCHEMA } from '../../utils/seo';
 
 const Contato: React.FC = () => {
+  useSEO({
+    title: 'Reservas – Pousada na Ilha do Mel em Encantadas | Coração da Ilha',
+    description:
+      'Reserve sua pousada na Ilha do Mel, em Encantadas. Fale com a Pousada Coração da Ilha pelo WhatsApp, telefone ou e-mail e garanta sua estadia à beira-mar.',
+    canonical: '/contato',
+    jsonLd: LODGING_SCHEMA,
+  });
+
   return (
     <main className="pt-24">
       <section className="bg-deep-navy text-white py-20">

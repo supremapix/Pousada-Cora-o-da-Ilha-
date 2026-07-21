@@ -1,5 +1,6 @@
 import React from 'react';
 import { Map, ExternalLink } from 'lucide-react';
+import { useSEO, LODGING_SCHEMA } from '../../utils/seo';
 
 interface SitemapGroup {
   title: string;
@@ -34,6 +35,22 @@ const sitemapData: SitemapGroup[] = [
     ]
   },
   {
+    title: "Blog da Ilha do Mel",
+    links: [
+      { label: "Blog (índice)", href: "/blog", desc: "Eventos, festas e guias da Ilha do Mel 2026" },
+      { label: "Férias de Julho na Ilha do Mel", href: "/blog/ferias-de-julho-na-ilha-do-mel-2026", desc: "Baixa temporada, tainha e tranquilidade" },
+      { label: "Festivais de Jazz em Agosto", href: "/blog/festivais-de-jazz-ilha-do-mel-agosto-2026", desc: "Guia completo dos festivais de jazz" },
+      { label: "Feriado de 7 de Setembro", href: "/blog/feriado-7-de-setembro-ilha-do-mel-2026", desc: "Feriadão de primavera na ilha" },
+      { label: "Primavera: Trilhas e Aves", href: "/blog/primavera-ilha-do-mel-trilhas-observacao-aves", desc: "Melhor época para trilhas e natureza" },
+      { label: "12 de Outubro em Família", href: "/blog/feriado-12-de-outubro-dia-das-criancas-ilha-do-mel", desc: "Feriadão com crianças" },
+      { label: "Feriados de Novembro", href: "/blog/feriados-de-novembro-ilha-do-mel-2026", desc: "3 feriadões pré-temporada" },
+      { label: "Natal na Ilha do Mel", href: "/blog/natal-na-ilha-do-mel-2026", desc: "Fim de ano pé na areia" },
+      { label: "Réveillon 2026/2027", href: "/blog/reveillon-ilha-do-mel-2027", desc: "Fogos, festas e virada na praia" },
+      { label: "Como Chegar na Ilha do Mel", href: "/blog/como-chegar-na-ilha-do-mel-guia-completo", desc: "Barco, horários e preços 2026" },
+      { label: "Melhor Época para Visitar", href: "/blog/melhor-epoca-para-visitar-ilha-do-mel", desc: "Guia mês a mês" },
+    ]
+  },
+  {
     title: "Reservas",
     links: [
       { label: "Solicitar Orçamento", href: "/#reservas", desc: "Formulário de reserva direta" },
@@ -52,6 +69,14 @@ const sitemapData: SitemapGroup[] = [
 ];
 
 const MapaSite: React.FC = () => {
+  useSEO({
+    title: 'Mapa do Site | Pousada na Ilha do Mel – Coração da Ilha',
+    description:
+      'Navegue por todas as páginas da Pousada Coração da Ilha: acomodações, blog, guia da Ilha do Mel, contato e reservas.',
+    canonical: '/mapa-do-site',
+    jsonLd: LODGING_SCHEMA,
+  });
+
   return (
     <main className="pt-24">
       <section className="bg-deep-navy text-white py-20">
