@@ -2,7 +2,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import { MapPin, Clock, ChevronDown, ChevronUp, Instagram, MessageCircle, Star, Anchor, Lightbulb, Landmark, Camera, Fish, Waves, Car, Sailboat, Footprints, Sun, Moon, Wifi, DollarSign, ShieldPlus, Calendar } from 'lucide-react';
 import { WHATSAPP_NUMBER } from '../../constants';
 import { navigate } from '../../utils/navigate';
-import { useSEO, LODGING_SCHEMA } from '../../utils/seo';
+import { useSEO } from '../../utils/seo';
+import { PAGE_SEO } from '../../utils/pageSeo';
 import SobreIlha from '../SobreIlha';
 import MapaInterativo from '../MapaInterativo';
 import PousadaDestaque from '../PousadaDestaque';
@@ -157,13 +158,7 @@ const Counter: React.FC<{ end: number; suffix: string; label: string }> = ({ end
 };
 
 const GuiaIlha: React.FC<GuiaIlhaProps> = ({ onNavigate }) => {
-  useSEO({
-    title: 'Guia da Ilha do Mel: O Que Fazer, Trilhas e Dicas | Coração da Ilha',
-    description:
-      'Guia completo da Ilha do Mel: como chegar, trilhas, praias, Gruta das Encantadas e onde ficar. Planeje sua viagem com a Pousada Coração da Ilha.',
-    canonical: '/guia-ilha-do-mel',
-    jsonLd: LODGING_SCHEMA,
-  });
+  useSEO(PAGE_SEO.guiaIlha);
 
   return (
     <main className="bg-deep-navy text-white min-h-screen">

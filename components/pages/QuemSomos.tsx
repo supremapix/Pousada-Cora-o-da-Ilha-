@@ -1,15 +1,10 @@
 import React from 'react';
 import { Heart, Award, Users, Leaf, Star, MapPin } from 'lucide-react';
-import { useSEO, LODGING_SCHEMA } from '../../utils/seo';
+import { useSEO } from '../../utils/seo';
+import { PAGE_SEO } from '../../utils/pageSeo';
 
 const QuemSomos: React.FC = () => {
-  useSEO({
-    title: 'Quem Somos | Pousada Coração da Ilha – Encantadas, Ilha do Mel',
-    description:
-      'Conheça a história da Pousada Coração da Ilha, sua pousada à beira-mar na Praia de Encantadas, Ilha do Mel. Hospitalidade, conforto e vista para o mar.',
-    canonical: '/quem-somos',
-    jsonLd: LODGING_SCHEMA,
-  });
+  useSEO(PAGE_SEO.quemSomos);
 
   return (
     <main className="pt-24">

@@ -4,7 +4,7 @@ export const SITE_URL = 'https://coracaodailha.com.br';
 export const DEFAULT_OG_IMAGE =
   'https://coracaodailha.com.br/site/assets/images/pousada-coracao-da-ilha-encantadas-ilha-do-mel-parana-360x371.png';
 
-interface SEOOptions {
+export interface SEOOptions {
   title: string;
   description: string;
   /** Caminho relativo (ex.: "/blog") ou URL absoluta. */

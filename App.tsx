@@ -23,20 +23,15 @@ import GuiaIlha from './components/pages/GuiaIlha';
 import Blog from './components/pages/Blog';
 import BlogPost from './components/pages/BlogPost';
 import { getPostBySlug } from './data/blogPosts';
-import { useSEO, LODGING_SCHEMA, WEBSITE_SCHEMA } from './utils/seo';
+import { useSEO } from './utils/seo';
+import { PAGE_SEO } from './utils/pageSeo';
 
 function getPage(): string {
   return window.location.pathname.replace(/\/$/, '') || '/';
 }
 
 const HomePage: React.FC = () => {
-  useSEO({
-    title: 'Pousada na Ilha do Mel à Beira-Mar | Coração da Ilha – Encantadas',
-    description:
-      'Pousada na Ilha do Mel pé na areia, na Praia de Encantadas. Quartos com vista para o mar, café da manhã e golfinhos na janela. Reserve direto com a pousada!',
-    canonical: '/',
-    jsonLd: [LODGING_SCHEMA, WEBSITE_SCHEMA],
-  });
+  useSEO(PAGE_SEO.home);
 
   return (
     <main className="flex-grow">

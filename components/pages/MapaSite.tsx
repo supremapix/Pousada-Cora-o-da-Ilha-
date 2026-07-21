@@ -1,6 +1,7 @@
 import React from 'react';
 import { Map, ExternalLink } from 'lucide-react';
-import { useSEO, LODGING_SCHEMA } from '../../utils/seo';
+import { useSEO } from '../../utils/seo';
+import { PAGE_SEO } from '../../utils/pageSeo';
 
 interface SitemapGroup {
   title: string;
@@ -69,13 +70,7 @@ const sitemapData: SitemapGroup[] = [
 ];
 
 const MapaSite: React.FC = () => {
-  useSEO({
-    title: 'Mapa do Site | Pousada na Ilha do Mel – Coração da Ilha',
-    description:
-      'Navegue por todas as páginas da Pousada Coração da Ilha: acomodações, blog, guia da Ilha do Mel, contato e reservas.',
-    canonical: '/mapa-do-site',
-    jsonLd: LODGING_SCHEMA,
-  });
+  useSEO(PAGE_SEO.mapaSite);
 
   return (
     <main className="pt-24">
