@@ -19,10 +19,10 @@ const sitemapData: SitemapGroup[] = [
   {
     title: "Hospedagem",
     links: [
-      { label: "Acomodações", href: "/#acomodacoes", desc: "Quartos 1 a 8 e Chalé Premium" },
-      { label: "Quarto 1 — Família", href: "/#acomodacoes", desc: "Cama de casal + beliche, até 4 pessoas" },
-      { label: "Quartos Standard Casal", href: "/#acomodacoes", desc: "Quartos 2 a 8 para casais" },
-      { label: "Chalé Premium", href: "/#acomodacoes", desc: "Nossa acomodação mais exclusiva" },
+      { label: "Acomodações", href: "/#acomodacoes", desc: "Suítes 1 a 8 e Chalé Luxo 9" },
+      { label: "Suíte Top Luxo 1 — Família", href: "/#acomodacoes", desc: "Cama de casal + beliche, até 4 pessoas" },
+      { label: "Suítes Standard Casal", href: "/#acomodacoes", desc: "Suítes 3 a 8 para casais" },
+      { label: "Chalé Luxo 9", href: "/#acomodacoes", desc: "Nossa acomodação mais exclusiva" },
     ]
   },
   {

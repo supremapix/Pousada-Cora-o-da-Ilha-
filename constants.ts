@@ -17,7 +17,7 @@ export const HERO_IMAGES = [
 export const ACCOMMODATIONS: Accommodation[] = [
   {
     id: "quarto-1",
-    name: "Quarto 1",
+    name: "Suíte Top Luxo 1",
     description: "Acomodação espaçosa com cama de casal e beliche, ideal para famílias ou grupos de até 4 pessoas. Conta com banheiro com banheira, ar condicionado, frigobar e TV.",
     capacity: "Até 4 pessoas",
     image: "/images/hospedagem/pousada-na-ilha-do-mel-quarto-01_(1).jpg",
@@ -53,7 +53,7 @@ export const ACCOMMODATIONS: Accommodation[] = [
   },
   {
     id: "quarto-2",
-    name: "Quarto 2",
+    name: "Suíte Top Luxo 2",
     description: "Acomodação aconchegante com decoração rústica em madeira e cama de casal. Perfeita para casais que querem conforto e proximidade com a natureza da Ilha do Mel.",
     capacity: "Até 2 pessoas",
     image: "/images/hospedagem/pousada-quarto02-coracao-da-ilha-na-ilha-do-mel-parana-brasil_(1).jpg",
@@ -68,7 +68,7 @@ export const ACCOMMODATIONS: Accommodation[] = [
   },
   {
     id: "quarto-3",
-    name: "Quarto 3",
+    name: "Suíte Standard 3",
     description: "Quarto charmoso com teto e paredes em madeira nobre, trazendo o aconchego tropical da ilha para dentro do seu quarto. Cama de casal e decoração rústica para uma estadia especial.",
     capacity: "Até 2 pessoas",
     image: "/images/hospedagem/pousada-quarto03-coracao-da-ilha-na-ilha-do-mel-parana-brasil_(1).jpg",
@@ -83,7 +83,7 @@ export const ACCOMMODATIONS: Accommodation[] = [
   },
   {
     id: "quarto-4",
-    name: "Quarto 4",
+    name: "Suíte Top Standard 4",
     description: "Acomodação espaçosa com cama de casal e beliche, perfeita para famílias ou grupos de até 4 pessoas. Conta com banheiro privativo com banheira, ar condicionado e frigobar.",
     capacity: "Até 4 pessoas",
     image: "/images/hospedagem/pousada-quarto04-coracao-da-ilha-na-ilha-do-mel-parana-brasil_(1).jpg",
@@ -98,7 +98,7 @@ export const ACCOMMODATIONS: Accommodation[] = [
   },
   {
     id: "quarto-5",
-    name: "Quarto 5",
+    name: "Suíte Standard 5",
     description: "Quarto com decoração rústica tropical, teto em madeira e iluminação aconchegante. Ideal para casais que buscam privacidade e conforto na Ilha do Mel.",
     capacity: "Até 2 pessoas",
     image: "/images/hospedagem/pousada-quarto05-coracao-da-ilha-na-ilha-do-mel-parana-brasil_(1).jpg",
@@ -112,7 +112,7 @@ export const ACCOMMODATIONS: Accommodation[] = [
   },
   {
     id: "quarto-6",
-    name: "Quarto 6",
+    name: "Suíte Standard 6",
     description: "Acomodação com estrutura em madeira e ambiente acolhedor, perfeita para relaxar após um dia de aventura pela ilha. Cama de casal e todos os confortos necessários para casais.",
     capacity: "Até 2 pessoas",
     image: "/images/hospedagem/pousada-quarto06-coracao-da-ilha-na-ilha-do-mel-parana-brasil_(1).jpg",
@@ -127,7 +127,7 @@ export const ACCOMMODATIONS: Accommodation[] = [
   },
   {
     id: "quarto-7",
-    name: "Quarto 7",
+    name: "Suíte Standard 7",
     description: "Quarto charmoso com acabamento rústico em madeira e ambiente intimista. Ideal para casais que desejam privacidade e conforto em meio à natureza exuberante da Ilha do Mel.",
     capacity: "Até 2 pessoas",
     image: "/images/hospedagem/pousada-quarto07-coracao-da-ilha-na-ilha-do-mel-parana-brasil_(1).jpg",
@@ -141,7 +141,7 @@ export const ACCOMMODATIONS: Accommodation[] = [
   },
   {
     id: "quarto-8",
-    name: "Quarto 8",
+    name: "Suíte Standard 8",
     description: "Acomodação espaçosa e bem equipada com decoração tropical. Perfeita para casais que desejam aproveitar tudo que a Ilha do Mel tem a oferecer com conforto e tranquilidade.",
     capacity: "Até 2 pessoas",
     image: "/images/hospedagem/pousada-quarto08-coracao-da-ilha-na-ilha-do-mel-parana-brasil_(1).jpg",
@@ -155,7 +155,7 @@ export const ACCOMMODATIONS: Accommodation[] = [
   },
   {
     id: "quarto-9",
-    name: "Chalé Premium",
+    name: "Chalé Luxo 9",
     description: "Nossa acomodação mais exclusiva. Chalé privativo com acabamentos em madeira nobre, banheiro espaçoso com banheira de hidromassagem e ambiente sofisticado. A escolha ideal para quem busca o máximo em conforto e privacidade.",
     capacity: "Até 4 pessoas",
     image: "/images/hospedagem/pousada-quarto09-chale-premium-coracao-da-ilha-na-ilha-do-mel-parana-brasil_(1).jpg",
