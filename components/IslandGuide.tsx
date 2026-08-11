@@ -8,28 +8,28 @@ const IslandGuide: React.FC = () => {
       name: "Gruta das Encantadas",
       desc: "Patrimônio natural envolto em lendas. O acesso é feito por uma passarela de madeira que contorna o costão rochoso.",
       dist: "15 min de caminhada",
-      image: "/images/hospedagem/hospedagem-11.jpg",
+      image: "/images/attractions/gruta-das-encantadas.jpeg",
       icon: <Camera size={20} />
     },
     {
       name: "Farol das Conchas",
       desc: "Construído em 1872, oferece a vista mais icônica da ilha. Um local perfeito para ver o nascer do sol.",
       dist: "45 min de trilha",
-      image: "/images/hospedagem/hospedagem-23.jpg",
+      image: "/images/attractions/farol-das-conchas.jpeg",
       icon: <Anchor size={20} />
     },
     {
       name: "Fortaleza N. Sra. dos Prazeres",
       desc: "História viva à beira-mar com canhões do século XVIII e uma vista estratégica da baía.",
       dist: "Barco ou Trilha Longa",
-      image: "/images/hospedagem/hospedagem-24.jpg",
+      image: "/images/attractions/fortaleza-nossa-senhora-dos-prazeres.jpeg",
       icon: <Shield size={20} />
     },
     {
       name: "Istmo (O Passinho)",
       desc: "Onde a ilha quase se divide em duas. Um espetáculo da natureza onde o mar de dentro e o mar de fora se aproximam.",
       dist: "20 min de caminhada",
-      image: "/images/hospedagem/hospedagem-32.jpg",
+      image: "/images/attractions/istmo-o-passinho.jpg",
       icon: <Waves size={20} />
     }
   ];

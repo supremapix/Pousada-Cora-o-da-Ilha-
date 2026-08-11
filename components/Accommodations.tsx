@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ACCOMMODATIONS, BOOKING_LINK, WHATSAPP_NUMBER } from '../constants';
 import { Users, ExternalLink, MessageCircle, ChevronLeft, ChevronRight, ZoomIn } from 'lucide-react';
 import GalleryLightbox from './GalleryLightbox';
@@ -27,6 +27,20 @@ const RoomImageSlider: React.FC<RoomImageSliderProps> = ({ images, alts, name, o
     e.stopPropagation();
     setCurrent((c) => (c + 1) % images.length);
   };
+
+  useEffect(() => {
+    if (images.length < 2) return;
+
+    const adjacentIndexes = [
+      (current + 1) % images.length,
+      (current - 1 + images.length) % images.length,
+    ];
+
+    adjacentIndexes.forEach((index) => {
+      const image = new Image();
+      image.src = images[index];
+    });
+  }, [current, images]);
 
   return (
     <div

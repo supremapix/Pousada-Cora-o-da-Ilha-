@@ -42,6 +42,20 @@ const GalleryLightbox: React.FC<GalleryLightboxProps> = ({
     };
   }, [onClose, prev, next]);
 
+  useEffect(() => {
+    if (images.length < 2) return;
+
+    const adjacentIndexes = [
+      (current + 1) % images.length,
+      (current - 1 + images.length) % images.length,
+    ];
+
+    adjacentIndexes.forEach((index) => {
+      const image = new Image();
+      image.src = images[index];
+    });
+  }, [current, images]);
+
   return (
     <div
       className="fixed inset-0 z-[9999] flex flex-col bg-black/95 backdrop-blur-sm"
@@ -81,6 +95,8 @@ const GalleryLightbox: React.FC<GalleryLightboxProps> = ({
             key={current}
             src={images[current]}
             alt={alts[current] ?? `${roomName} - foto ${current + 1} de ${images.length} - Pousada Coração da Ilha, Ilha do Mel, Paraná`}
+            decoding="async"
+            fetchPriority="high"
             className="max-h-full max-w-full object-contain rounded-xl shadow-2xl animate-fade-in"
             style={{ maxHeight: 'calc(100vh - 220px)' }}
           />
@@ -127,6 +143,9 @@ const GalleryLightbox: React.FC<GalleryLightboxProps> = ({
                 src={src}
                 alt=""
                 aria-hidden="true"
+                loading="lazy"
+                decoding="async"
+                fetchPriority="low"
                 className="w-full h-full object-cover"
               />
             </button>

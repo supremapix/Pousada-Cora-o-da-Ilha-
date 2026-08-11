@@ -9,21 +9,21 @@ const IslandHistory: React.FC = () => {
       period: "Tempo Ancestral",
       desc: "Os índios Carijós chamavam a ilha de 'Y-Melo'. Eles viviam em harmonia com a abundância de mel e peixes. Os sambaquis na região são provas silenciosas desta ocupação milenar.",
       icon: <Palmtree className="text-lime" size={32} />,
-      image: "/images/hospedagem/hospedagem-8.jpg"
+      image: "/images/history/indigenous-legacy.webp"
     },
     {
       title: "Sentinela Colonial",
       period: "Século XVIII",
       desc: "Para proteger o litoral paranaense de invasores, a coroa portuguesa ergueu a Fortaleza de N. Sra. dos Prazeres. Seus canhões de bronze ainda guardam a entrada da baía.",
       icon: <Shield className="text-lime" size={32} />,
-      image: "/images/hospedagem/hospedagem-9.jpg"
+      image: "/images/history/colonial-sentinel.jpeg"
     },
     {
       title: "Refúgio Ecológico",
       period: "Era Moderna",
       desc: "Em 1975, a ilha foi oficialmente protegida. Hoje, é um Patrimônio da Humanidade pela UNESCO, mantendo 95% de sua mata atlântica original intacta.",
       icon: <Compass className="text-lime" size={32} />,
-      image: "/images/hospedagem/hospedagem-10.jpg"
+      image: "/images/history/ecological-refuge.webp"
     }
   ];
 
