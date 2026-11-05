@@ -1,8 +1,7 @@
 import { useEffect } from 'react';
 
-export const SITE_URL = 'https://coracaodailha.com.br';
-export const DEFAULT_OG_IMAGE =
-  'https://coracaodailha.com.br/site/assets/images/pousada-coracao-da-ilha-encantadas-ilha-do-mel-parana-360x371.png';
+export const SITE_URL = 'https://www.coracaodailha.com.br';
+export const DEFAULT_OG_IMAGE = `${SITE_URL}/images/og-pousada.jpg`;
 
 export interface SEOOptions {
   title: string;
@@ -99,18 +98,18 @@ export const LODGING_SCHEMA: Record<string, unknown> = {
   '@context': 'https://schema.org',
   '@type': 'BedAndBreakfast',
   name: 'Pousada Coração da Ilha',
+  telephone: '+554134269043',
+  logo: `${SITE_URL}/images/logo.png`,
   url: SITE_URL,
   image: DEFAULT_OG_IMAGE,
   description:
-    'Pousada à beira-mar na Praia de Encantadas, Ilha do Mel - PR, com vista para o mar e avistamento de golfinhos.',
+    'Pousada à beira-mar na Praia de Encantadas, Ilha do Mel - PR, com suítes e chalé para casais e famílias.',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Ilha do Mel - Encantadas',
     addressRegion: 'PR',
     addressCountry: 'BR',
   },
-  geo: { '@type': 'GeoCoordinates', latitude: -25.5651, longitude: -48.3147 },
-  priceRange: '$$',
   checkinTime: '14:00',
   checkoutTime: '12:00',
   amenityFeature: [
@@ -126,12 +125,4 @@ export const WEBSITE_SCHEMA: Record<string, unknown> = {
   '@type': 'WebSite',
   name: 'Pousada Coração da Ilha',
   url: SITE_URL,
-  potentialAction: {
-    '@type': 'SearchAction',
-    target: {
-      '@type': 'EntryPoint',
-      urlTemplate: `${SITE_URL}/blog?s={search_term_string}`,
-    },
-    'query-input': 'required name=search_term_string',
-  },
 };

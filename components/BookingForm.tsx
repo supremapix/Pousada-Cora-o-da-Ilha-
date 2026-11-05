@@ -28,6 +28,7 @@ const BookingForm: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (formData.checkout <= formData.checkin) { alert('O check-out deve ser posterior ao check-in.'); return; }
     const formatDate = (dateString: string) => {
       if (!dateString) return '';
       const [year, month, day] = dateString.split('-');
@@ -56,7 +57,7 @@ Aguardo confirmação! 😊`;
 
     const encodedText = encodeURIComponent(text);
     const url = `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodedText}`;
-    window.open(url, '_blank');
+    window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -69,8 +70,8 @@ Aguardo confirmação! 😊`;
              <Star size={24} fill="currentColor" />
            </div>
            <div>
-             <p className="text-deep-navy font-bold text-lg">Melhor tarifa aqui!</p>
-             <p className="text-deep-navy/80 text-sm font-medium">Reserve pelo WhatsApp e aproveite atendimento 24h e condições especiais.</p>
+             <p className="text-deep-navy font-bold text-lg">Consulte sua estadia</p>
+             <p className="text-deep-navy/80 text-sm font-medium">Informe suas datas e consulte disponibilidade, valores e condições diretamente com a pousada.</p>
            </div>
         </div>
 
@@ -82,6 +83,7 @@ Aguardo confirmação! 😊`;
               <p className="text-gray-500 mt-1">Preencha os dados e enviaremos sua solicitação via WhatsApp.</p>
             </div>
 
+            <noscript><p>Para consultar sua estadia, use o <a href={`https://wa.me/${WHATSAPP_NUMBER}`}>WhatsApp da pousada</a>.</p><style>{'#reservas form { display: none; }'}</style></noscript>
             <form onSubmit={handleSubmit} className="space-y-5">
               <div className="relative">
                 <label htmlFor="nome" className="block text-sm font-medium text-gray-700 mb-1">Nome Completo *</label>
@@ -147,7 +149,7 @@ Aguardo confirmação! 😊`;
                 <label htmlFor="plano" className="block text-sm font-medium text-gray-700 mb-1">Forma de Pagamento *</label>
                 <select id="plano" name="plano" required value={formData.plano} onChange={handleChange} className="w-full rounded-lg border-gray-300 border focus:ring-2 focus:ring-lime focus:border-transparent py-2.5 text-gray-900 bg-white">
                   <option value="Plano Tradicional (50% + 50%)">Plano Tradicional (50% agora + 50% no check-in)</option>
-                  <option value="Plano Pré-Pago (Parcelado)">✨ Plano Pré-Pago (Melhor Oferta)</option>
+                  <option value="Plano Pré-Pago (Parcelado)">✨ Plano Pré-Pago (Consulte condições)</option>
                   <option value="Cartão de Crédito (até 12x)">Cartão de Crédito (até 12x com juros)</option>
                 </select>
               </div>
@@ -174,8 +176,8 @@ Aguardo confirmação! 😊`;
           {/* Sidebar */}
           <div className="space-y-6">
             <div className="bg-deep-navy-950/40 backdrop-blur-md border border-lime/20 p-6 rounded-2xl text-white shadow-2xl">
-              <h3 className="text-xl font-serif font-bold mb-4 text-lime">💬 Atendimento 24h</h3>
-              <p className="mb-6 opacity-80 text-sm">Nossa equipe está disponível para tirar suas dúvidas agora mesmo.</p>
+              <h3 className="text-xl font-serif font-bold mb-4 text-lime">💬 Atendimento da pousada</h3>
+              <p className="mb-6 opacity-80 text-sm">Envie sua dúvida pelos canais abaixo e aguarde o retorno da equipe.</p>
               
               <div className="space-y-4">
                 <a href={`https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}`} target="_blank" className="flex items-center gap-4 bg-lime text-deep-navy p-3 rounded-lg font-bold hover:bg-lime-500 transition-colors">
@@ -199,7 +201,7 @@ Aguardo confirmação! 😊`;
                <h3 className="text-lg font-bold mb-4 flex items-center gap-2 text-white"><Star className="text-lime" fill="currentColor"/> Benefícios Exclusivos</h3>
                <ul className="space-y-3">
                  <li className="flex items-center gap-3 text-sm text-gray-200"><Check size={16} className="text-lime flex-shrink-0" /> Café da manhã tropical incluso</li>
-                 <li className="flex items-center gap-3 text-sm text-gray-200"><Check size={16} className="text-lime flex-shrink-0" /> Wi-Fi gratuito de alta velocidade</li>
+                 <li className="flex items-center gap-3 text-sm text-gray-200"><Check size={16} className="text-lime flex-shrink-0" /> Wi-Fi na pousada</li>
                  <li className="flex items-center gap-3 text-sm text-gray-200"><Check size={16} className="text-lime flex-shrink-0" /> Crianças até 5 anos grátis</li>
                  <li className="flex items-center gap-3 text-sm text-gray-200"><Check size={16} className="text-lime flex-shrink-0" /> Acesso direto à Praia de Encantadas</li>
                </ul>

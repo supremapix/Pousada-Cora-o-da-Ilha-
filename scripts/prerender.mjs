@@ -21,12 +21,13 @@ const root = path.resolve(__dirname, '..');
 const distDir = path.join(root, 'dist');
 
 async function loadRoutes() {
-  const tmpFile = path.join(os.tmpdir(), `routes-${Date.now()}.mjs`);
+  const tmpFile = path.join(root, `routes-${Date.now()}.mjs`);
   await build({
     entryPoints: [path.join(__dirname, 'routes.ts')],
     bundle: true,
     format: 'esm',
     platform: 'node',
+    packages: 'external',
     outfile: tmpFile,
     logLevel: 'silent',
   });
@@ -54,6 +55,9 @@ function buildHead(route) {
     `<meta property="og:title" content="${escAttr(route.title)}" />`,
     `<meta property="og:description" content="${escAttr(route.description)}" />`,
     `<meta property="og:image" content="${escAttr(route.ogImage)}" />`,
+    `<meta property="og:image:width" content="1200" />`,
+    `<meta property="og:image:height" content="630" />`,
+    `<meta property="og:image:alt" content="Pousada Coração da Ilha em Encantadas. Reservas: (41) 3426-9043" />`,
     `<meta property="og:url" content="${escAttr(route.canonical)}" />`,
     `<meta property="og:type" content="${route.ogType}" />`,
     `<meta property="og:site_name" content="Pousada Coração da Ilha" />`,
@@ -116,6 +120,7 @@ async function main() {
     count += 1;
     console.log(`[prerender] ${route.path} -> ${rel}`);
   }
+  fs.writeFileSync(path.join(distDir, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${routes.map(route => `<url><loc>${escText(route.canonical)}</loc></url>`).join('')}</urlset>`);
   console.log(`[prerender] ${count} rotas pré-renderizadas.`);
 }
 

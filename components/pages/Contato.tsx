@@ -12,10 +12,10 @@ const Contato: React.FC = () => {
       <section className="bg-deep-navy text-white py-20">
         <div className="container mx-auto px-4 text-center">
           <span className="text-lime font-bold tracking-widest uppercase text-xs mb-4 block">Fale Conosco</span>
-          <h1 className="text-4xl md:text-6xl font-serif font-bold mb-6">Contato</h1>
+          <h1 className="text-4xl md:text-6xl font-serif font-bold mb-6">Contato e reservas</h1>
           <div className="h-1 w-24 bg-lime mx-auto rounded-full mb-6" />
           <p className="text-gray-300 max-w-2xl mx-auto text-lg leading-relaxed">
-            Estamos prontos para atender você. Escolha o canal de comunicação mais conveniente.
+            Para consultar sua hospedagem em Encantadas, informe as datas, o número de hóspedes e a acomodação desejada. A reserva depende da confirmação de disponibilidade e condições pela pousada.
           </p>
         </div>
       </section>
@@ -39,7 +39,7 @@ const Contato: React.FC = () => {
                   <div>
                     <div className="font-bold text-deep-navy text-lg mb-1 group-hover:text-green-600 transition-colors">WhatsApp</div>
                     <div className="text-gray-600 text-sm mb-2">(41) 99900-4808</div>
-                    <div className="text-green-600 text-xs font-semibold">Resposta mais rápida — clique para conversar</div>
+                    <div className="text-green-600 text-xs font-semibold">Clique para conversar com a pousada</div>
                   </div>
                 </a>
 
@@ -67,7 +67,7 @@ const Contato: React.FC = () => {
                   <div>
                     <div className="font-bold text-deep-navy text-lg mb-1 group-hover:text-lime-700 transition-colors">E-mail</div>
                     <div className="text-gray-600 text-sm mb-2">{EMAIL_ADDRESS}</div>
-                    <div className="text-gray-500 text-xs font-semibold">Respondemos em até 24 horas úteis</div>
+                    <div className="text-gray-500 text-xs font-semibold">Envie sua dúvida e aguarde o retorno da equipe</div>
                   </div>
                 </a>
 

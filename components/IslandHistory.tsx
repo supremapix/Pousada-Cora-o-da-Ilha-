@@ -7,7 +7,7 @@ const IslandHistory: React.FC = () => {
     {
       title: "Legado Indígena",
       period: "Tempo Ancestral",
-      desc: "Os índios Carijós chamavam a ilha de 'Y-Melo'. Eles viviam em harmonia com a abundância de mel e peixes. Os sambaquis na região são provas silenciosas desta ocupação milenar.",
+      desc: "As comunidades locais fazem parte da identidade da Ilha do Mel. Durante a visita, valorize a cultura, os moradores e os caminhos autorizados.",
       icon: <Palmtree className="text-lime" size={32} />,
       image: "/images/history/indigenous-legacy.webp"
     },
@@ -21,7 +21,7 @@ const IslandHistory: React.FC = () => {
     {
       title: "Refúgio Ecológico",
       period: "Era Moderna",
-      desc: "Em 1975, a ilha foi oficialmente protegida. Hoje, é um Patrimônio da Humanidade pela UNESCO, mantendo 95% de sua mata atlântica original intacta.",
+      desc: "A Ilha do Mel abriga um Parque Estadual e uma Estação Ecológica. A visitação deve respeitar as áreas permitidas e as orientações do Instituto Água e Terra.",
       icon: <Compass className="text-lime" size={32} />,
       image: "/images/history/ecological-refuge.webp"
     }
@@ -85,7 +85,7 @@ const IslandHistory: React.FC = () => {
                 <div className="pt-4 flex items-center justify-between border-t border-white/5">
                   <div className="flex items-center gap-2 text-lime/50 text-[10px] font-bold uppercase tracking-widest">
                     <Library size={14} />
-                    <span>Registro Oficial</span>
+                    <span>História e natureza</span>
                   </div>
                   <Landmark size={18} className="text-white/10" />
                 </div>
@@ -98,7 +98,7 @@ const IslandHistory: React.FC = () => {
         <div className="mt-20 flex flex-col items-center">
           <div className="bg-white/5 border border-white/10 px-8 py-4 rounded-full flex items-center gap-4 backdrop-blur-sm">
              <div className="w-2 h-2 bg-lime rounded-full animate-ping"></div>
-             <span className="text-xs text-gray-300 font-bold uppercase tracking-[0.2em]">Patrimônio da Humanidade - UNESCO</span>
+             <span className="text-xs text-gray-300 font-bold uppercase tracking-[0.2em]">Unidades de conservação do Paraná</span>
           </div>
         </div>
       </div>

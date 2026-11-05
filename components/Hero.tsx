@@ -9,12 +9,13 @@ const Hero: React.FC = () => {
   const subtitles = [
     "Conforto, natureza e momentos inesquecíveis",
     "Acorde com o som do mar na Praia de Encantadas",
-    "Onde os golfinhos dão as boas-vindas ao seu dia"
+    "Suítes e chalé para descansar na Ilha do Mel"
   ];
   
   const [currentSubtitleIndex, setCurrentSubtitleIndex] = useState(0);
 
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const imageInterval = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % HERO_IMAGES.length);
     }, 6000);
@@ -30,7 +31,7 @@ const Hero: React.FC = () => {
   }, []);
 
   return (
-    <section id="home" className="relative h-screen w-full overflow-hidden flex items-center justify-center bg-deep-navy">
+    <section id="home" className="relative min-h-[780px] md:min-h-[850px] h-screen w-full overflow-hidden flex items-center justify-center bg-deep-navy">
       {/* Imagens em Loop Otimizadas */}
       <div className="absolute inset-0 z-0">
         {HERO_IMAGES.map((img, index) => (
@@ -48,6 +49,7 @@ const Hero: React.FC = () => {
               }`}
               loading={index === 0 ? "eager" : "lazy"}
               decoding="async"
+              fetchPriority={index === 0 ? "high" : "auto"}
             />
             <div className="absolute inset-0 bg-deep-navy/40"></div>
             <div className="absolute inset-0 bg-gradient-to-b from-deep-navy/60 via-transparent to-deep-navy/90"></div>
@@ -59,12 +61,12 @@ const Hero: React.FC = () => {
         <div className="animate-fade-in-up space-y-10">
           <div className="flex justify-center">
             <span className="inline-flex items-center gap-2 py-2.5 px-6 rounded-full bg-lime/20 border border-lime/30 text-lime font-black tracking-[0.2em] uppercase backdrop-blur-md shadow-2xl animate-pulse text-[10px] md:text-xs">
-              <Sparkles size={14} className="animate-spin-slow" /> Seu Refúgio de Luxo Tropical
+              <Sparkles size={14} className="animate-spin-slow" /> Coração da Ilha • Encantadas
             </span>
           </div>
           
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold drop-shadow-[0_10px_40px_rgba(0,0,0,0.6)] leading-tight tracking-tight">
-            A essência da <br />
+            Pousada na <br />
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-lime via-white to-lime/80 italic">
               Ilha do Mel
             </span>
@@ -99,7 +101,7 @@ const Hero: React.FC = () => {
         </div>
       </div>
 
-      <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 z-30 flex flex-col items-center gap-3">
+      <div className="hidden xl:flex absolute bottom-4 left-1/2 transform -translate-x-1/2 z-30 flex flex-col items-center gap-3">
         <span className="text-[10px] font-black tracking-[0.4em] uppercase text-lime animate-pulse">Explorar</span>
         <div className="w-px h-16 bg-gradient-to-b from-lime to-transparent"></div>
         <a 

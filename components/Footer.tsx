@@ -22,13 +22,13 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
 
           <div className="flex flex-col items-center md:items-start">
-            <button onClick={() => nav('/')} aria-label="Página inicial">
+            <a href={'/'} aria-label="Página inicial">
               <img
                 src="/images/logo.png"
                 alt="Pousada Coração da Ilha — Ilha do Mel, Paraná"
                 className="w-48 mb-8 transition-transform hover:scale-105 drop-shadow-[0_5px_15px_rgba(57,255,20,0.3)]"
               />
-            </button>
+            </a>
             <p className="text-gray-400 text-sm mb-8 leading-relaxed max-w-xs text-center md:text-left">
               O seu refúgio autêntico na Praia das Encantadas. Viva a Ilha do Mel com a hospitalidade de quem ama este paraíso.
             </p>
@@ -45,23 +45,23 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           <div className="text-center md:text-left">
             <h4 className="text-lime text-xs font-black uppercase tracking-[0.3em] mb-8">Navegação</h4>
             <ul className="space-y-4 text-gray-300 font-medium">
-              <li><button onClick={() => nav('/')} className="hover:text-lime transition-colors">Página Inicial</button></li>
-              <li><button onClick={() => nav('/#sobre')} className="hover:text-lime transition-colors">A Pousada</button></li>
-              <li><button onClick={() => nav('/quem-somos')} className="hover:text-lime transition-colors">Quem Somos</button></li>
-              <li><button onClick={() => nav('/#experiencia')} className="hover:text-lime transition-colors">Ilha do Mel</button></li>
-              <li><button onClick={() => nav('/#acomodacoes')} className="hover:text-lime transition-colors">Suítes & Chalés</button></li>
-              <li><button onClick={() => nav('/#politicas')} className="hover:text-lime transition-colors">Políticas de Reserva</button></li>
-              <li><button onClick={() => nav('/contato')} className="hover:text-lime transition-colors">Contato</button></li>
-              <li><button onClick={() => nav('/blog')} className="hover:text-lime transition-colors">Blog da Ilha do Mel</button></li>
-              <li><button onClick={() => nav('/#reservas')} className="hover:text-lime transition-colors text-lime font-bold">Solicitar Orçamento</button></li>
+              <li><a href={'/'} className="hover:text-lime transition-colors">Página Inicial</a></li>
+              <li><a href={'/#sobre'} className="hover:text-lime transition-colors">A Pousada</a></li>
+              <li><a href={'/quem-somos'} className="hover:text-lime transition-colors">Quem Somos</a></li>
+              <li><a href={'/#experiencia'} className="hover:text-lime transition-colors">Ilha do Mel</a></li>
+              <li><a href={'/#acomodacoes'} className="hover:text-lime transition-colors">Suítes & Chalés</a></li>
+              <li><a href={'/#politicas'} className="hover:text-lime transition-colors">Políticas de Reserva</a></li>
+              <li><a href={'/contato'} className="hover:text-lime transition-colors">Contato</a></li>
+              <li><a href={'/blog'} className="hover:text-lime transition-colors">Blog da Ilha do Mel</a></li>
+              <li><a href={'/#reservas'} className="hover:text-lime transition-colors text-lime font-bold">Solicitar Orçamento</a></li>
               <li>
-                <button
-                  onClick={() => nav('/guia-ilha-do-mel')}
+                <a
+                  href={'/guia-ilha-do-mel'}
                   className="flex items-center gap-2 font-black text-ocean hover:text-lime transition-colors"
                 >
                   <Map size={14} />
                   Guia da Ilha do Mel
-                </button>
+                </a>
               </li>
             </ul>
           </div>
@@ -107,13 +107,13 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
             <h4 className="text-lime text-xs font-black uppercase tracking-[0.3em] mb-4">Legal</h4>
             <ul className="space-y-3 text-gray-400 text-sm">
-              <li><button onClick={() => nav('/politica-privacidade')} className="hover:text-lime transition-colors">Política de Privacidade</button></li>
-              <li><button onClick={() => nav('/politica-devolucao')} className="hover:text-lime transition-colors">Política de Cancelamento</button></li>
+              <li><a href={'/politica-privacidade'} className="hover:text-lime transition-colors">Política de Privacidade</a></li>
+              <li><a href={'/politica-devolucao'} className="hover:text-lime transition-colors">Política de Cancelamento</a></li>
               <li>
-                <button onClick={() => nav('/mapa-do-site')} className="hover:text-lime transition-colors flex items-center gap-1">
+                <a href={'/mapa-do-site'} className="hover:text-lime transition-colors flex items-center gap-1">
                   <Map size={14} />
                   Mapa do Site
-                </button>
+                </a>
               </li>
             </ul>
           </div>
@@ -124,17 +124,18 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             © 2026 Pousada Coração da Ilha. Todos os direitos reservados.
           </div>
 
-          <div className="flex items-center gap-3 bg-white/5 py-2 px-6 rounded-full border border-white/5">
-            <span className="text-[10px] text-gray-400 uppercase font-bold tracking-widest">Powered with</span>
+          <div className="flex flex-wrap justify-center items-center gap-3 bg-white/5 py-2 px-6 rounded-full border border-white/5">
+            <span className="text-[10px] text-gray-400 uppercase font-bold tracking-widest">Desenvolvido com</span>
             <Heart size={16} className="text-lime fill-current animated-heart" />
-            <span className="text-[10px] text-gray-400 uppercase font-bold tracking-widest">by</span>
+            <span className="text-[10px] text-gray-400 uppercase font-bold tracking-widest">por</span>
             <a
               href="https://supremasite.com.br"
               target="_blank"
               rel="noopener noreferrer"
               className="text-lime hover:text-white transition-colors text-[10px] font-black uppercase tracking-widest"
             >
-              Suprema Sites
+              <img src="https://img.supremamidia.com/suprema-img.png" alt="" width="80" height="32" loading="lazy" className="inline-block w-20 h-8 object-contain mr-2" />
+              Suprema Sites Express
             </a>
           </div>
         </div>

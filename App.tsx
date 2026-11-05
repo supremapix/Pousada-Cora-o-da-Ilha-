@@ -13,7 +13,7 @@ import Testimonials from './components/Testimonials';
 import Policies from './components/Policies';
 import BookingForm from './components/BookingForm';
 import Footer from './components/Footer';
-import FloatingWidgets from './components/FloatingWidgets';
+import FloatingWidgets from './components/FloatingActions';
 import QuemSomos from './components/pages/QuemSomos';
 import Contato from './components/pages/Contato';
 import PoliticaPrivacidade from './components/pages/PoliticaPrivacidade';
@@ -50,8 +50,8 @@ const HomePage: React.FC = () => {
   );
 };
 
-const App: React.FC = () => {
-  const [page, setPage] = useState(getPage());
+const App: React.FC<{ initialPath?: string }> = ({ initialPath }) => {
+  const [page, setPage] = useState(() => initialPath ?? getPage());
 
   useEffect(() => {
     const onPopState = () => setPage(getPage());
@@ -84,7 +84,7 @@ const App: React.FC = () => {
       <Navbar currentPage={page} onNavigate={setPage} />
       {renderPage()}
       <Footer onNavigate={setPage} />
-      <FloatingWidgets />
+      <FloatingWidgets page={page} />
     </div>
   );
 };

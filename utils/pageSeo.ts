@@ -10,14 +10,14 @@ export const PAGE_SEO = {
   home: {
     title: 'Pousada na Ilha do Mel à Beira-Mar | Coração da Ilha – Encantadas',
     description:
-      'Pousada na Ilha do Mel pé na areia, na Praia de Encantadas. Quartos com vista para o mar, café da manhã e golfinhos na janela. Reserve direto com a pousada!',
+      'Pousada na Ilha do Mel pé na areia, na Praia de Encantadas. Conheça suítes e chalé para até 4 pessoas, veja fotos e consulte disponibilidade para sua viagem.',
     canonical: '/',
     jsonLd: [LODGING_SCHEMA, WEBSITE_SCHEMA],
   },
   quemSomos: {
     title: 'Quem Somos | Pousada na Ilha do Mel em Encantadas – Coração da Ilha',
     description:
-      'Conheça a história da Pousada Coração da Ilha, refúgio à beira-mar na Praia de Encantadas, Ilha do Mel. Autenticidade, afeto e vista para o mar.',
+      'Conheça a Pousada Coração da Ilha, na Praia de Encantadas: acomodações para casais e famílias e canais diretos para planejar sua estadia.',
     canonical: '/quem-somos',
     jsonLd: LODGING_SCHEMA,
   },

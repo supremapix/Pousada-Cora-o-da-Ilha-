@@ -23,18 +23,16 @@ const VideoPresentation: React.FC = () => {
               <div className="h-1.5 w-24 bg-lime rounded-full"></div>
             </div>
 
-            <p className="text-gray-300 text-lg leading-relaxed font-light">
-              Estamos a apenas <strong>500 metros</strong> do desembarque da Praia de Encantadas e a <strong>menos de 100 metros</strong> de tudo o que você precisa: excelentes restaurantes, bares, padarias e paisagens deslumbrantes.
-            </p>
+            <p className="text-gray-300 text-lg leading-relaxed font-light">A Pousada Coração da Ilha fica na Praia de Encantadas. Antes de viajar, combine sua previsão de chegada e solicite as orientações para o trajeto desde o desembarque. Conheça os espaços no vídeo e confira os detalhes de cada acomodação no catálogo.</p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="flex items-start gap-4 p-4 bg-white/5 rounded-2xl border border-white/10 group hover:bg-white/10 transition-all">
                 <Anchor className="text-lime shrink-0 group-hover:scale-110 transition-transform" />
-                <p className="text-sm text-gray-400">Oferecemos o melhor ponto da praia para <strong>atracar seu barco</strong> com segurança.</p>
+                <p className="text-sm text-gray-400">Consulte a equipe para organizar sua <strong>chegada a Encantadas</strong> e o trajeto até a pousada.</p>
               </div>
               <div className="flex items-start gap-4 p-4 bg-white/5 rounded-2xl border border-white/10 group hover:bg-white/10 transition-all">
                 <MapPin className="text-lime shrink-0 group-hover:scale-110 transition-transform" />
-                <p className="text-sm text-gray-400">Localização privilegiada: O entardecer mais bonito com <strong>golfinhos</strong> saltando próximos.</p>
+                <p className="text-sm text-gray-400">Aprecie a paisagem da praia. O avistamento de <strong>golfinhos</strong> depende das condições naturais e não é garantido.</p>
               </div>
             </div>
 

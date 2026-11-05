@@ -26,9 +26,9 @@ const Blog: React.FC<BlogProps> = ({ onNavigate }) => {
   };
 
   useSEO({
-    title: 'Blog da Ilha do Mel: Eventos, Festas e Dicas 2026 | Coração da Ilha',
+    title: 'Blog da Ilha do Mel: Viagem, Hospedagem e Dicas | Coração da Ilha',
     description:
-      'Blog da Pousada Coração da Ilha: eventos, festas, feriados e guias completos da Ilha do Mel em 2026. Planeje sua viagem para Encantadas.',
+      'Blog da Pousada Coração da Ilha: planejamento de viagem, feriados e dicas de hospedagem em Encantadas. Planeje sua viagem para Encantadas.',
     canonical: '/blog',
     jsonLd: [LODGING_SCHEMA, breadcrumb],
   });
@@ -42,9 +42,9 @@ const Blog: React.FC<BlogProps> = ({ onNavigate }) => {
           <nav aria-label="Trilha de navegação" className="mb-6 text-xs text-gray-400">
             <ol className="flex items-center gap-2">
               <li>
-                <button onClick={() => navigate('/', onNavigate)} className="hover:text-lime transition-colors">
+                <a href={'/'} className="hover:text-lime transition-colors">
                   Home
-                </button>
+                </a>
               </li>
               <li aria-hidden="true">/</li>
               <li className="text-lime font-semibold" aria-current="page">Blog</li>
@@ -58,7 +58,7 @@ const Blog: React.FC<BlogProps> = ({ onNavigate }) => {
             Blog da <span className="text-ocean">Ilha do Mel</span>
           </h1>
           <p className="text-gray-300 text-lg max-w-2xl text-pretty">
-            Eventos, festas, feriados e guias completos para você planejar a viagem perfeita à Ilha do Mel em 2026 — direto de quem vive Encantadas todos os dias.
+            Orientações para escolher sua hospedagem, organizar a travessia e planejar os passeios. Confira as datas de cada artigo e confirme serviços e horários antes de viajar.
           </p>
         </div>
       </section>
@@ -68,7 +68,6 @@ const Blog: React.FC<BlogProps> = ({ onNavigate }) => {
           {/* Post em destaque */}
           <article
             className="group grid grid-cols-1 lg:grid-cols-2 gap-8 bg-white/4 border border-white/8 rounded-3xl overflow-hidden mb-14 hover:border-ocean/30 transition-all duration-300 cursor-pointer"
-            onClick={() => navigate(`/blog/${featured.slug}`, onNavigate)}
           >
             <div className="relative h-64 lg:h-full min-h-[280px] overflow-hidden">
               <img
@@ -89,7 +88,7 @@ const Blog: React.FC<BlogProps> = ({ onNavigate }) => {
                 <span className="flex items-center gap-1.5"><Clock size={13} className="text-ocean" /> {featured.readingTime}</span>
               </div>
               <h2 className="text-2xl md:text-3xl font-black mb-4 leading-tight text-balance group-hover:text-ocean transition-colors">
-                {featured.title}
+                <a href={`/blog/${featured.slug}`}>{featured.title}</a>
               </h2>
               <p className="text-gray-300 leading-relaxed mb-6 text-pretty">{featured.excerpt}</p>
               <span className="inline-flex items-center gap-2 text-lime font-black text-sm uppercase tracking-wider">
@@ -104,7 +103,6 @@ const Blog: React.FC<BlogProps> = ({ onNavigate }) => {
               <article
                 key={post.slug}
                 className="group flex flex-col bg-white/4 border border-white/8 rounded-3xl overflow-hidden hover:border-ocean/30 hover:-translate-y-1 transition-all duration-300 cursor-pointer"
-                onClick={() => navigate(`/blog/${post.slug}`, onNavigate)}
               >
                 <div className="relative h-52 overflow-hidden">
                   <img
@@ -121,11 +119,11 @@ const Blog: React.FC<BlogProps> = ({ onNavigate }) => {
                 </div>
                 <div className="p-6 flex flex-col flex-grow">
                   <div className="flex items-center gap-4 text-xs text-gray-400 mb-3">
-                    <span className="flex items-center gap-1.5"><Calendar size={12} className="text-ocean" /> {formatDate(post.datePublished)}</span>
+                    <span className="flex items-center gap-1.5"><Calendar size={12} className="text-ocean" /> Atualizado em {formatDate(post.dateModified)}</span>
                     <span className="flex items-center gap-1.5"><Clock size={12} className="text-ocean" /> {post.readingTime}</span>
                   </div>
                   <h2 className="text-lg font-black mb-3 leading-snug text-balance group-hover:text-ocean transition-colors">
-                    {post.title}
+                    <a href={`/blog/${post.slug}`}>{post.title}</a>
                   </h2>
                   <p className="text-gray-400 text-sm leading-relaxed mb-5 flex-grow text-pretty">{post.excerpt}</p>
                   <span className="inline-flex items-center gap-2 text-lime font-bold text-xs uppercase tracking-wider mt-auto">

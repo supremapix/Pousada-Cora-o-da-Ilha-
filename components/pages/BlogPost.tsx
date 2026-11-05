@@ -56,35 +56,12 @@ const BlogPost: React.FC<BlogPostProps> = ({ post, onNavigate }) => {
 
   const schemas: Record<string, unknown>[] = [LODGING_SCHEMA, blogPosting, breadcrumb];
 
-  if (post.event) {
-    schemas.push({
-      '@context': 'https://schema.org',
-      '@type': 'Event',
-      name: post.event.name,
-      startDate: post.event.startDate,
-      endDate: post.event.endDate,
-      eventStatus: 'https://schema.org/EventScheduled',
-      eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
-      isAccessibleForFree: post.event.isAccessibleForFree,
-      image: imageUrl,
-      location: {
-        '@type': 'Place',
-        name: 'Ilha do Mel',
-        address: {
-          '@type': 'PostalAddress',
-          addressLocality: 'Ilha do Mel - Encantadas',
-          addressRegion: 'PR',
-          addressCountry: 'BR',
-        },
-      },
-    });
-  }
 
   useSEO({
     title: post.seoTitle,
     description: post.metaDescription,
     canonical,
-    ogImage: imageUrl,
+    ogImage: DEFAULT_OG_IMAGE,
     ogType: 'article',
     jsonLd: schemas,
   });
@@ -112,11 +89,11 @@ const BlogPost: React.FC<BlogPostProps> = ({ post, onNavigate }) => {
           <nav aria-label="Trilha de navegação" className="mb-5 text-xs text-gray-300">
             <ol className="flex flex-wrap items-center gap-2">
               <li>
-                <button onClick={() => navigate('/', onNavigate)} className="hover:text-lime transition-colors">Home</button>
+                <a href={'/'} className="hover:text-lime transition-colors">Home</a>
               </li>
               <li aria-hidden="true">/</li>
               <li>
-                <button onClick={() => navigate('/blog', onNavigate)} className="hover:text-lime transition-colors">Blog</button>
+                <a href={'/blog'} className="hover:text-lime transition-colors">Blog</a>
               </li>
               <li aria-hidden="true">/</li>
               <li className="text-lime font-semibold line-clamp-1" aria-current="page">{post.category}</li>
@@ -130,8 +107,8 @@ const BlogPost: React.FC<BlogPostProps> = ({ post, onNavigate }) => {
 
           <div className="flex flex-wrap items-center gap-5 text-sm text-gray-300 border-b border-white/10 pb-8">
             <span className="flex items-center gap-2"><User size={15} className="text-ocean" /> Equipe Pousada Coração da Ilha</span>
-            <time dateTime={post.datePublished} className="flex items-center gap-2">
-              <Calendar size={15} className="text-ocean" /> {formatDate(post.datePublished)}
+            <time dateTime={post.dateModified} className="flex items-center gap-2">
+              <Calendar size={15} className="text-ocean" /> Atualizado em {formatDate(post.dateModified)}
             </time>
             <span className="flex items-center gap-2"><Clock size={15} className="text-ocean" /> {post.readingTime} de leitura</span>
           </div>
@@ -186,7 +163,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ post, onNavigate }) => {
             Reserve sua estadia na Pousada Coração da Ilha
           </h2>
           <p className="text-gray-200 mb-8 max-w-lg mx-auto text-pretty">
-            À beira-mar em Encantadas, a poucos passos do trapiche e das melhores trilhas da Ilha do Mel. Café da manhã incluso e vista para o mar.
+            Conheça as acomodações em Encantadas e consulte valores e disponibilidade para suas datas. Informe à equipe o número de hóspedes e suas preferências.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
@@ -197,12 +174,12 @@ const BlogPost: React.FC<BlogPostProps> = ({ post, onNavigate }) => {
             >
               <MessageCircle size={18} /> Reservar pelo WhatsApp
             </a>
-            <button
-              onClick={() => navigate('/#reservas', onNavigate)}
+            <a
+              href={'/#reservas'}
               className="inline-flex items-center justify-center gap-2 bg-lime hover:bg-white text-deep-navy font-black px-8 py-4 rounded-full transition-all shadow-lg hover:-translate-y-0.5"
             >
               Solicitar Orçamento
-            </button>
+            </a>
           </div>
         </section>
       </div>
@@ -214,9 +191,9 @@ const BlogPost: React.FC<BlogPostProps> = ({ post, onNavigate }) => {
             <h2 className="text-2xl font-black mb-8 text-balance">Continue explorando a Ilha do Mel</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {related.map((rp) => (
-                <button
+                <a
                   key={rp.slug}
-                  onClick={() => navigate(`/blog/${rp.slug}`, onNavigate)}
+                  href={`/blog/${rp.slug}`}
                   className="group text-left bg-white/4 border border-white/8 rounded-2xl overflow-hidden hover:border-ocean/30 hover:-translate-y-1 transition-all duration-300"
                 >
                   <div className="h-36 overflow-hidden">
@@ -233,17 +210,17 @@ const BlogPost: React.FC<BlogPostProps> = ({ post, onNavigate }) => {
                     <span className="text-[10px] text-ocean font-black uppercase tracking-widest">{rp.category}</span>
                     <h3 className="font-bold text-white mt-2 leading-snug text-pretty group-hover:text-ocean transition-colors">{rp.title}</h3>
                   </div>
-                </button>
+                </a>
               ))}
             </div>
 
             <div className="mt-10 text-center">
-              <button
-                onClick={() => navigate('/blog', onNavigate)}
+              <a
+                href={'/blog'}
                 className="inline-flex items-center gap-2 text-lime font-black text-sm uppercase tracking-wider hover:text-white transition-colors"
               >
                 <ArrowLeft size={16} /> Ver todos os artigos do blog
-              </button>
+              </a>
             </div>
           </div>
         </aside>

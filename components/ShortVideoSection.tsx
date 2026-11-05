@@ -31,13 +31,13 @@ const ShortVideoSection: React.FC = () => {
                 
                 <div className="absolute -bottom-4 -right-4 bg-lime text-deep-navy py-2 px-4 rounded-full shadow-lg flex items-center gap-2 animate-bounce">
                   <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                  <span className="text-xs font-black uppercase tracking-tight">Ao Vivo</span>
+                  <span className="text-xs font-black uppercase tracking-tight">Vídeo da pousada</span>
                 </div>
               </div>
               
               <div className="absolute -top-6 -left-6 bg-white py-3 px-5 rounded-2xl shadow-xl border border-gray-100 hidden md:flex items-center gap-2">
                 <Heart className="text-red-500 fill-red-500 w-5 h-5" />
-                <span className="text-deep-navy font-bold text-sm">+2.5k curtidas</span>
+                <span className="text-deep-navy font-bold text-sm">Conheça a pousada</span>
               </div>
             </div>
           </div>
@@ -45,7 +45,7 @@ const ShortVideoSection: React.FC = () => {
           <div className="lg:w-3/5 space-y-8">
             <div className="space-y-4">
               <span className="inline-flex items-center gap-2 py-2 px-5 rounded-full bg-lime/20 border border-lime/40 text-deep-navy font-black tracking-[0.2em] uppercase text-[10px] md:text-xs">
-                <Star className="w-4 h-4 fill-lime text-lime" /> Experiência Comprovada
+                <Star className="w-4 h-4 fill-lime text-lime" /> Conheça nosso espaço
               </span>
               
               <h2 className="text-3xl md:text-5xl font-serif font-bold text-deep-navy leading-tight">
@@ -73,7 +73,7 @@ const ShortVideoSection: React.FC = () => {
                 </li>
                 <li className="flex items-center gap-3">
                   <Sparkles className="w-5 h-5 text-lime shrink-0" />
-                  <span>Localização privilegiada a 100m de tudo</span>
+                  <span>Localização na Praia de Encantadas</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <Sparkles className="w-5 h-5 text-lime shrink-0" />

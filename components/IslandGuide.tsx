@@ -7,14 +7,14 @@ const IslandGuide: React.FC = () => {
     {
       name: "Gruta das Encantadas",
       desc: "Patrimônio natural envolto em lendas. O acesso é feito por uma passarela de madeira que contorna o costão rochoso.",
-      dist: "15 min de caminhada",
+      dist: "Região de Encantadas",
       image: "/images/attractions/gruta-das-encantadas.jpeg",
       icon: <Camera size={20} />
     },
     {
       name: "Farol das Conchas",
       desc: "Construído em 1872, oferece a vista mais icônica da ilha. Um local perfeito para ver o nascer do sol.",
-      dist: "45 min de trilha",
+      dist: "Região de Nova Brasília",
       image: "/images/attractions/farol-das-conchas.jpeg",
       icon: <Anchor size={20} />
     },
@@ -28,7 +28,7 @@ const IslandGuide: React.FC = () => {
     {
       name: "Istmo (O Passinho)",
       desc: "Onde a ilha quase se divide em duas. Um espetáculo da natureza onde o mar de dentro e o mar de fora se aproximam.",
-      dist: "20 min de caminhada",
+      dist: "Consulte o percurso",
       image: "/images/attractions/istmo-o-passinho.jpg",
       icon: <Waves size={20} />
     }
@@ -37,7 +37,7 @@ const IslandGuide: React.FC = () => {
   const travelTips = [
     { title: "Calçados", text: "Trilhas de areia predominam. Chinelos e tênis confortáveis são essenciais.", icon: <Footprints size={20} /> },
     { title: "Noite", text: "Não há iluminação pública nas trilhas. Uma lanterna é sua melhor amiga após o pôr do sol.", icon: <Lightbulb size={20} /> },
-    { title: "Meio Ambiente", text: "95% da ilha é reserva. Não retire conchas, pedras ou plantas. Lixo sempre no lixo.", icon: <Palmtree size={20} /> },
+    { title: "Meio Ambiente", text: "A ilha possui áreas protegidas. Não retire conchas, pedras ou plantas. Lixo sempre no lixo.", icon: <Palmtree size={20} /> },
     { title: "Dinheiro", text: "Sinal de internet pode oscilar. Tenha sempre um pouco de dinheiro em espécie para emergências.", icon: <History size={20} /> }
   ];
 
@@ -104,7 +104,7 @@ const IslandGuide: React.FC = () => {
                   </div>
                   <div className="flex items-center gap-3 text-sm">
                     <Info size={16} className="text-lime" />
-                    <span>Nossa pousada fica a 5 min do trapiche.</span>
+                    <span>Peça à pousada orientação para o caminho desde o trapiche.</span>
                   </div>
                 </div>
               </div>

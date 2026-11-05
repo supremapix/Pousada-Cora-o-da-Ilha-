@@ -3,10 +3,10 @@ import { Leaf, Car, Waves, TreePine, Calendar, Map } from 'lucide-react';
 
 const quickFacts = [
   { icon: <Map size={16} />, value: '2.700 ha', label: 'Extensão total' },
-  { icon: <Leaf size={16} />, value: '95%', label: 'Área preservada' },
-  { icon: <Waves size={16} />, value: '+20', label: 'Praias paradisíacas' },
+  { icon: <Leaf size={16} />, value: 'cerca de 93%', label: 'Área preservada' },
+  { icon: <Waves size={16} />, value: 'Praias', label: 'E trilhas' },
   { icon: <Car size={16} />, value: 'Sem carros', label: 'Apenas trilhas' },
-  { icon: <Calendar size={16} />, value: '1767', label: 'Fundada por Portugal' },
+  { icon: <Calendar size={16} />, value: 'Paranaguá', label: 'Município do Paraná' },
   { icon: <TreePine size={16} />, value: 'Litoral PR', label: 'Sul do Brasil' },
 ];
 
@@ -21,7 +21,7 @@ const SobreIlha: React.FC = () => (
             <span className="text-[#1A6B5A]">Protegido pela Natureza</span>
           </h2>
           <p className="text-[#444] leading-relaxed mb-6 text-base">
-            A Ilha do Mel é um paraíso ecológico no litoral do Paraná, uma das ilhas mais preservadas do Brasil. Com apenas 2.700 hectares, ela é 95% área de proteção ambiental. Não há carros, não há asfalto — apenas trilhas, praias paradisíacas e um ritmo de vida que você só encontra aqui.
+            A Ilha do Mel fica no litoral do Paraná, no município de Paranaguá. Cerca de 93% de seu território integra unidades de conservação, segundo o Instituto Água e Terra. Os deslocamentos na ilha são feitos a pé ou de bicicleta pelos caminhos permitidos: planeje a bagagem e o tempo dos passeios.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
             <div className="bg-white rounded-2xl p-5 border border-[#1A6B5A]/10 shadow-sm">
@@ -31,7 +31,7 @@ const SobreIlha: React.FC = () => (
                 </div>
                 <span className="font-black text-[#0D4F6C] text-base">Encantadas</span>
               </div>
-              <p className="text-[#555] text-sm leading-relaxed">Mar calmo, bares, movimento, golfinhos e os pôres do sol mais bonitos da ilha. Onde fica a Pousada Coração da Ilha.</p>
+              <p className="text-[#555] text-sm leading-relaxed">A região onde fica a Pousada Coração da Ilha, com acesso por barco, praia e caminhos para conhecer os atrativos de Encantadas.</p>
             </div>
             <div className="bg-white rounded-2xl p-5 border border-[#1A6B5A]/10 shadow-sm">
               <div className="flex items-center gap-3 mb-3">

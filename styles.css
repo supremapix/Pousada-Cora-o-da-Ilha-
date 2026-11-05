@@ -1,0 +1,20 @@
+:root { scroll-padding-top: 110px; }
+nav a.w-full { display:block; }
+:focus-visible { outline: 3px solid #0784a8; outline-offset: 4px; }
+footer { padding-bottom: 150px !important; }
+.site-actions-left,.site-actions-right { position:fixed; bottom:max(16px,env(safe-area-inset-bottom)); z-index:60; display:flex; gap:10px; }
+.site-actions-left { left:16px; }
+.site-actions-right { right:16px; }
+.float-action { background:#0d1b2a; color:#39ff14; border:1px solid #39ff14; width:46px; height:46px; border-radius:50%; display:flex; justify-content:center; align-items:center; box-shadow:0 3px 14px #0004; }
+.whatsapp-action { background:#39ff14; color:#0d1b2a; }
+.share-panel { position:absolute; bottom:60px; left:0; width:min(340px,calc(100vw - 32px)); max-height:70vh; overflow:auto; background:#0d1b2a; color:#fff; padding:22px; border:1px solid #39ff14; border-radius:16px; box-shadow:0 8px 30px #0005; }
+.share-panel h2 { font-weight:700; padding-right:24px; margin-bottom:12px; }
+.share-panel p { font-size:14px; margin:10px 0; line-height:1.5; }
+.share-links { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.share-links a,.share-panel>button:not(.share-close) { padding:10px; min-height:44px; background:#ffffff12; border-radius:8px; display:flex; align-items:center; gap:8px; font-size:14px; }
+.share-panel>button:not(.share-close) { margin-top:8px; width:100%; }
+.share-close { position:absolute; top:14px; right:14px; padding:5px; }
+.share-panel textarea { width:100%; color:#0d1b2a; min-height:100px; }
+@media (prefers-reduced-motion:reduce) { *,*::before,*::after { animation:none!important; transition:none!important; scroll-behavior:auto!important; } }
+body:has(button[aria-label="Fechar menu"]) .site-actions-left,
+body:has(button[aria-label="Fechar menu"]) .site-actions-right { visibility: hidden; }

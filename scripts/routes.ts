@@ -10,6 +10,7 @@
 import { PAGE_SEO } from '../utils/pageSeo';
 import { SITE_URL, DEFAULT_OG_IMAGE, LODGING_SCHEMA, SEOOptions } from '../utils/seo';
 import { BLOG_POSTS, BlogPost, BlogBlock } from '../data/blogPosts';
+import { renderPage } from './render';
 
 export interface PrerenderRoute {
   path: string;
@@ -135,29 +136,6 @@ function postSchemas(post: BlogPost): Record<string, unknown>[] {
 
   const schemas: Record<string, unknown>[] = [LODGING_SCHEMA, blogPosting, breadcrumb];
 
-  if (post.event) {
-    schemas.push({
-      '@context': 'https://schema.org',
-      '@type': 'Event',
-      name: post.event.name,
-      startDate: post.event.startDate,
-      endDate: post.event.endDate,
-      eventStatus: 'https://schema.org/EventScheduled',
-      eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
-      isAccessibleForFree: post.event.isAccessibleForFree,
-      image: imageUrl,
-      location: {
-        '@type': 'Place',
-        name: 'Ilha do Mel',
-        address: {
-          '@type': 'PostalAddress',
-          addressLocality: 'Ilha do Mel - Encantadas',
-          addressRegion: 'PR',
-          addressCountry: 'BR',
-        },
-      },
-    });
-  }
 
   return schemas;
 }
@@ -180,9 +158,9 @@ export function getRoutes(): PrerenderRoute[] {
   // Índice do blog
   routes.push({
     path: '/blog',
-    title: 'Blog da Ilha do Mel: Eventos, Festas e Dicas 2026 | Coração da Ilha',
+    title: 'Blog da Ilha do Mel: Viagem, Hospedagem e Dicas | Coração da Ilha',
     description:
-      'Blog da Pousada Coração da Ilha: eventos, festas, feriados e guias completos da Ilha do Mel em 2026. Planeje sua viagem para Encantadas.',
+      'Blog da Pousada Coração da Ilha: planejamento de viagem, feriados e dicas de hospedagem em Encantadas. Planeje sua viagem para Encantadas.',
     canonical: abs('/blog'),
     ogImage: DEFAULT_OG_IMAGE,
     ogType: 'website',
@@ -207,12 +185,12 @@ export function getRoutes(): PrerenderRoute[] {
       title: post.seoTitle,
       description: post.metaDescription,
       canonical: abs(`/blog/${post.slug}`),
-      ogImage: abs(post.image),
+      ogImage: DEFAULT_OG_IMAGE,
       ogType: 'article',
       jsonLd: postSchemas(post),
       bodyHtml: postBodyHtml(post),
     });
   }
 
-  return routes;
+  return routes.map(route => ({ ...route, bodyHtml: renderPage(route.path) }));
 }

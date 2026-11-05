@@ -74,7 +74,7 @@ const Policies: React.FC = () => {
                       <li className="flex items-start gap-4">
                         <CheckCircle size={20} className="text-lime mt-1 flex-shrink-0" />
                         <div>
-                          <strong className="block text-lg text-lime">Plano Pré-Pago (Melhor Tarifa)</strong>
+                          <strong className="block text-lg text-lime">Plano Pré-Pago (Consulte condições)</strong>
                           <span className="text-gray-300 text-sm">Parcelamento mensal via PIX até a data da viagem.</span>
                         </div>
                       </li>

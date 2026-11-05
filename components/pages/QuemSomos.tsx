@@ -11,7 +11,7 @@ const QuemSomos: React.FC = () => {
       <section className="bg-deep-navy text-white py-20">
         <div className="container mx-auto px-4 text-center">
           <span className="text-lime font-bold tracking-widest uppercase text-xs mb-4 block">Conheça nossa história</span>
-          <h1 className="text-4xl md:text-6xl font-serif font-bold mb-6">Quem Somos</h1>
+          <h1 className="text-4xl md:text-6xl font-serif font-bold mb-6">Conheça a Coração da Ilha</h1>
           <div className="h-1 w-24 bg-lime mx-auto rounded-full mb-6" />
           <p className="text-gray-300 max-w-2xl mx-auto text-lg leading-relaxed">
             Pousada Coração da Ilha — um refúgio de autenticidade e afeto na Praia das Encantadas, Ilha do Mel, Paraná.
@@ -44,8 +44,8 @@ const QuemSomos: React.FC = () => {
                 className="w-full h-96 object-cover rounded-3xl shadow-2xl"
               />
               <div className="absolute -bottom-6 -left-6 bg-lime text-deep-navy p-6 rounded-2xl shadow-xl">
-                <div className="text-3xl font-black">+10</div>
-                <div className="text-xs font-bold uppercase tracking-wider">anos recebendo viajantes</div>
+                <div className="text-3xl font-black">Encantadas</div>
+                <div className="text-xs font-bold uppercase tracking-wider">Ilha do Mel, Paraná</div>
               </div>
             </div>
           </div>
@@ -92,10 +92,10 @@ const QuemSomos: React.FC = () => {
               </div>
               <div className="grid grid-cols-2 gap-6">
                 {[
-                  { icon: Users, value: "Milhares", label: "de hóspedes satisfeitos" },
+                  { icon: Users, value: "2 a 4", label: "pessoas por acomodação" },
                   { icon: Award, value: "9", label: "acomodações exclusivas" },
                   { icon: MapPin, value: "Praia das", label: "Encantadas — Ilha do Mel" },
-                  { icon: Leaf, value: "100%", label: "comprometidos com a natureza" },
+                  { icon: Leaf, value: "Natureza", label: "respeite as áreas protegidas" },
                 ].map((stat, idx) => (
                   <div key={idx} className="bg-white/5 rounded-2xl p-6 border border-white/10 text-center">
                     <stat.icon size={24} className="text-lime mx-auto mb-3" />

@@ -52,6 +52,8 @@ const RoomImageSlider: React.FC<RoomImageSliderProps> = ({ images, alts, name, o
       onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') onImageClick(current); }}
     >
       <img
+        loading="lazy"
+        decoding="async"
         src={images[current]}
         alt={alts[current] ?? `${name} - foto ${current + 1} - Pousada Coração da Ilha, Ilha do Mel, Paraná`}
         className="w-full h-full object-cover transform group-hover/slider:scale-110 transition-transform duration-700"

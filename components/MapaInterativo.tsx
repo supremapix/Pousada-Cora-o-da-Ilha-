@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { MapPin, Navigation } from 'lucide-react';
+import { MAPS_LINK } from '../constants';
 
 type Category = 'all' | 'pousada' | 'atracao' | 'praia' | 'barco';
 
@@ -13,17 +14,23 @@ interface MapPoint {
   destaque?: boolean;
 }
 
+interface LeafletMarker {
+  addTo: (map: unknown) => LeafletMarker;
+  bindPopup: (html: string, options?: object) => LeafletMarker;
+  on: (event: string, callback: () => void) => LeafletMarker;
+}
+
 const points: MapPoint[] = [
-  { lat: -25.5285, lng: -48.3060, nome: 'Pousada Coração da Ilha', cat: 'pousada', desc: 'Única pousada beira-mar em Encantadas. Piscina de frente pro mar, suítes com hidromassagem. WhatsApp: (41) 99900-4808', link: 'https://wa.me/5541999004808', destaque: true },
-  { lat: -25.4950, lng: -48.3100, nome: 'Pousada Praia do Farol', cat: 'pousada', desc: 'Excelente localização próxima ao Farol das Conchas.' },
+  { lat: -25.5285, lng: -48.3060, nome: 'Pousada Coração da Ilha', cat: 'pousada', desc: 'Pousada na Praia de Encantadas. Consulte fotos, capacidade e itens de cada acomodação. WhatsApp: (41) 99900-4808', link: 'https://wa.me/5541999004808', destaque: true },
+  { lat: -25.4950, lng: -48.3100, nome: 'Pousada Praia do Farol', cat: 'pousada', desc: 'Consulte localização e informações diretamente com esta hospedagem.' },
   { lat: -25.4980, lng: -48.3080, nome: 'Astral da Ilha', cat: 'pousada', desc: 'Quartos temáticos e atmosfera zen. Ideal para casais.' },
-  { lat: -25.5000, lng: -48.3050, nome: 'Pousada Marimar', cat: 'pousada', desc: 'Conforto, limpeza e ótimo café da manhã.' },
-  { lat: -25.5350, lng: -48.3020, nome: 'Gruta das Encantadas', cat: 'atracao', desc: 'Formação rochosa lendária com grutas e piscinas naturais. Um dos pontos mais místicos da ilha.' },
+  { lat: -25.5000, lng: -48.3050, nome: 'Pousada Marimar', cat: 'pousada', desc: 'Consulte acomodações e condições diretamente com esta hospedagem.' },
+  { lat: -25.5350, lng: -48.3020, nome: 'Gruta das Encantadas', cat: 'atracao', desc: 'Atrativo da região de Encantadas. Verifique as condições de acesso e respeite a sinalização.' },
   { lat: -25.4860, lng: -48.3140, nome: 'Fortaleza Nossa Senhora dos Prazeres', cat: 'atracao', desc: 'Único monumento militar português na ilha. Construída em 1767. Vista panorâmica incrível.' },
   { lat: -25.4820, lng: -48.3020, nome: 'Farol das Conchas', cat: 'atracao', desc: 'Farol histórico de 1872. De lá você vê os dois lados da ilha ao mesmo tempo.' },
-  { lat: -25.5100, lng: -48.3200, nome: 'Istmo da Ilha do Mel', cat: 'atracao', desc: 'Estreito de areia que separa os dois lados da ilha. Ponto fotográfico único no Brasil.' },
+  { lat: -25.5100, lng: -48.3200, nome: 'Istmo da Ilha do Mel', cat: 'atracao', desc: 'Faixa estreita de terra da ilha. Respeite as áreas sinalizadas durante a visita.' },
   { lat: -25.5200, lng: -48.3150, nome: 'Trilha das Encantadas', cat: 'atracao', desc: 'Trilha ecológica pela Mata Atlântica preservada. Fauna e flora exuberantes.' },
-  { lat: -25.5280, lng: -48.3055, nome: 'Praia de Encantadas', cat: 'praia', desc: 'Mar calmo, ideal para mergulho raso. Onde ficam os golfinhos! Perto da Pousada Coração da Ilha.' },
+  { lat: -25.5280, lng: -48.3055, nome: 'Praia de Encantadas', cat: 'praia', desc: 'Praia na região da Pousada Coração da Ilha. Observe as condições do mar e a sinalização antes de entrar na água.' },
   { lat: -25.4900, lng: -48.3180, nome: 'Praia de Fora', cat: 'praia', desc: 'Mar aberto com ondas. Preferida pelos surfistas. Vista para o oceano Atlântico.' },
   { lat: -25.5050, lng: -48.3220, nome: 'Praia do Miguel', cat: 'praia', desc: 'Tranquila, menos frequentada. Ideal para quem busca sossego.' },
   { lat: -25.4970, lng: -48.3040, nome: 'Praia de Nova Brasília', cat: 'praia', desc: 'Principal praia da vila de Nova Brasília. Ponto de chegada dos barcos.' },
@@ -88,13 +95,7 @@ const MapaInterativo: React.FC = () => {
       map: (el: HTMLDivElement, opts: object) => unknown;
       tileLayer: (url: string, opts: object) => { addTo: (m: unknown) => void };
       divIcon: (opts: object) => unknown;
-      marker: (coords: [number, number], opts: object) => {
-        addTo: (m: unknown) => unknown;
-        bindPopup: (html: string, opts?: object) => unknown;
-        on: (event: string, fn: () => void) => unknown;
-        getLatLng: () => { lat: number; lng: number };
-        _map?: unknown;
-      };
+      marker: (coords: [number, number], opts: object) => LeafletMarker;
     };
 
     if (leafletMap.current) return;
@@ -116,7 +117,7 @@ const MapaInterativo: React.FC = () => {
       const cfg = catConfig[pt.cat];
       const size = pt.destaque ? 38 : 28;
       const icon = L.divIcon({
-        html: makeSvgIcon(cfg.color, size, pt.destaque),
+        html: makeSvgIcon(cfg.color, size, false),
         iconSize: [size, size + 6],
         iconAnchor: [size / 2, size + 6],
         popupAnchor: [0, -(size + 6)],
@@ -169,9 +170,10 @@ const MapaInterativo: React.FC = () => {
         <div className="text-center mb-12">
           <span className="text-[#E8C96B] text-xs font-black uppercase tracking-[0.3em]">Mapa Interativo</span>
           <h2 className="text-3xl md:text-4xl font-black text-white mt-4 mb-3">Explore a Ilha do Mel</h2>
-          <p className="text-gray-400 max-w-lg mx-auto">Clique nos marcadores para descobrir cada cantinho do paraíso</p>
+          <p className="text-gray-400 max-w-lg mx-auto">Mapa ilustrativo com posições aproximadas; não use os marcadores para orientar a chegada.</p>
         </div>
 
+        <p className="text-center mb-6"><a href={MAPS_LINK} target="_blank" rel="noopener noreferrer" className="text-lime underline">Abrir localização da pousada no Google Maps</a></p>
         <div className="flex flex-wrap justify-center gap-3 mb-6">
           {(Object.keys(catLabels) as Category[]).map((cat) => (
             <button
