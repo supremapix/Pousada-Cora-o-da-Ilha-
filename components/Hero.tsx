@@ -102,8 +102,6 @@ const Hero: React.FC = () => {
       </div>
 
       <div className="hidden xl:flex absolute bottom-4 left-1/2 transform -translate-x-1/2 z-30 flex flex-col items-center gap-3">
-        <span className="text-[10px] font-black tracking-[0.4em] uppercase text-lime animate-pulse">Explorar</span>
-        <div className="w-px h-16 bg-gradient-to-b from-lime to-transparent"></div>
         <a 
           href="#sobre" 
           aria-label="Rolar para baixo" 
