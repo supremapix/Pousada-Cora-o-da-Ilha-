@@ -26,6 +26,7 @@ export default function FloatingActions({ page }: { page: string }) {
   const [top, setTop] = useState(false);
   const [message, setMessage] = useState(0);
   const [status, setStatus] = useState('');
+  const [title, setTitle] = useState('Pousada Coração da Ilha');
   const trigger = useRef<HTMLButtonElement>(null);
   const panel = useRef<HTMLDivElement>(null);
   const url = `${SITE_URL}${page}`;
@@ -42,7 +43,7 @@ export default function FloatingActions({ page }: { page: string }) {
     return () => window.clearInterval(timer);
   }, [open]);
   useEffect(() => { setOpen(false); setStatus(''); }, [page]);
-  useEffect(() => { if (open) panel.current?.focus(); }, [open]);
+  useEffect(() => { if (open) { setTitle(document.title); panel.current?.focus(); } }, [open]);
   const close = () => { setOpen(false); trigger.current?.focus(); };
   const copy = async (value: string) => {
     try { await navigator.clipboard.writeText(value); setStatus('Copiado!'); }
@@ -52,7 +53,7 @@ export default function FloatingActions({ page }: { page: string }) {
     ['WhatsApp', `https://wa.me/?text=${enc(text + ' ' + url)}`],
     ['Facebook', `https://www.facebook.com/sharer/sharer.php?u=${enc(url)}`],
     ['X / Twitter', `https://twitter.com/intent/tweet?text=${enc(text)}&url=${enc(url)}`],
-    ['Pinterest', `https://pinterest.com/pin/create/button/?url=${enc(url)}&media=${enc(DEFAULT_OG_IMAGE)}&description=${enc(text)}`],
+    ['Pinterest', `https://pinterest.com/pin/create/button/?url=${enc(url)}&media=${enc(DEFAULT_OG_IMAGE)}&description=${enc(title + ' — ' + text)}`],
     ['LinkedIn', `https://www.linkedin.com/sharing/share-offsite/?url=${enc(url)}`],
     ['Threads', `https://www.threads.net/intent/post?text=${enc(text + ' ' + url)}`],
   ];
