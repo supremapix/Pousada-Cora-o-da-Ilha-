@@ -1,3 +1,5 @@
+import { TRAVEL_POSTS } from './travelGuides';
+
 export type BlogBlock =
   | { type: 'h2'; text: string }
   | { type: 'h3'; text: string }
@@ -31,10 +33,13 @@ export interface BlogPost {
   content: BlogBlock[];
   faq: BlogFaq[];
   event?: BlogEvent;
+  sources?: { label: string; url: string }[];
+  travel?: { city: string; state: string; region: string };
+  sourceCheckedAt?: string;
   related: string[];
 }
 
-export const BLOG_POSTS: BlogPost[] = [
+export const EDITORIAL_POSTS: BlogPost[] = [
   {
     "slug": "ferias-de-julho-na-ilha-do-mel-2026",
     "title": "Férias de julho na Ilha do Mel: como planejar uma viagem de inverno",
@@ -443,8 +448,8 @@ export const BLOG_POSTS: BlogPost[] = [
     "excerpt": "Veja como organizar a viagem para a Pousada Coração da Ilha: embarque no continente, barco para Encantadas e trajeto a pé até a pousada.",
     "category": "Guias",
     "datePublished": "2026-05-10",
-    "dateModified": "2026-11-05",
-    "readingTime": "3 min",
+    "dateModified": "2026-11-06",
+    "readingTime": "4 min",
     "image": "/images/blog/como-chegar-na-ilha-do-mel-guia-completo.png",
     "imageAlt": "Barca de travessia chegando ao trapiche de Encantadas na Ilha do Mel, Paraná",
     "content": [
@@ -454,7 +459,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         "type": "p",
-        "text": "O acesso à Ilha do Mel é feito por barco, com opções a partir de Pontal do Sul e Paranaguá. Verifique com a operadora qual linha atende Encantadas na data escolhida, os horários e as regras para bagagem."
+        "text": "Planeje primeiro sua chegada ao Terminal Aquaviário Público de Pontal do Sul, em Pontal do Paraná. A Agepar orienta a utilização do terminal público e de embarcações autorizadas. Paranaguá também é mencionada em orientações de acesso do IAT, mas confirme diretamente se existe uma saída adequada para Encantadas na data desejada antes de escolher esse ponto de embarque."
       },
       {
         "type": "h2",
@@ -479,18 +484,75 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         "type": "p",
         "text": "Tenha a confirmação da hospedagem, documentos, contatos e previsão de chegada. Se vier de carro, organize o estacionamento no continente. Leve bagagem adequada à caminhada e proteja itens que não podem molhar."
+      },
+      {
+        "type": "h2",
+        "text": "Se você chega de ônibus ou de avião"
+      },
+      {
+        "type": "p",
+        "text": "Organize os trechos separadamente: sua cidade até Curitiba ou outro ponto de conexão, o deslocamento até Pontal do Sul e a travessia. Uma passagem para Curitiba, Paranaguá ou Pontal do Paraná não significa chegada ao terminal de barcos. Verifique o endereço exato do desembarque terrestre e o transporte restante. Para quem chega ao Aeroporto Afonso Pena, em São José dos Pinhais, planeje também a saída do aeroporto; ele não fica junto ao terminal aquaviário."
+      },
+      {
+        "type": "h2",
+        "text": "Como escolher o horário de chegada e de retorno"
+      },
+      {
+        "type": "p",
+        "text": "Antes de comprar passagens, compare o horário previsto de chegada ao litoral com o último embarque confirmado. Reserve margem para atrasos, retirada de bagagem e deslocamento ao terminal. Se a conexão não for viável, considere uma noite no continente em vez de depender de um barco que pode não operar. Na volta, deixe folga antes de um ônibus interestadual ou voo. Ventos, mar e operação podem alterar a travessia."
+      },
+      {
+        "type": "h2",
+        "text": "Bagagem, mobilidade e cuidados na ilha"
+      },
+      {
+        "type": "p",
+        "text": "O carro fica no continente. Consulte preço, cobertura e horário do estacionamento para toda a estadia, sem presumir que o serviço esteja incluído na reserva da pousada. Leve apenas o necessário e considere que rodas pequenas de malas podem dificultar o transporte na areia. Se alguém do grupo tiver mobilidade reduzida, converse antes com a pousada e a operadora sobre acesso e embarque. Não presuma acessibilidade integral."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Confirme documentos exigidos para adultos e crianças e regras de bagagem diretamente com o transportador.",
+          "Use embarcações autorizadas e siga as orientações da tripulação.",
+          "Confira previsão do tempo e avisos oficiais, sem tratar previsão como garantia de navegação.",
+          "Mantenha telefone, comprovantes e itens importantes protegidos da água.",
+          "Siga a sinalização e as orientações do IAT nas áreas de conservação."
+        ]
       }
     ],
     "faq": [
       {
         "q": "Como consultar hospedagem para esta viagem?",
         "a": "Informe suas datas, o número de hóspedes e a acomodação desejada à Pousada Coração da Ilha. Aguarde a confirmação de disponibilidade e condições antes de considerar a reserva concluída."
+      },
+      {
+        "q": "Pontal do Sul e Ilha do Mel são o mesmo destino?",
+        "a": "Não. Pontal do Sul é o ponto de embarque no continente, em Pontal do Paraná. Encantadas é uma comunidade na Ilha do Mel, onde fica a pousada. A travessia é uma etapa separada."
+      },
+      {
+        "q": "Posso comprar a passagem para Nova Brasília para chegar à pousada?",
+        "a": "A pousada fica em Encantadas. Nova Brasília é outra região da ilha. Prefira o desembarque em Encantadas e confirme o destino ao comprar a passagem, evitando um deslocamento adicional."
       }
     ],
     "related": [
       "melhor-epoca-para-visitar-ilha-do-mel",
       "ferias-de-julho-na-ilha-do-mel-2026",
       "natal-na-ilha-do-mel-2026"
+    ],
+    "sourceCheckedAt": "2026-11-06",
+    "sources": [
+      {
+        "label": "Agepar: terminal e embarcações autorizadas para a Ilha do Mel",
+        "url": "https://www.agepar.pr.gov.br/Pagina/Travessias-maritimas-Ilha-do-Mel"
+      },
+      {
+        "label": "Secretaria do Turismo: Terminal de Embarque de Pontal do Sul",
+        "url": "https://www.turismo.pr.gov.br/Endereco/Terminal-de-Embarque-para-Ilha-do-Mel-Pontal-do-Sul"
+      },
+      {
+        "label": "Instituto Água e Terra: orientações de visitação da Ilha do Mel",
+        "url": "https://www.iat.pr.gov.br/Pagina/Parque-Estadual-da-Ilha-do-Mel-PEIM"
+      }
     ]
   },
   {
@@ -552,6 +614,8 @@ export const BLOG_POSTS: BlogPost[] = [
     ]
   }
 ];
+export const BLOG_POSTS: BlogPost[] = [...TRAVEL_POSTS, ...EDITORIAL_POSTS];
+
 export const getPostBySlug = (slug: string): BlogPost | undefined =>
   BLOG_POSTS.find((p) => p.slug === slug);
 

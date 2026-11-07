@@ -1,7 +1,8 @@
 import React from 'react';
 import { Calendar, Clock, ArrowRight, MapPin } from 'lucide-react';
-import { BLOG_POSTS } from '../../data/blogPosts';
-import { navigate } from '../../utils/navigate';
+import { EDITORIAL_POSTS } from '../../data/blogPosts';
+import TravelDirectory from '../TravelDirectory';
+import { BLOG_SEO, BLOG_SCHEMAS } from '../../utils/blogSeo';
 import { useSEO, LODGING_SCHEMA, SITE_URL } from '../../utils/seo';
 
 interface BlogProps {
@@ -16,27 +17,12 @@ const formatDate = (iso: string) =>
   });
 
 const Blog: React.FC<BlogProps> = ({ onNavigate }) => {
-  const breadcrumb = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
-      { '@type': 'ListItem', position: 2, name: 'Blog', item: `${SITE_URL}/blog` },
-    ],
-  };
+  useSEO({ ...BLOG_SEO, jsonLd: BLOG_SCHEMAS });
 
-  useSEO({
-    title: 'Blog da Ilha do Mel: Viagem, Hospedagem e Dicas | Coração da Ilha',
-    description:
-      'Blog da Pousada Coração da Ilha: planejamento de viagem, feriados e dicas de hospedagem em Encantadas. Planeje sua viagem para Encantadas.',
-    canonical: '/blog',
-    jsonLd: [LODGING_SCHEMA, breadcrumb],
-  });
-
-  const [featured, ...rest] = BLOG_POSTS;
+  const [featured, ...rest] = EDITORIAL_POSTS;
 
   return (
-    <main className="bg-deep-navy text-white min-h-screen pt-24">
+    <main id="conteudo" tabIndex={-1} className="bg-deep-navy text-white min-h-screen pt-24">
       <section className="relative py-16 border-b border-white/5">
         <div className="container mx-auto px-4">
           <nav aria-label="Trilha de navegação" className="mb-6 text-xs text-gray-400">
@@ -63,11 +49,13 @@ const Blog: React.FC<BlogProps> = ({ onNavigate }) => {
         </div>
       </section>
 
+      <TravelDirectory />
+
       <section className="py-14" aria-label="Artigos do blog">
         <div className="container mx-auto px-4">
           {/* Post em destaque */}
           <article
-            className="group grid grid-cols-1 lg:grid-cols-2 gap-8 bg-white/4 border border-white/8 rounded-3xl overflow-hidden mb-14 hover:border-ocean/30 transition-all duration-300 cursor-pointer"
+            className="group grid grid-cols-1 lg:grid-cols-2 gap-8 bg-white/4 border border-white/8 rounded-3xl overflow-hidden mb-14 hover:border-ocean/30 transition-all duration-300"
           >
             <div className="relative h-64 lg:h-full min-h-[280px] overflow-hidden">
               <img
@@ -91,9 +79,9 @@ const Blog: React.FC<BlogProps> = ({ onNavigate }) => {
                 <a href={`/blog/${featured.slug}`}>{featured.title}</a>
               </h2>
               <p className="text-gray-300 leading-relaxed mb-6 text-pretty">{featured.excerpt}</p>
-              <span className="inline-flex items-center gap-2 text-lime font-black text-sm uppercase tracking-wider">
+              <a href={`/blog/${featured.slug}`} className="inline-flex items-center gap-2 text-lime font-black text-sm uppercase tracking-wider">
                 Ler artigo <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-              </span>
+              </a>
             </div>
           </article>
 
@@ -102,7 +90,7 @@ const Blog: React.FC<BlogProps> = ({ onNavigate }) => {
             {rest.map((post) => (
               <article
                 key={post.slug}
-                className="group flex flex-col bg-white/4 border border-white/8 rounded-3xl overflow-hidden hover:border-ocean/30 hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+                className="group flex flex-col bg-white/4 border border-white/8 rounded-3xl overflow-hidden hover:border-ocean/30 hover:-translate-y-1 transition-all duration-300"
               >
                 <div className="relative h-52 overflow-hidden">
                   <img
@@ -126,9 +114,9 @@ const Blog: React.FC<BlogProps> = ({ onNavigate }) => {
                     <a href={`/blog/${post.slug}`}>{post.title}</a>
                   </h2>
                   <p className="text-gray-400 text-sm leading-relaxed mb-5 flex-grow text-pretty">{post.excerpt}</p>
-                  <span className="inline-flex items-center gap-2 text-lime font-bold text-xs uppercase tracking-wider mt-auto">
+                  <a href={`/blog/${post.slug}`} className="inline-flex items-center gap-2 text-lime font-bold text-xs uppercase tracking-wider mt-auto">
                     Ler artigo <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                  </span>
+                  </a>
                 </div>
               </article>
             ))}

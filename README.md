@@ -1,20 +1,22 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Pousada Coração da Ilha
 
-# Run and deploy your AI Studio app
+Site React + Vite em português, com pré-renderização estática de todas as páginas.
 
-This contains everything you need to run your app locally.
+## Desenvolvimento e verificação
 
-View your app in AI Studio: https://ai.studio/apps/drive/174D6KDM7__cDnjaKrv6SVx8iHbPPdySn
+- `npm ci`
+- `npm run dev`
+- `npm run build`
+- `npm run check`
 
-## Run Locally
+Não requer chave de IA ou segredo no cliente. O build gera páginas HTML, metadados, JSON-LD e sitemap a partir da mesma fonte usada na navegação.
 
-**Prerequisites:**  Node.js
+## Conteúdo
 
+`data/blogPosts.ts` reúne os artigos editoriais e os guias de cidades em `data/travelGuides.ts`. Os 151 guias descrevem corredores de planejamento, não rotas com trânsito ao vivo nem serviços de transporte garantidos. Atualize fontes e datas ao rever serviços. Não publique tarifas ou horários sem confirmação atual.
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+`utils/blogSeo.ts` e `utils/pageSeo.ts` são as fontes dos metadados; `scripts/routes.ts` gera a lista de rotas. Ícones mantêm a identidade da pousada, com ICO, PNG 96px, Apple touch e manifest Android. O conjunto segue recomendações aplicáveis do RealFaviconGenerator sem representar uma certificação do serviço.
+
+## Publicação
+
+O projeto Vercel ligado ao repositório usa `npm run build` e a pasta `dist`. Verifique `npm run check` antes de publicar. `vercel.json` preserva URLs limpas e a página 404 estática.

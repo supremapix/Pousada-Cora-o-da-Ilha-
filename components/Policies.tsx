@@ -60,9 +60,9 @@ const Policies: React.FC = () => {
               <div className="animate-fade-in space-y-8">
                 <div className="grid md:grid-cols-2 gap-8">
                   <div className="bg-deep-navy p-8 rounded-3xl text-white shadow-xl">
-                    <h4 className="font-bold text-2xl mb-6 text-lime flex items-center gap-3">
+                    <h3 className="font-bold text-2xl mb-6 text-lime flex items-center gap-3">
                       <CreditCard className="text-lime" /> Formas de Pagamento
-                    </h4>
+                    </h3>
                     <ul className="space-y-4">
                       <li className="flex items-start gap-4">
                         <CheckCircle size={20} className="text-lime mt-1 flex-shrink-0" />
@@ -89,9 +89,9 @@ const Policies: React.FC = () => {
                   </div>
 
                   <div className="bg-gray-50 border border-gray-200 rounded-3xl p-8 flex flex-col justify-center">
-                    <h4 className="font-bold text-gray-800 mb-6 flex items-center gap-3 text-xl">
+                    <h3 className="font-bold text-gray-800 mb-6 flex items-center gap-3 text-xl">
                       🔑 Chave PIX (CNPJ)
-                    </h4>
+                    </h3>
                     <div className="bg-white p-6 rounded-2xl border-2 border-dashed border-lime shadow-inner text-center">
                        <span className="block text-2xl font-mono font-black text-deep-navy mb-4">20.746.844/0001-93</span>
                        <button 
@@ -116,28 +116,28 @@ const Policies: React.FC = () => {
                   <div className="p-6 rounded-2xl bg-green-50 border-l-8 border-lime-500 flex items-start gap-4">
                     <CheckCircle className="text-lime-700 mt-1" />
                     <div>
-                      <h5 className="font-bold text-deep-navy">Mais de 60 dias</h5>
+                      <h4 className="font-bold text-deep-navy">Mais de 60 dias</h4>
                       <p className="text-sm text-gray-600 italic">Reembolso de 50% ou 100% em crédito.</p>
                     </div>
                   </div>
                   <div className="p-6 rounded-2xl bg-yellow-50 border-l-8 border-yellow-400 flex items-start gap-4">
                     <AlertTriangle className="text-yellow-700 mt-1" />
                     <div>
-                      <h5 className="font-bold text-deep-navy">20 a 59 dias</h5>
+                      <h4 className="font-bold text-deep-navy">20 a 59 dias</h4>
                       <p className="text-sm text-gray-600 italic">100% em crédito apenas. Sem reembolso.</p>
                     </div>
                   </div>
                   <div className="p-6 rounded-2xl bg-orange-50 border-l-8 border-orange-400 flex items-start gap-4">
                     <AlertTriangle className="text-orange-700 mt-1" />
                     <div>
-                      <h5 className="font-bold text-deep-navy">8 a 19 dias</h5>
+                      <h4 className="font-bold text-deep-navy">8 a 19 dias</h4>
                       <p className="text-sm text-gray-600 italic">Crédito de apenas 25% do valor pago.</p>
                     </div>
                   </div>
                   <div className="p-6 rounded-2xl bg-red-50 border-l-8 border-red-500 flex items-start gap-4">
                     <XCircle className="text-red-700 mt-1" />
                     <div>
-                      <h5 className="font-bold text-deep-navy">Menos de 7 dias</h5>
+                      <h4 className="font-bold text-deep-navy">Menos de 7 dias</h4>
                       <p className="text-sm text-gray-600 italic">Não haverá reembolso nem crédito.</p>
                     </div>
                   </div>
@@ -154,9 +154,9 @@ const Policies: React.FC = () => {
             {activeTab === 'geral' && (
               <div className="animate-fade-in grid md:grid-cols-2 gap-12">
                 <div className="space-y-6">
-                  <h4 className="text-2xl font-bold text-deep-navy flex items-center gap-3">
+                  <h3 className="text-2xl font-bold text-deep-navy flex items-center gap-3">
                     <Clock className="text-lime" /> Horários
-                  </h4>
+                  </h3>
                   <div className="grid grid-cols-2 gap-4">
                     <div className="bg-gray-50 p-4 rounded-xl">
                       <span className="text-xs uppercase text-gray-400 font-bold block mb-1">Check-in</span>
@@ -174,9 +174,9 @@ const Policies: React.FC = () => {
                 </div>
 
                 <div className="space-y-6">
-                   <h4 className="text-2xl font-bold text-deep-navy flex items-center gap-3">
+                   <h3 className="text-2xl font-bold text-deep-navy flex items-center gap-3">
                     <Wifi className="text-lime" /> Facilidades
-                  </h4>
+                  </h3>
                   <ul className="space-y-4">
                     <li className="flex items-center gap-3 text-gray-700 font-medium">
                       <div className="bg-deep-navy p-1.5 rounded-full text-lime"><Baby size={16} /></div> Crianças até 5 anos grátis

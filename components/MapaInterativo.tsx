@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { MapPin, Navigation } from 'lucide-react';
+import { Navigation } from 'lucide-react';
 import { MAPS_LINK } from '../constants';
 
 type Category = 'all' | 'pousada' | 'atracao' | 'praia' | 'barco';
@@ -71,79 +71,123 @@ const MapaInterativo: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState<Category>('all');
   const [activePoint, setActivePoint] = useState<MapPoint | null>(null);
   const [leafletLoaded, setLeafletLoaded] = useState(false);
+  const [mapReady, setMapReady] = useState(false);
+  const [loadError, setLoadError] = useState(false);
+  const [loadAttempt, setLoadAttempt] = useState(0);
 
   useEffect(() => {
+    let disposed = false;
+    let styleReady = false;
+    let scriptReady = false;
+    const fail = () => { if (!disposed) setLoadError(true); };
+    const timeout = window.setTimeout(fail, 20_000);
+    const checkReady = () => {
+      if (!disposed && styleReady && scriptReady) {
+        window.clearTimeout(timeout);
+        setLeafletLoaded(true);
+      }
+    };
     const link = document.createElement('link');
     link.rel = 'stylesheet';
     link.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+    link.onload = () => { styleReady = true; checkReady(); };
+    link.onerror = fail;
     document.head.appendChild(link);
 
     const script = document.createElement('script');
     script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
-    script.onload = () => setLeafletLoaded(true);
+    script.onload = () => { scriptReady = true; checkReady(); };
+    script.onerror = fail;
     document.head.appendChild(script);
 
     return () => {
-      document.head.removeChild(link);
-      document.head.removeChild(script);
+      disposed = true;
+      window.clearTimeout(timeout);
+      link.onload = link.onerror = null;
+      script.onload = script.onerror = null;
+      link.remove();
+      script.remove();
     };
-  }, []);
+  }, [loadAttempt]);
 
   useEffect(() => {
     if (!leafletLoaded || !mapRef.current) return;
     const L = (window as unknown as { L: unknown }).L as {
-      map: (el: HTMLDivElement, opts: object) => unknown;
-      tileLayer: (url: string, opts: object) => { addTo: (m: unknown) => void };
+      map: (el: HTMLDivElement, opts: object) => { remove: () => void };
+      tileLayer: (url: string, opts: object) => { on: (event: string, callback: () => void) => void; addTo: (m: unknown) => void };
       divIcon: (opts: object) => unknown;
       marker: (coords: [number, number], opts: object) => LeafletMarker;
     };
 
     if (leafletMap.current) return;
 
-    const map = L.map(mapRef.current, {
-      center: [-25.5100, -48.3100],
-      zoom: 13,
-      scrollWheelZoom: false,
-    });
-
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-      attribution: '© OpenStreetMap © CARTO',
-      maxZoom: 18,
-    }).addTo(map);
-
-    leafletMap.current = map;
-
-    points.forEach((pt) => {
-      const cfg = catConfig[pt.cat];
-      const size = pt.destaque ? 38 : 28;
-      const icon = L.divIcon({
-        html: makeSvgIcon(cfg.color, size, false),
-        iconSize: [size, size + 6],
-        iconAnchor: [size / 2, size + 6],
-        popupAnchor: [0, -(size + 6)],
-        className: '',
+    let disposed = false;
+    let map: { remove: () => void } | null = null;
+    const fail = () => { if (!disposed) setLoadError(true); };
+    const timeout = window.setTimeout(fail, 20_000);
+    try {
+      map = L.map(mapRef.current, {
+        center: [-25.5100, -48.3100],
+        zoom: 13,
+        scrollWheelZoom: false,
       });
 
-      const popupHtml = `
-        <div style="font-family:Inter,sans-serif;min-width:200px;max-width:260px">
-          <div style="background:${cfg.color};color:white;padding:8px 12px;border-radius:8px 8px 0 0;font-weight:900;font-size:13px;line-height:1.3">
-            ${cfg.emoji} ${pt.nome}
+      const tiles = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+        attribution: '© OpenStreetMap © CARTO',
+        maxZoom: 18,
+      });
+      tiles.on('load', () => {
+        if (!disposed) {
+          window.clearTimeout(timeout);
+          setMapReady(true);
+        }
+      });
+      tiles.on('tileerror', fail);
+      tiles.addTo(map);
+
+      leafletMap.current = map;
+
+      points.forEach((pt) => {
+        const cfg = catConfig[pt.cat];
+        const size = pt.destaque ? 38 : 28;
+        const icon = L.divIcon({
+          html: makeSvgIcon(cfg.color, size, false),
+          iconSize: [size, size + 6],
+          iconAnchor: [size / 2, size + 6],
+          popupAnchor: [0, -(size + 6)],
+          className: '',
+        });
+
+        const popupHtml = `
+          <div style="font-family:Inter,sans-serif;min-width:200px;max-width:260px">
+            <div style="background:${cfg.color};color:white;padding:8px 12px;border-radius:8px 8px 0 0;font-weight:900;font-size:13px;line-height:1.3">
+              ${cfg.emoji} ${pt.nome}
+            </div>
+            <div style="padding:10px 12px;background:#fff;border-radius:0 0 8px 8px">
+              <p style="color:#444;font-size:12px;margin:0 0 10px;line-height:1.5">${pt.desc}</p>
+              ${pt.link ? `<a href="${pt.link}" target="_blank" rel="noreferrer" style="display:inline-block;background:#1A6B5A;color:white;font-weight:900;font-size:11px;padding:6px 14px;border-radius:20px;text-decoration:none">Reservar via WhatsApp</a>` : ''}
+            </div>
           </div>
-          <div style="padding:10px 12px;background:#fff;border-radius:0 0 8px 8px">
-            <p style="color:#444;font-size:12px;margin:0 0 10px;line-height:1.5">${pt.desc}</p>
-            ${pt.link ? `<a href="${pt.link}" target="_blank" rel="noreferrer" style="display:inline-block;background:#1A6B5A;color:white;font-weight:900;font-size:11px;padding:6px 14px;border-radius:20px;text-decoration:none">Reservar via WhatsApp</a>` : ''}
-          </div>
-        </div>
-      `;
+        `;
 
-      const marker = L.marker([pt.lat, pt.lng], { icon })
-        .addTo(map)
-        .bindPopup(popupHtml, { maxWidth: 280, className: 'ilha-popup' });
+        const marker = L.marker([pt.lat, pt.lng], { icon, title: pt.nome, alt: pt.nome })
+          .addTo(map)
+          .bindPopup(popupHtml, { maxWidth: 280, className: 'ilha-popup' });
 
-      marker.on('click', () => setActivePoint(pt));
+        marker.on('click', () => setActivePoint(pt));
 
-      markersRef.current.push(marker);
-    });
+        markersRef.current.push(marker);
+      });
+    } catch {
+      fail();
+    }
+    return () => {
+      disposed = true;
+      window.clearTimeout(timeout);
+      map?.remove();
+      leafletMap.current = null;
+      markersRef.current = [];
+    };
   }, [leafletLoaded]);
 
   const focusPousada = () => {
@@ -178,6 +222,9 @@ const MapaInterativo: React.FC = () => {
           {(Object.keys(catLabels) as Category[]).map((cat) => (
             <button
               key={cat}
+              type="button"
+              aria-pressed={activeFilter === cat}
+              aria-controls="map-results"
               onClick={() => setActiveFilter(cat)}
               className={`text-xs font-black uppercase tracking-wider px-5 py-2 rounded-full border transition-all duration-200 ${
                 activeFilter === cat
@@ -190,6 +237,8 @@ const MapaInterativo: React.FC = () => {
             </button>
           ))}
           <button
+            type="button"
+            disabled={!mapReady || loadError}
             onClick={focusPousada}
             className="text-xs font-black uppercase tracking-wider px-5 py-2 rounded-full border border-[#E8C96B]/50 text-[#E8C96B] hover:bg-[#E8C96B] hover:text-[#1C1C1C] transition-all duration-200 flex items-center gap-2"
           >
@@ -199,29 +248,48 @@ const MapaInterativo: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-2 relative rounded-2xl overflow-hidden border border-white/10" role="region" aria-label="Mapa ilustrativo da Ilha do Mel" aria-busy={!mapReady && !loadError}>
             <div
-              className="rounded-2xl overflow-hidden border border-white/10 shadow-[0_8px_40px_rgba(0,0,0,0.4)]"
+              className="shadow-[0_8px_40px_rgba(0,0,0,0.4)]"
               style={{ height: '520px' }}
               ref={mapRef}
+              inert={!mapReady || loadError}
+              aria-hidden={!mapReady || loadError}
             />
-            {!leafletLoaded && (
-              <div className="flex items-center justify-center h-[520px] bg-white/5 rounded-2xl border border-white/10">
+            {(!mapReady || loadError) && (
+              <div className="absolute inset-0 z-[1000] flex items-center justify-center bg-[#0a1628] p-6">
                 <div className="text-center">
-                  <div className="w-10 h-10 border-2 border-[#1A6B5A] border-t-transparent rounded-full animate-spin mx-auto mb-3" />
-                  <p className="text-gray-400 text-sm">Carregando mapa…</p>
+                  {loadError ? (
+                    <>
+                      <p role="alert" className="text-gray-300 text-sm mb-4">Não foi possível carregar o mapa. A lista de lugares continua disponível.</p>
+                      <a href={MAPS_LINK} target="_blank" rel="noopener noreferrer" className="block text-lime underline mb-4">Abrir localização da pousada no Google Maps</a>
+                      <button type="button" onClick={() => {
+                        setLeafletLoaded(false);
+                        setMapReady(false);
+                        setLoadError(false);
+                        setLoadAttempt(attempt => attempt + 1);
+                      }} className="text-white underline">Tentar carregar novamente</button>
+                    </>
+                  ) : (
+                    <>
+                      <div aria-hidden="true" className="w-10 h-10 border-2 border-[#1A6B5A] border-t-transparent rounded-full animate-spin mx-auto mb-3" />
+                      <p role="status" className="text-gray-400 text-sm">Carregando mapa…</p>
+                    </>
+                  )}
                 </div>
               </div>
             )}
           </div>
 
-          <div className="flex flex-col gap-3 max-h-[520px] overflow-y-auto pr-1 scrollbar-thin">
-            {filteredPoints.map((pt, i) => {
+          <div id="map-results" role="group" aria-label="Lugares na Ilha do Mel" className="flex flex-col gap-3 max-h-[520px] overflow-y-auto pr-1 scrollbar-thin">
+            {filteredPoints.map((pt) => {
               const cfg = catConfig[pt.cat];
               const isActive = activePoint?.nome === pt.nome;
               return (
-                <div
-                  key={i}
+                <button
+                  type="button"
+                  aria-pressed={isActive}
+                  key={pt.nome}
                   onClick={() => {
                     setActivePoint(pt);
                     const map = leafletMap.current as {
@@ -234,28 +302,28 @@ const MapaInterativo: React.FC = () => {
                       map.setView(L.latLng(pt.lat, pt.lng), 15, { animate: true });
                     }
                   }}
-                  className={`cursor-pointer rounded-xl p-4 border transition-all duration-200 ${
+                  className={`text-left cursor-pointer rounded-xl p-4 border transition-all duration-200 ${
                     isActive
                       ? 'border-[#1A6B5A] bg-[#1A6B5A]/10'
                       : 'border-white/8 bg-white/4 hover:border-white/20 hover:bg-white/7'
                   } ${pt.destaque ? 'ring-1 ring-[#E8C96B]/30' : ''}`}
                 >
-                  <div className="flex items-start gap-3">
-                    <div
+                  <span className="flex items-start gap-3">
+                    <span
                       className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 text-sm"
                       style={{ background: cfg.color + '33', border: `1.5px solid ${cfg.color}` }}
                     >
                       {cfg.emoji}
-                    </div>
-                    <div className="min-w-0">
-                      <div className="font-bold text-white text-sm leading-snug truncate">
+                    </span>
+                    <span className="block min-w-0">
+                      <span className="block font-bold text-white text-sm leading-snug truncate">
                         {pt.nome}
                         {pt.destaque && <span className="ml-2 text-[#E8C96B] text-[10px] font-black">⭐ DESTAQUE</span>}
-                      </div>
-                      <div className="text-gray-400 text-xs mt-0.5 line-clamp-2 leading-relaxed">{pt.desc}</div>
-                    </div>
-                  </div>
-                </div>
+                      </span>
+                      <span className="block text-gray-400 text-xs mt-0.5 line-clamp-2 leading-relaxed">{pt.desc}</span>
+                    </span>
+                  </span>
+                </button>
               );
             })}
           </div>

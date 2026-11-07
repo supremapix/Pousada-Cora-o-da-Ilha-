@@ -63,7 +63,8 @@ const VideoPresentation: React.FC = () => {
                   src="https://www.youtube.com/embed/EviS54Upy-o"
                   className="w-full h-full object-cover"
                   title="Vídeo Apresentação Pousada Coração da Ilha"
-                  frameBorder="0"
+                  loading="lazy"
+                    style={{ border: 0 }}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                 ></iframe>

@@ -1,6 +1,6 @@
 import path from 'path';
 import fs from 'fs';
-import { defineConfig, loadEnv } from 'vite';
+import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 function safePublicCopyPlugin() {
@@ -32,23 +32,18 @@ function safePublicCopyPlugin() {
   };
 }
 
-export default defineConfig(({ mode }) => {
-    const env = loadEnv(mode, '.', '');
+export default defineConfig(() => {
     return {
       server: {
         port: 5000,
         host: '0.0.0.0',
-        allowedHosts: true,
+        allowedHosts: true as const,
       },
       preview: {
         port: 5000,
         host: '0.0.0.0',
       },
       plugins: [react(), safePublicCopyPlugin()],
-      define: {
-        'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
-        'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY)
-      },
       resolve: {
         alias: {
           '@': path.resolve(__dirname, '.'),
@@ -58,7 +53,10 @@ export default defineConfig(({ mode }) => {
       build: {
         outDir: 'dist',
         copyPublicDir: false,
+        rollupOptions: { output: { manualChunks(id: string) {
+          if (id.includes('node_modules')) return 'vendor';
+        } } },
       },
-      appType: 'spa',
+      appType: 'spa' as const,
     };
 });

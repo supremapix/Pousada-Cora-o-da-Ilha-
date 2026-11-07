@@ -11,7 +11,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   const nav = (href: string) => navigate(href, onNavigate);
 
   return (
-    <footer className="relative bg-deep-navy text-white pt-24 pb-10 overflow-hidden">
+    <footer className="site-footer relative bg-deep-navy text-white pt-24 pb-10 overflow-hidden">
       <div
         className="absolute inset-0 bg-cover bg-center bg-fixed opacity-5 grayscale"
         style={{ backgroundImage: "url('/images/acomodacao-2.jpg')" }}
@@ -43,7 +43,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           </div>
 
           <div className="text-center md:text-left">
-            <h4 className="text-lime text-xs font-black uppercase tracking-[0.3em] mb-8">Navegação</h4>
+            <h2 className="text-lime text-xs font-black uppercase tracking-[0.3em] mb-8">Navegação</h2>
             <ul className="space-y-4 text-gray-300 font-medium">
               <li><a href={'/'} className="hover:text-lime transition-colors">Página Inicial</a></li>
               <li><a href={'/#sobre'} className="hover:text-lime transition-colors">A Pousada</a></li>
@@ -52,6 +52,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <li><a href={'/#acomodacoes'} className="hover:text-lime transition-colors">Suítes & Chalés</a></li>
               <li><a href={'/#politicas'} className="hover:text-lime transition-colors">Políticas de Reserva</a></li>
               <li><a href={'/contato'} className="hover:text-lime transition-colors">Contato</a></li>
+              <li><a href="/blog#cidades" className="hover:text-lime transition-colors">Como chegar por cidade</a></li>
               <li><a href={'/blog'} className="hover:text-lime transition-colors">Blog da Ilha do Mel</a></li>
               <li><a href={'/#reservas'} className="hover:text-lime transition-colors text-lime font-bold">Solicitar Orçamento</a></li>
               <li>
@@ -67,7 +68,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           </div>
 
           <div className="text-center md:text-left">
-            <h4 className="text-lime text-xs font-black uppercase tracking-[0.3em] mb-8">Contato Direto</h4>
+            <h2 className="text-lime text-xs font-black uppercase tracking-[0.3em] mb-8">Contato Direto</h2>
             <ul className="space-y-6 text-gray-300">
               <li className="flex flex-col md:flex-row items-center md:items-start gap-4">
                 <MapPin className="text-lime flex-shrink-0" size={24} />
@@ -88,7 +89,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           </div>
 
           <div className="text-center md:text-left">
-            <h4 className="text-lime text-xs font-black uppercase tracking-[0.3em] mb-8">Logística</h4>
+            <h2 className="text-lime text-xs font-black uppercase tracking-[0.3em] mb-8">Logística</h2>
             <div className="space-y-4 bg-white/5 p-6 rounded-3xl border border-white/5 mb-8">
               <div className="flex justify-between items-center text-xs">
                 <span className="text-gray-400 uppercase font-black">Check-in</span>
@@ -105,7 +106,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               </div>
             </div>
 
-            <h4 className="text-lime text-xs font-black uppercase tracking-[0.3em] mb-4">Legal</h4>
+            <h2 className="text-lime text-xs font-black uppercase tracking-[0.3em] mb-4">Legal</h2>
             <ul className="space-y-3 text-gray-400 text-sm">
               <li><a href={'/politica-privacidade'} className="hover:text-lime transition-colors">Política de Privacidade</a></li>
               <li><a href={'/politica-devolucao'} className="hover:text-lime transition-colors">Política de Cancelamento</a></li>

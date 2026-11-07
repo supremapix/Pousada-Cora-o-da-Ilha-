@@ -74,7 +74,7 @@ const IslandGuide: React.FC = () => {
               <div className="absolute bottom-8 left-8 right-8 text-white">
                 <span className="text-[10px] font-black uppercase tracking-[0.2em] text-lime mb-2 block">{spot.dist}</span>
                 <h3 className="text-2xl font-serif font-bold mb-3">{spot.name}</h3>
-                <p className="text-xs text-gray-300 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 line-clamp-3">
+                <p className="text-xs text-gray-300 leading-relaxed opacity-100 transition-opacity duration-500 line-clamp-3">
                   {spot.desc}
                 </p>
               </div>
@@ -95,7 +95,7 @@ const IslandGuide: React.FC = () => {
                   <h3 className="text-2xl font-bold">Como Chegar</h3>
                 </div>
                 <p className="text-gray-400 font-light mb-6">
-                  O acesso à ilha é feito exclusivamente por barcos que partem de <strong>Pontal do Sul</strong> (30 min) ou <strong>Paranaguá</strong> (1h45).
+                  O acesso turístico é feito de barco. Planeje a saída pelo terminal de <strong>Pontal do Sul</strong> e confirme com a operadora se há serviço adequado saindo de <strong>Paranaguá</strong> nas suas datas. Duração e operação dependem da embarcação e das condições de navegação.
                 </p>
                 <div className="space-y-4">
                   <div className="flex items-center gap-3 text-sm border-b border-white/10 pb-3">
@@ -110,7 +110,7 @@ const IslandGuide: React.FC = () => {
               </div>
               <a 
                 href={`https://api.whatsapp.com/send?phone=5541999004808&text=Olá! Gostaria de informações sobre horários de barcos.`}
-                target="_blank"
+                target="_blank" rel="noopener noreferrer"
                 className="mt-10 bg-white/10 hover:bg-lime text-white hover:text-deep-navy font-bold py-4 px-6 rounded-2xl transition-all text-center flex items-center justify-center gap-2 group/btn"
               >
                 Consultar Horários <Waves size={18} className="group-hover/btn:animate-bounce" />
@@ -125,7 +125,7 @@ const IslandGuide: React.FC = () => {
                     {tip.icon}
                   </div>
                   <div>
-                    <h4 className="font-bold text-deep-navy text-sm uppercase tracking-widest">{tip.title}</h4>
+                    <h3 className="font-bold text-deep-navy text-sm uppercase tracking-widest">{tip.title}</h3>
                     <p className="text-xs text-gray-500 mt-2 leading-relaxed">{tip.text}</p>
                   </div>
                 </div>

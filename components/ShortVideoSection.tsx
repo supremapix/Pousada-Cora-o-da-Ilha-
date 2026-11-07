@@ -23,7 +23,8 @@ const ShortVideoSection: React.FC = () => {
                     src="https://www.youtube.com/embed/1pJBwcBFAxQ"
                     className="absolute inset-0 w-full h-full"
                     title="Tour Virtual Pousada Coração da Ilha"
-                    frameBorder="0"
+                    loading="lazy"
+                    style={{ border: 0 }}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                   ></iframe>

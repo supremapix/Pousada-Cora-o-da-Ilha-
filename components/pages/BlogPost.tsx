@@ -1,7 +1,7 @@
 import React from 'react';
 import { Calendar, Clock, ArrowRight, ArrowLeft, MessageCircle, User } from 'lucide-react';
 import { BlogPost as BlogPostType, getRelatedPosts } from '../../data/blogPosts';
-import { navigate } from '../../utils/navigate';
+import { getPostSchemas } from '../../utils/blogSeo';
 import { useSEO, LODGING_SCHEMA, SITE_URL, DEFAULT_OG_IMAGE } from '../../utils/seo';
 import { WHATSAPP_NUMBER } from '../../constants';
 
@@ -19,43 +19,8 @@ const formatDate = (iso: string) =>
 
 const BlogPost: React.FC<BlogPostProps> = ({ post, onNavigate }) => {
   const canonical = `/blog/${post.slug}`;
-  const absoluteUrl = `${SITE_URL}${canonical}`;
-  const imageUrl = post.image.startsWith('http') ? post.image : `${SITE_URL}${post.image}`;
   const related = getRelatedPosts(post);
-
-  const blogPosting = {
-    '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
-    headline: post.title,
-    description: post.metaDescription,
-    image: imageUrl,
-    datePublished: post.datePublished,
-    dateModified: post.dateModified,
-    author: {
-      '@type': 'Organization',
-      name: 'Pousada Coração da Ilha',
-      url: SITE_URL,
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'Pousada Coração da Ilha',
-      logo: { '@type': 'ImageObject', url: DEFAULT_OG_IMAGE },
-    },
-    mainEntityOfPage: { '@type': 'WebPage', '@id': absoluteUrl },
-  };
-
-  const breadcrumb = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
-      { '@type': 'ListItem', position: 2, name: 'Blog', item: `${SITE_URL}/blog` },
-      { '@type': 'ListItem', position: 3, name: post.title, item: absoluteUrl },
-    ],
-  };
-
-  const schemas: Record<string, unknown>[] = [LODGING_SCHEMA, blogPosting, breadcrumb];
-
+  const schemas = getPostSchemas(post);
 
   useSEO({
     title: post.seoTitle,
@@ -71,7 +36,8 @@ const BlogPost: React.FC<BlogPostProps> = ({ post, onNavigate }) => {
   )}`;
 
   return (
-    <main className="bg-deep-navy text-white min-h-screen pt-24">
+    <main id="conteudo" tabIndex={-1} className="bg-deep-navy text-white min-h-screen pt-24">
+      <article aria-labelledby="post-title">
       {/* Hero */}
       <header className="relative">
         <div className="relative h-[45vh] min-h-[320px] overflow-hidden">
@@ -96,14 +62,14 @@ const BlogPost: React.FC<BlogPostProps> = ({ post, onNavigate }) => {
                 <a href={'/blog'} className="hover:text-lime transition-colors">Blog</a>
               </li>
               <li aria-hidden="true">/</li>
-              <li className="text-lime font-semibold line-clamp-1" aria-current="page">{post.category}</li>
+              <li className="text-lime font-semibold line-clamp-1" aria-current="page">{post.title}</li>
             </ol>
           </nav>
 
           <span className="inline-block bg-lime text-deep-navy text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full mb-4">
             {post.category}
           </span>
-          <h1 className="text-3xl md:text-5xl font-black leading-tight mb-6 text-balance">{post.title}</h1>
+          <h1 id="post-title" className="text-3xl md:text-5xl font-black leading-tight mb-6 text-balance">{post.title}</h1>
 
           <div className="flex flex-wrap items-center gap-5 text-sm text-gray-300 border-b border-white/10 pb-8">
             <span className="flex items-center gap-2"><User size={15} className="text-ocean" /> Equipe Pousada Coração da Ilha</span>
@@ -117,7 +83,12 @@ const BlogPost: React.FC<BlogPostProps> = ({ post, onNavigate }) => {
 
       {/* Conteúdo */}
       <div className="container mx-auto px-4 max-w-3xl py-12">
-        <article className="blog-content">
+        {post.travel && <section aria-label="Planejar o trecho terrestre" className="mb-10 p-6 rounded-2xl bg-white/5 border border-ocean/30">
+          <p className="font-bold mb-3">{post.travel.city} ({post.travel.state}) → Pontal do Sul → Encantadas</p>
+          <p className="text-gray-300 mb-5">Veja alternativas de estrada saindo da sua cidade. O mapa termina no continente; confirme o ponto indicado antes de sair e organize o barco separadamente.</p>
+          <a href={`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(`${post.travel.city}, ${post.travel.state}, Brasil`)}&destination=${encodeURIComponent('Terminal de Embarque para Ilha do Mel, Rua Flor de Maio, 719, Pontal do Sul, Pontal do Parana, PR, Brasil')}&travelmode=driving`} target="_blank" rel="noopener noreferrer" className="inline-block text-lime font-bold underline underline-offset-4">Consultar rota de carro no Google Maps</a>
+        </section>}
+        <div className="blog-content">
           {post.content.map((block, i) => {
             switch (block.type) {
               case 'h2':
@@ -139,7 +110,13 @@ const BlogPost: React.FC<BlogPostProps> = ({ post, onNavigate }) => {
                 return <p key={i} className="text-gray-200 leading-relaxed my-5 text-pretty text-[17px]">{block.text}</p>;
             }
           })}
-        </article>
+        </div>
+
+        {post.sources && <section aria-labelledby="sources-heading" className="mt-12 p-6 rounded-2xl border border-white/10">
+          <h2 id="sources-heading" className="text-xl font-bold mb-4">Fontes e conferência antes de viajar</h2>
+          <p className="text-gray-300 text-sm mb-4">Orientações consultadas em {formatDate(post.sourceCheckedAt || post.dateModified)}. O caminho sugerido é uma referência para planejamento, não uma consulta de trânsito ao vivo nem confirmação de linha direta. Reconfirme as condições nas suas datas.</p>
+          <ul className="space-y-3">{post.sources.map(source => <li key={source.url}><a href={source.url} className="text-ocean underline underline-offset-4" target="_blank" rel="noopener noreferrer">{source.label}</a></li>)}</ul>
+        </section>}
 
         {/* FAQ */}
         <section aria-labelledby="faq-heading" className="mt-14">
@@ -184,6 +161,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ post, onNavigate }) => {
         </section>
       </div>
 
+      </article>
       {/* Posts relacionados */}
       {related.length > 0 && (
         <aside aria-label="Artigos relacionados" className="border-t border-white/5 py-14">

@@ -1,7 +1,7 @@
 :root { scroll-padding-top: 110px; }
 nav a.w-full { display:block; }
 :focus-visible { outline: 3px solid #0784a8; outline-offset: 4px; }
-footer { padding-bottom: 150px !important; }
+.site-footer { padding-bottom: 150px !important; }
 .site-actions-left,.site-actions-right { position:fixed; bottom:max(16px,env(safe-area-inset-bottom)); z-index:60; display:flex; gap:10px; }
 .site-actions-left { left:16px; }
 .site-actions-right { right:16px; }
@@ -18,3 +18,8 @@ footer { padding-bottom: 150px !important; }
 @media (prefers-reduced-motion:reduce) { *,*::before,*::after { animation:none!important; transition:none!important; scroll-behavior:auto!important; } }
 body:has(button[aria-label="Fechar menu"]) .site-actions-left,
 body:has(button[aria-label="Fechar menu"]) .site-actions-right { visibility: hidden; }
+
+.skip-link { position: fixed; left: 12px; top: 12px; z-index: 10000; transform: translateY(-160%); background: #fff; color: #0d1b2a; padding: 12px 18px; border-radius: 8px; font-weight: 700; }
+.skip-link:focus { transform: translateY(0); }
+.city-link { min-height:44px; display:flex; align-items:center; }
+.travel-city-group { content-visibility:auto; contain-intrinsic-size:auto 400px; }

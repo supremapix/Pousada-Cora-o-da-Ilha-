@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
-import { User, Mail, Phone, Calendar, Home, Users, CreditCard, MessageSquare, Check, Star } from 'lucide-react';
+import React, { useState, useRef, useEffect } from 'react';
+import { User, Mail, Phone, MessageSquare, Check, Star } from 'lucide-react';
 import { BookingFormData } from '../types';
 import { WHATSAPP_NUMBER } from '../constants';
 
+const localDate = (date: Date) => `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+
 const BookingForm: React.FC = () => {
+  const checkinRef = useRef<HTMLInputElement>(null);
+  const checkoutRef = useRef<HTMLInputElement>(null);
   const [formData, setFormData] = useState<BookingFormData>({
     nome: '',
     email: '',
@@ -17,9 +21,44 @@ const BookingForm: React.FC = () => {
     aceite: false
   });
 
+  // Keep server markup and the first client render independent of the build date.
+  const [today, setToday] = useState('');
+  useEffect(() => {
+    const refreshToday = () => setToday(localDate(new Date()));
+    refreshToday();
+    window.addEventListener('focus', refreshToday);
+    window.addEventListener('pageshow', refreshToday);
+    const timer = window.setInterval(refreshToday, 60_000);
+    return () => {
+      window.removeEventListener('focus', refreshToday);
+      window.removeEventListener('pageshow', refreshToday);
+      window.clearInterval(timer);
+    };
+  }, []);
+
+  let checkoutMin = '';
+  if (today) {
+    const earliestCheckout = new Date(`${formData.checkin && formData.checkin >= today ? formData.checkin : today}T12:00:00`);
+    earliestCheckout.setDate(earliestCheckout.getDate() + 1);
+    checkoutMin = localDate(earliestCheckout);
+  }
+  const checkinError = today && formData.checkin && formData.checkin < today ? 'Escolha hoje ou uma data futura para o check-in.' : '';
+  const checkoutError = checkoutMin && formData.checkout && formData.checkout < checkoutMin ? 'O check-out deve ser posterior ao check-in e à data de hoje.' : '';
+
+  useEffect(() => {
+    checkinRef.current?.setCustomValidity(checkinError);
+    checkoutRef.current?.setCustomValidity(checkoutError);
+  }, [checkinError, checkoutError, today, formData.checkin, formData.checkout]);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     const checked = (e.target as HTMLInputElement).checked;
+    if (name === 'checkin' || name === 'checkout') {
+      // Clear any submit-time error before recomputing both date constraints.
+      checkinRef.current?.setCustomValidity('');
+      checkoutRef.current?.setCustomValidity('');
+      setToday(localDate(new Date()));
+    }
     setFormData(prev => ({
       ...prev,
       [name]: e.target.type === 'checkbox' ? checked : value
@@ -28,7 +67,15 @@ const BookingForm: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (formData.checkout <= formData.checkin) { alert('O check-out deve ser posterior ao check-in.'); return; }
+    // Recheck the current date even when the form has stayed open overnight.
+    const currentToday = localDate(new Date());
+    setToday(currentToday);
+    if (formData.checkin < currentToday || formData.checkout <= formData.checkin) {
+      const invalidInput = formData.checkin < currentToday ? checkinRef.current : checkoutRef.current;
+      invalidInput?.setCustomValidity('Confira as datas: o check-in não pode estar no passado e o check-out deve ser posterior.');
+      invalidInput?.reportValidity();
+      return;
+    }
     const formatDate = (dateString: string) => {
       if (!dateString) return '';
       const [year, month, day] = dateString.split('-');
@@ -80,7 +127,7 @@ Aguardo confirmação! 😊`;
           <div className="lg:col-span-2 bg-white rounded-2xl shadow-2xl p-6 md:p-8">
             <div className="mb-6">
               <h2 className="text-3xl font-serif font-bold text-deep-navy">Solicitar Reserva</h2>
-              <p className="text-gray-500 mt-1">Preencha os dados e enviaremos sua solicitação via WhatsApp.</p>
+              <p className="text-gray-500 mt-1">Preencha os dados para preparar sua solicitação no WhatsApp.</p>
             </div>
 
             <noscript><p>Para consultar sua estadia, use o <a href={`https://wa.me/${WHATSAPP_NUMBER}`}>WhatsApp da pousada</a>.</p><style>{'#reservas form { display: none; }'}</style></noscript>
@@ -91,7 +138,7 @@ Aguardo confirmação! 😊`;
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
                     <User size={18} />
                   </div>
-                  <input type="text" id="nome" name="nome" required value={formData.nome} onChange={handleChange} className="pl-10 w-full rounded-lg border-gray-300 border focus:ring-2 focus:ring-lime focus:border-transparent py-2.5 text-gray-900" placeholder="Seu nome" />
+                  <input type="text" id="nome" name="nome" autoComplete="name" required value={formData.nome} onChange={handleChange} className="pl-10 w-full rounded-lg border-gray-300 border focus:ring-2 focus:ring-lime focus:border-transparent py-2.5 text-gray-900" placeholder="Seu nome" />
                 </div>
               </div>
 
@@ -102,7 +149,7 @@ Aguardo confirmação! 😊`;
                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
                       <Mail size={18} />
                     </div>
-                    <input type="email" id="email" name="email" required value={formData.email} onChange={handleChange} className="pl-10 w-full rounded-lg border-gray-300 border focus:ring-2 focus:ring-lime focus:border-transparent py-2.5 text-gray-900" placeholder="seu@email.com" />
+                    <input type="email" id="email" name="email" autoComplete="email" required value={formData.email} onChange={handleChange} className="pl-10 w-full rounded-lg border-gray-300 border focus:ring-2 focus:ring-lime focus:border-transparent py-2.5 text-gray-900" placeholder="seu@email.com" />
                   </div>
                 </div>
                 <div>
@@ -111,7 +158,7 @@ Aguardo confirmação! 😊`;
                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
                       <Phone size={18} />
                     </div>
-                    <input type="tel" id="telefone" name="telefone" required value={formData.telefone} onChange={handleChange} className="pl-10 w-full rounded-lg border-gray-300 border focus:ring-2 focus:ring-lime focus:border-transparent py-2.5 text-gray-900" placeholder="(00) 00000-0000" />
+                    <input type="tel" id="telefone" name="telefone" autoComplete="tel" required value={formData.telefone} onChange={handleChange} className="pl-10 w-full rounded-lg border-gray-300 border focus:ring-2 focus:ring-lime focus:border-transparent py-2.5 text-gray-900" placeholder="(00) 00000-0000" />
                   </div>
                 </div>
               </div>
@@ -119,11 +166,13 @@ Aguardo confirmação! 😊`;
               <div className="grid md:grid-cols-2 gap-5">
                 <div>
                   <label htmlFor="checkin" className="block text-sm font-medium text-gray-700 mb-1">Data Check-in *</label>
-                  <input type="date" id="checkin" name="checkin" required value={formData.checkin} onChange={handleChange} className="w-full rounded-lg border-gray-300 border focus:ring-2 focus:ring-lime focus:border-transparent py-2.5 text-gray-900" />
+                  <input type="date" id="checkin" name="checkin" ref={checkinRef} min={today || undefined} aria-invalid={!!checkinError} aria-describedby={checkinError ? "checkin-error" : undefined} required value={formData.checkin} onChange={handleChange} className="w-full rounded-lg border-gray-300 border focus:ring-2 focus:ring-lime focus:border-transparent py-2.5 text-gray-900" />
+                  {checkinError && <p id="checkin-error" role="alert" className="mt-1 text-sm text-red-700">{checkinError}</p>}
                 </div>
                 <div>
                   <label htmlFor="checkout" className="block text-sm font-medium text-gray-700 mb-1">Data Check-out *</label>
-                  <input type="date" id="checkout" name="checkout" required value={formData.checkout} onChange={handleChange} className="w-full rounded-lg border-gray-300 border focus:ring-2 focus:ring-lime focus:border-transparent py-2.5 text-gray-900" />
+                  <input type="date" id="checkout" name="checkout" ref={checkoutRef} min={checkoutMin || undefined} aria-invalid={!!checkoutError} aria-describedby={checkoutError ? "checkout-error" : undefined} required value={formData.checkout} onChange={handleChange} className="w-full rounded-lg border-gray-300 border focus:ring-2 focus:ring-lime focus:border-transparent py-2.5 text-gray-900" />
+                  {checkoutError && <p id="checkout-error" role="alert" className="mt-1 text-sm text-red-700">{checkoutError}</p>}
                 </div>
               </div>
 
@@ -166,8 +215,12 @@ Aguardo confirmação! 😊`;
                 </label>
               </div>
 
-              <button type="submit" className="w-full bg-lime hover:bg-lime-500 text-deep-navy font-black py-4 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-3 text-lg uppercase tracking-wider">
-                <span>Enviar Solicitação via WhatsApp</span>
+              <p id="booking-privacy" className="text-sm text-gray-600">
+                Ao continuar, os dados preenchidos serão compartilhados com o WhatsApp para preparar uma mensagem à pousada em uma nova aba. Revise a mensagem e envie no WhatsApp. Isso não confirma uma reserva: disponibilidade, valores e confirmação dependem do atendimento da pousada. Consulte a <a href="/politica-privacidade" className="text-deep-navy font-bold underline">Política de Privacidade</a>.
+              </p>
+
+              <button type="submit" aria-describedby="booking-privacy" className="w-full bg-lime hover:bg-lime-500 text-deep-navy font-black py-4 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-3 text-lg uppercase tracking-wider">
+                <span>Abrir solicitação no WhatsApp</span>
                 <MessageSquare className="animate-pulse" />
               </button>
             </form>
@@ -180,7 +233,7 @@ Aguardo confirmação! 😊`;
               <p className="mb-6 opacity-80 text-sm">Envie sua dúvida pelos canais abaixo e aguarde o retorno da equipe.</p>
               
               <div className="space-y-4">
-                <a href={`https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}`} target="_blank" className="flex items-center gap-4 bg-lime text-deep-navy p-3 rounded-lg font-bold hover:bg-lime-500 transition-colors">
+                <a href={`https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 bg-lime text-deep-navy p-3 rounded-lg font-bold hover:bg-lime-500 transition-colors">
                    <div className="bg-deep-navy p-2 rounded-full text-lime"><MessageSquare size={20} /></div>
                    <div>
                      <span className="block text-xs opacity-70">WhatsApp</span>

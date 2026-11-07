@@ -7,7 +7,7 @@ const QuemSomos: React.FC = () => {
   useSEO(PAGE_SEO.quemSomos);
 
   return (
-    <main className="pt-24">
+    <main id="conteudo" tabIndex={-1} className="pt-24">
       <section className="bg-deep-navy text-white py-20">
         <div className="container mx-auto px-4 text-center">
           <span className="text-lime font-bold tracking-widest uppercase text-xs mb-4 block">Conheça nossa história</span>

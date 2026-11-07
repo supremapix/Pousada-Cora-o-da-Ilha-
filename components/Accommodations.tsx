@@ -45,12 +45,13 @@ const RoomImageSlider: React.FC<RoomImageSliderProps> = ({ images, alts, name, o
   return (
     <div
       className="relative h-72 overflow-hidden group/slider cursor-zoom-in"
-      onClick={() => onImageClick(current)}
-      role="button"
-      tabIndex={0}
-      aria-label={`Abrir galeria completa de ${name}`}
-      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') onImageClick(current); }}
     >
+      <button
+        type="button"
+        onClick={() => onImageClick(current)}
+        aria-label={`Abrir galeria completa de ${name}`}
+        className="absolute inset-0 z-10 w-full h-full cursor-zoom-in focus-visible:outline-offset-[-4px]"
+      />
       <img
         loading="lazy"
         decoding="async"
@@ -69,15 +70,17 @@ const RoomImageSlider: React.FC<RoomImageSliderProps> = ({ images, alts, name, o
       {images.length > 1 && (
         <>
           <button
+            type="button"
             onClick={prev}
-            className="absolute left-3 top-1/2 -translate-y-1/2 bg-deep-navy/70 hover:bg-lime text-white hover:text-deep-navy rounded-full p-1.5 transition-all opacity-0 group-hover/slider:opacity-100 z-20"
+            className="absolute left-3 top-1/2 -translate-y-1/2 bg-deep-navy/70 hover:bg-lime text-white hover:text-deep-navy rounded-full p-1.5 transition-all opacity-0 group-hover/slider:opacity-100 group-focus-within/slider:opacity-100 z-20"
             aria-label="Foto anterior"
           >
             <ChevronLeft size={18} />
           </button>
           <button
+            type="button"
             onClick={next}
-            className="absolute right-3 top-1/2 -translate-y-1/2 bg-deep-navy/70 hover:bg-lime text-white hover:text-deep-navy rounded-full p-1.5 transition-all opacity-0 group-hover/slider:opacity-100 z-20"
+            className="absolute right-3 top-1/2 -translate-y-1/2 bg-deep-navy/70 hover:bg-lime text-white hover:text-deep-navy rounded-full p-1.5 transition-all opacity-0 group-hover/slider:opacity-100 group-focus-within/slider:opacity-100 z-20"
             aria-label="Próxima foto"
           >
             <ChevronRight size={18} />
@@ -86,10 +89,12 @@ const RoomImageSlider: React.FC<RoomImageSliderProps> = ({ images, alts, name, o
           <div className="absolute bottom-14 left-0 right-0 flex justify-center gap-1.5 z-10 pointer-events-none">
             {images.map((_, idx) => (
               <button
+                type="button"
                 key={idx}
                 onClick={(e) => { e.stopPropagation(); setCurrent(idx); }}
                 className={`w-1.5 h-1.5 rounded-full transition-all pointer-events-auto ${idx === current ? 'bg-lime w-4' : 'bg-white/60'}`}
-                aria-label={`Foto ${idx + 1}`}
+                aria-label={`Ver foto ${idx + 1} de ${name}`}
+                aria-current={idx === current ? 'true' : undefined}
               />
             ))}
           </div>

@@ -10,6 +10,7 @@ export interface SEOOptions {
   canonical?: string;
   ogImage?: string;
   ogType?: 'website' | 'article';
+  noindex?: boolean;
   /** Objeto(s) JSON-LD a serem injetados na página. */
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
@@ -62,6 +63,7 @@ export function useSEO({
   ogImage = DEFAULT_OG_IMAGE,
   ogType = 'website',
   jsonLd,
+  noindex = false,
 }: SEOOptions) {
   useEffect(() => {
     const url = canonical
@@ -71,12 +73,16 @@ export function useSEO({
       : `${SITE_URL}${window.location.pathname}`;
 
     document.title = title;
+    upsertMeta('name', 'robots', noindex ? 'noindex, follow' : 'index, follow');
     upsertMeta('name', 'description', description);
     upsertCanonical(url);
 
     upsertMeta('property', 'og:title', title);
     upsertMeta('property', 'og:description', description);
     upsertMeta('property', 'og:image', ogImage);
+    upsertMeta('property', 'og:image:width', '1200');
+    upsertMeta('property', 'og:image:height', '630');
+    upsertMeta('property', 'og:image:alt', 'Pousada Coração da Ilha em Encantadas, Ilha do Mel');
     upsertMeta('property', 'og:url', url);
     upsertMeta('property', 'og:type', ogType);
     upsertMeta('property', 'og:site_name', 'Pousada Coração da Ilha');
@@ -90,7 +96,7 @@ export function useSEO({
     setJsonLd(jsonLd);
 
     return () => setJsonLd(undefined);
-  }, [title, description, canonical, ogImage, ogType, jsonLd]);
+  }, [title, description, canonical, ogImage, ogType, jsonLd, noindex]);
 }
 
 /** Schema base da pousada (BedAndBreakfast), reutilizado em todas as páginas. */
@@ -119,7 +125,7 @@ export const LODGING_SCHEMA: Record<string, unknown> = {
   ],
 };
 
-/** Schema WebSite com SearchAction, usado apenas na home. */
+/** Schema WebSite, usado apenas na home. */
 export const WEBSITE_SCHEMA: Record<string, unknown> = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',

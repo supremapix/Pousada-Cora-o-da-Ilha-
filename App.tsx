@@ -8,6 +8,8 @@ import Experience from './components/Experience';
 import IslandHistory from './components/IslandHistory';
 import VideoPresentation from './components/VideoPresentation';
 import IslandGuide from './components/IslandGuide';
+import TravelTips from './components/TravelTips';
+import NotFound from './components/pages/NotFound';
 import Accommodations from './components/Accommodations';
 import Testimonials from './components/Testimonials';
 import Policies from './components/Policies';
@@ -34,7 +36,7 @@ const HomePage: React.FC = () => {
   useSEO(PAGE_SEO.home);
 
   return (
-    <main className="flex-grow">
+    <main id="conteudo" tabIndex={-1} className="flex-grow">
       <Hero />
       <ShortVideoSection />
       <About />
@@ -42,6 +44,7 @@ const HomePage: React.FC = () => {
       <Experience />
       <IslandHistory />
       <IslandGuide />
+      <TravelTips />
       <Accommodations />
       <Testimonials />
       <Policies />
@@ -65,7 +68,7 @@ const App: React.FC<{ initialPath?: string }> = ({ initialPath }) => {
       const slug = page.replace('/blog/', '');
       const post = getPostBySlug(slug);
       if (post) return <BlogPost post={post} onNavigate={setPage} />;
-      return <Blog onNavigate={setPage} />;
+      return <NotFound />;
     }
 
     switch (page) {
@@ -75,12 +78,14 @@ const App: React.FC<{ initialPath?: string }> = ({ initialPath }) => {
       case '/politica-devolucao': return <PoliticaDevolucao />;
       case '/mapa-do-site': return <MapaSite />;
       case '/guia-ilha-do-mel': return <GuiaIlha onNavigate={setPage} />;
-      default: return <HomePage />;
+      case '/': return <HomePage />;
+      default: return <NotFound />;
     }
   };
 
   return (
     <div className="min-h-screen flex flex-col">
+      <a className="skip-link" href="#conteudo">Pular para o conteúdo</a>
       <Navbar currentPage={page} onNavigate={setPage} />
       {renderPage()}
       <Footer onNavigate={setPage} />

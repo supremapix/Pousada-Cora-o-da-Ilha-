@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X, Phone, ChevronDown } from 'lucide-react';
 import { PHONE_NUMBER } from '../constants';
-import { navigate } from '../utils/navigate';
 
 interface NavbarProps {
   currentPage: string;
@@ -12,6 +11,45 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [moreOpen, setMoreOpen] = useState(false);
+
+  const navRef = useRef<HTMLElement>(null);
+  const moreRef = useRef<HTMLDivElement>(null);
+  const moreButtonRef = useRef<HTMLButtonElement>(null);
+  const mobileButtonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    const dismissOutside = (event: PointerEvent) => {
+      const target = event.target as Node;
+      if (!moreRef.current?.contains(target)) setMoreOpen(false);
+      if (!navRef.current?.contains(target)) setIsMobileMenuOpen(false);
+    };
+    const dismissEscape = (event: KeyboardEvent) => {
+      if (event.key !== 'Escape') return;
+      if (moreOpen) {
+        setMoreOpen(false);
+        moreButtonRef.current?.focus();
+      } else if (isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
+        mobileButtonRef.current?.focus();
+      }
+    };
+    document.addEventListener('pointerdown', dismissOutside);
+    document.addEventListener('keydown', dismissEscape);
+    return () => {
+      document.removeEventListener('pointerdown', dismissOutside);
+      document.removeEventListener('keydown', dismissEscape);
+    };
+  }, [moreOpen, isMobileMenuOpen]);
+
+  useEffect(() => {
+    const media = window.matchMedia('(min-width: 768px)');
+    const closeMenus = () => {
+      setIsMobileMenuOpen(false);
+      setMoreOpen(false);
+    };
+    media.addEventListener('change', closeMenus);
+    return () => media.removeEventListener('change', closeMenus);
+  }, []);
 
   const isHome = currentPage === '/';
 
@@ -45,14 +83,10 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
     { name: 'Mapa do Site', href: '/mapa-do-site' },
   ];
 
-  const handleNav = (href: string) => {
-    setIsMobileMenuOpen(false);
-    setMoreOpen(false);
-    navigate(href, onNavigate);
-  };
-
   return (
     <nav
+      ref={navRef}
+      aria-label="Navegação principal"
       className={`fixed top-0 w-full z-50 transition-all duration-500 ${
         isScrolled
           ? 'bg-deep-navy/95 backdrop-blur-md shadow-2xl py-2'
@@ -79,6 +113,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
             <a onClick={() => { setIsMobileMenuOpen(false); setMoreOpen(false); }}
               key={link.name}
               href={link.href}
+              aria-current={currentPage === link.href ? 'page' : undefined}
               className="font-black tracking-widest text-xs uppercase text-white hover:text-lime transition-all duration-300 drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]"
             >
               {link.name}
@@ -86,6 +121,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
           ))}
           <a onClick={() => { setIsMobileMenuOpen(false); setMoreOpen(false); }}
             href={guiaLink.href}
+            aria-current={currentPage === guiaLink.href ? 'page' : undefined}
             className={`font-black tracking-widest text-xs uppercase px-4 py-1.5 rounded-full border transition-all duration-300 ${
               currentPage === guiaLink.href
                 ? 'bg-ocean text-white border-ocean'
@@ -95,21 +131,24 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
             {guiaLink.name}
           </a>
 
-          <div className="relative">
+          <div className="relative" ref={moreRef} onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget as Node)) setMoreOpen(false); }}>
             <button
+              type="button"
+              ref={moreButtonRef}
+              aria-controls="nav-more-links"
               onClick={() => setMoreOpen(!moreOpen)}
               aria-expanded={moreOpen}
               className="font-black tracking-widest text-xs uppercase text-white hover:text-lime transition-all duration-300 flex items-center gap-1 drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]"
             >
               Mais <ChevronDown size={14} className={`transition-transform ${moreOpen ? 'rotate-180' : ''}`} />
             </button>
-            {moreOpen && (
-              <div className="absolute top-full right-0 mt-3 bg-deep-navy/98 backdrop-blur-xl border border-lime/10 rounded-2xl py-2 min-w-[220px] shadow-2xl">
+            <div id="nav-more-links" hidden={!moreOpen} className="absolute top-full right-0 mt-3 bg-deep-navy/98 backdrop-blur-xl border border-lime/10 rounded-2xl py-2 min-w-[220px] shadow-2xl">
                 {moreLinks.map((link) => (
                   <a onClick={() => { setIsMobileMenuOpen(false); setMoreOpen(false); }}
                     key={link.name}
                     href={link.href}
-                    className={`w-full text-left px-5 py-3 text-sm font-semibold transition-colors hover:bg-white/5 hover:text-lime ${
+              aria-current={currentPage === link.href ? 'page' : undefined}
+                    className={`block w-full text-left px-5 py-3 text-sm font-semibold transition-colors hover:bg-white/5 hover:text-lime ${
                       currentPage === link.href ? 'text-lime' : 'text-gray-300'
                     }`}
                   >
@@ -117,7 +156,6 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
                   </a>
                 ))}
               </div>
-            )}
           </div>
 
           <a onClick={() => { setIsMobileMenuOpen(false); setMoreOpen(false); }}
@@ -129,7 +167,10 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
         </div>
 
         <button
-          className="md:hidden text-white bg-deep-navy/70 backdrop-blur-sm p-2 rounded-lg focus:outline-none transition-transform active:scale-90 border border-white/20"
+          type="button"
+          ref={mobileButtonRef}
+          aria-controls="nav-mobile-links"
+          className="md:hidden text-white bg-deep-navy/70 backdrop-blur-sm p-2 rounded-lg transition-transform active:scale-90 border border-white/20"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label={isMobileMenuOpen ? "Fechar menu" : "Abrir menu"}
           aria-expanded={isMobileMenuOpen}
@@ -139,6 +180,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
       </div>
 
       <div
+        id="nav-mobile-links"
         hidden={!isMobileMenuOpen}
         className={`md:hidden absolute top-full left-0 w-full bg-[#0a1628] border-t border-white/10 transition-all duration-500 overflow-hidden ${
           isMobileMenuOpen ? 'max-h-[90vh] opacity-100 overflow-y-auto' : 'max-h-0 opacity-0 pointer-events-none'
@@ -147,6 +189,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
         <div className="flex flex-col py-4 px-4 space-y-1">
           <a onClick={() => { setIsMobileMenuOpen(false); setMoreOpen(false); }}
             href={guiaLink.href}
+            aria-current={currentPage === guiaLink.href ? 'page' : undefined}
             className={`text-left px-5 py-4 font-black text-sm tracking-wider rounded-xl transition-colors mb-1 ${
               currentPage === guiaLink.href
                 ? 'text-white bg-[#1A6B5A]'
@@ -161,7 +204,8 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
               <a onClick={() => { setIsMobileMenuOpen(false); setMoreOpen(false); }}
                 key={link.name}
                 href={link.href}
-                className={`w-full text-left px-5 py-3.5 font-bold text-sm tracking-wide rounded-lg transition-colors ${
+              aria-current={currentPage === link.href ? 'page' : undefined}
+                className={`block w-full text-left px-5 py-3.5 font-bold text-sm tracking-wide rounded-lg transition-colors ${
                   currentPage === link.href
                     ? 'text-[#57ff14] bg-white/10'
                     : 'text-white hover:bg-white/8 hover:text-[#57ff14]'
@@ -177,7 +221,8 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
               <a onClick={() => { setIsMobileMenuOpen(false); setMoreOpen(false); }}
                 key={link.name}
                 href={link.href}
-                className={`w-full text-left px-5 py-3 font-semibold text-sm rounded-lg transition-colors ${
+              aria-current={currentPage === link.href ? 'page' : undefined}
+                className={`block w-full text-left px-5 py-3 font-semibold text-sm rounded-lg transition-colors ${
                   currentPage === link.href
                     ? 'text-[#57ff14] bg-white/10'
                     : 'text-gray-300 hover:bg-white/8 hover:text-white'

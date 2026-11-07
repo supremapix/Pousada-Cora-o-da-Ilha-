@@ -46,7 +46,7 @@ const Experience: React.FC = () => {
               {attractions.map((item, idx) => (
                 <div key={idx} className="space-y-3 group">
                   <div className="text-lime group-hover:scale-110 transition-transform duration-300">{item.icon}</div>
-                  <h4 className="text-xl font-bold">{item.title}</h4>
+                  <h3 className="text-xl font-bold">{item.title}</h3>
                   <p className="text-gray-400 text-sm leading-relaxed">{item.desc}</p>
                 </div>
               ))}

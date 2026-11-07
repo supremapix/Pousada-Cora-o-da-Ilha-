@@ -1,6 +1,7 @@
 import React from 'react';
 import { Map, ExternalLink } from 'lucide-react';
 import { useSEO } from '../../utils/seo';
+import { BLOG_POSTS } from '../../data/blogPosts';
 import { PAGE_SEO } from '../../utils/pageSeo';
 
 interface SitemapGroup {
@@ -31,24 +32,15 @@ const sitemapData: SitemapGroup[] = [
     title: "Ilha do Mel & Experiências",
     links: [
       { label: "Ilha do Mel", href: "/#experiencia", desc: "Descubra as atrações da ilha" },
-      { label: "Guia da Ilha", href: "/#guia", desc: "Praias, trilhas e pontos turísticos" },
+      { label: "Guia da Ilha", href: "/#guia-ilha", desc: "Praias, trilhas e pontos turísticos" },
       { label: "História da Ilha", href: "/#historia", desc: "A origem e patrimônio da Ilha do Mel" },
     ]
   },
   {
     title: "Blog da Ilha do Mel",
     links: [
-      { label: "Blog (índice)", href: "/blog", desc: "Eventos, festas e guias da Ilha do Mel 2026" },
-      { label: "Férias de Julho na Ilha do Mel", href: "/blog/ferias-de-julho-na-ilha-do-mel-2026", desc: "Baixa temporada, tainha e tranquilidade" },
-      { label: "Festivais de Jazz em Agosto", href: "/blog/festivais-de-jazz-ilha-do-mel-agosto-2026", desc: "Guia completo dos festivais de jazz" },
-      { label: "Feriado de 7 de Setembro", href: "/blog/feriado-7-de-setembro-ilha-do-mel-2026", desc: "Feriadão de primavera na ilha" },
-      { label: "Primavera: Trilhas e Aves", href: "/blog/primavera-ilha-do-mel-trilhas-observacao-aves", desc: "Melhor época para trilhas e natureza" },
-      { label: "12 de Outubro em Família", href: "/blog/feriado-12-de-outubro-dia-das-criancas-ilha-do-mel", desc: "Feriadão com crianças" },
-      { label: "Feriados de Novembro", href: "/blog/feriados-de-novembro-ilha-do-mel-2026", desc: "3 feriadões pré-temporada" },
-      { label: "Natal na Ilha do Mel", href: "/blog/natal-na-ilha-do-mel-2026", desc: "Fim de ano pé na areia" },
-      { label: "Réveillon 2026/2027", href: "/blog/reveillon-ilha-do-mel-2027", desc: "Fogos, festas e virada na praia" },
-      { label: "Como Chegar na Ilha do Mel", href: "/blog/como-chegar-na-ilha-do-mel-guia-completo", desc: "Barco, horários e preços 2026" },
-      { label: "Melhor Época para Visitar", href: "/blog/melhor-epoca-para-visitar-ilha-do-mel", desc: "Guia mês a mês" },
+      { label: "Blog e guias por cidade", href: "/blog", desc: "Planejamento, travessia e dicas para sua estadia" },
+      ...BLOG_POSTS.filter(post => !post.travel).map(post => ({ label: post.title, href: `/blog/${post.slug}` })),
     ]
   },
   {
@@ -74,7 +66,7 @@ const MapaSite: React.FC = () => {
   useSEO(PAGE_SEO.mapaSite);
 
   return (
-    <main className="pt-24">
+    <main id="conteudo" tabIndex={-1} className="pt-24">
       <section className="bg-deep-navy text-white py-20">
         <div className="container mx-auto px-4 text-center">
           <span className="text-lime font-bold tracking-widest uppercase text-xs mb-4 block">Navegação Completa</span>
@@ -122,6 +114,10 @@ const MapaSite: React.FC = () => {
             ))}
           </div>
 
+          <section className="mt-14" aria-labelledby="city-map-heading">
+            <h2 id="city-map-heading" className="text-2xl font-bold mb-6">Como chegar à Ilha do Mel por cidade</h2>
+            <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-2">{BLOG_POSTS.filter(post => post.travel).map(post => <li key={post.slug}><a className="city-link text-deep-navy underline" href={`/blog/${post.slug}`}>{post.travel!.city} ({post.travel!.state})</a></li>)}</ul>
+          </section>
           <div className="mt-16 text-center">
             <p className="text-gray-500 text-sm">
               Não encontrou o que procura?{" "}
