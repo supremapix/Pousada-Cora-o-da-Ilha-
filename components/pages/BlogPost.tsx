@@ -83,6 +83,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ post, onNavigate }) => {
 
       {/* Conteúdo */}
       <div className="container mx-auto px-4 max-w-3xl py-12">
+        {post.image.includes('planejamento-') && <figure className="mb-10"><img src={post.image} alt={post.imageAlt} width={1672} height={941} className="w-full h-auto rounded-2xl" /><figcaption className="text-sm text-gray-300 mt-3">Ilustração gerada por IA. Não representa instalações da pousada nem programação de eventos.</figcaption></figure>}
         {post.travel && <section aria-label="Planejar o trecho terrestre" className="mb-10 p-6 rounded-2xl bg-white/5 border border-ocean/30">
           <p className="font-bold mb-3">{post.travel.city} ({post.travel.state}) → Pontal do Sul → Encantadas</p>
           <p className="text-gray-300 mb-5">Veja alternativas de estrada saindo da sua cidade. O mapa termina no continente; confirme o ponto indicado antes de sair e organize o barco separadamente.</p>
@@ -114,7 +115,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ post, onNavigate }) => {
 
         {post.sources && <section aria-labelledby="sources-heading" className="mt-12 p-6 rounded-2xl border border-white/10">
           <h2 id="sources-heading" className="text-xl font-bold mb-4">Fontes e conferência antes de viajar</h2>
-          <p className="text-gray-300 text-sm mb-4">Orientações consultadas em {formatDate(post.sourceCheckedAt || post.dateModified)}. O caminho sugerido é uma referência para planejamento, não uma consulta de trânsito ao vivo nem confirmação de linha direta. Reconfirme as condições nas suas datas.</p>
+          <p className="text-gray-300 text-sm mb-4">Orientações consultadas em {formatDate(post.sourceCheckedAt || post.dateModified)}. Reconfirme transporte, horários e programação nas suas datas. Guias de viagem são referências para planejamento, não confirmação de serviços ou eventos.</p>
           <ul className="space-y-3">{post.sources.map(source => <li key={source.url}><a href={source.url} className="text-ocean underline underline-offset-4" target="_blank" rel="noopener noreferrer">{source.label}</a></li>)}</ul>
         </section>}
 

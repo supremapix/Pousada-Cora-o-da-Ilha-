@@ -342,102 +342,232 @@ export const EDITORIAL_POSTS: BlogPost[] = [
   },
   {
     "slug": "natal-na-ilha-do-mel-2026",
-    "title": "Natal na Ilha do Mel: o que confirmar antes de reservar",
-    "seoTitle": "Natal na Ilha do Mel: o que confirmar antes de reservar | Coração da Ilha",
+    "title": "Natal 2026 na Ilha do Mel: guia para se hospedar em Encantadas",
+    "seoTitle": "Natal 2026 na Ilha do Mel: guia para se hospedar em Encantadas | Coração da Ilha",
     "metaDescription": "Planeje o Natal na Ilha do Mel com informações claras sobre hospedagem, alimentação e travessia. Consulte condições da Coração da Ilha.",
     "excerpt": "Planeje o Natal na Ilha do Mel com informações claras sobre hospedagem, alimentação e travessia. Consulte condições da Coração da Ilha.",
     "category": "Datas festivas",
     "datePublished": "2026-11-15",
-    "dateModified": "2026-11-05",
-    "readingTime": "3 min",
-    "image": "/images/blog/natal-na-ilha-do-mel-2026.png",
-    "imageAlt": "Clima de Natal à beira-mar na Praia de Encantadas na Ilha do Mel, Paraná",
+    "dateModified": "2026-11-15",
+    "readingTime": "5 min",
+    "image": "/images/blog/natal-planejamento-2026-v2.webp",
+    "imageAlt": "Ilustração gerada por IA de itens para planejar a viagem, com logo Coração da Ilha e telefone (41) 3426-9043; não representa a pousada.",
     "content": [
       {
-        "type": "h2",
-        "text": "Natal com planejamento"
-      },
-      {
         "type": "p",
-        "text": "Antes de fechar uma estadia no Natal, defina as noites da viagem e quem vai com você. Consulte o valor total, a categoria disponível e as condições de pagamento e cancelamento para essas datas."
+        "text": "O Natal de 2026 pode ser planejado como uma viagem de descanso, natureza e convivência. Para os dias 24 e 25 de dezembro, a principal decisão é organizar hospedagem, alimentação e travessia em conjunto, sem presumir que todos os serviços mantenham o funcionamento habitual."
       },
       {
         "type": "h2",
-        "text": "Ceia e alimentação"
+        "text": "Ceia de Natal: onde e como confirmar"
       },
       {
         "type": "p",
-        "text": "Não presuma que a diária inclua ceia, festa ou refeições especiais. Pergunte à pousada o que está incluído e confirme diretamente com os restaurantes os horários, cardápios e necessidade de reserva."
+        "text": "Pergunte à pousada se haverá algum serviço específico e o que estará incluído na diária. Se quiser jantar em um restaurante de Encantadas, confirme diretamente abertura em 24 e 25 de dezembro, horário da cozinha, reserva, valor, opções para crianças e restrições alimentares. Não há ceia ou festa garantida por este guia."
       },
       {
         "type": "h2",
-        "text": "Chegada em Encantadas"
+        "text": "Passeios com flexibilidade para a família"
       },
       {
         "type": "p",
-        "text": "Combine a previsão de chegada com a equipe e confirme a travessia. Leve os contatos e a confirmação da reserva salvos. Para necessidades alimentares ou de acessibilidade, converse com a pousada antes de efetuar o pagamento."
+        "text": "Escolha atividades compatíveis com o ritmo do grupo e com as condições do dia. Combine caminhada e descanso sem concentrar todos os passeios na chegada. Para conhecer a Gruta das Encantadas ou circular por trilhas, siga as orientações locais e confirme as condições de acesso; não avance por trechos inseguros para cumprir um roteiro."
+      },
+      {
+        "type": "h2",
+        "text": "Natal 2027: como usar este guia"
+      },
+      {
+        "type": "p",
+        "text": "As orientações de planejamento também ajudam quem pensa em viajar no Natal de 2027, mas preços, disponibilidade, travessias e programação desse período ainda precisam de confirmação própria. Não use anúncios de 2026 como agenda de 2027."
+      },
+      {
+        "type": "h2",
+        "text": "Antes de pagar: confirme o que está incluído"
+      },
+      {
+        "type": "p",
+        "text": "Peça uma proposta com entrada, saída, quantidade e idade dos hóspedes, categoria do quarto, valor total e regras de alteração e cancelamento. A hospedagem não deve ser confundida com pacote de festa: ceia, música, passeios, barco e refeições especiais precisam de confirmação separada. Informe necessidades alimentares, de mobilidade ou de descanso antes de reservar."
+      },
+      {
+        "type": "h2",
+        "text": "Do continente a Encantadas: organize ida e volta"
+      },
+      {
+        "type": "p",
+        "text": "A Pousada Coração da Ilha fica na Praia de Encantadas, na Ilha do Mel, em Paranaguá. Ao consultar a travessia, confirme o desembarque em Encantadas, e não em Nova Brasília. Consulte o operador para suas datas e reconfirme próximo da saída: a ABALINE informa que os horários estão sujeitos à maré e às condições do tempo. Combine a previsão de chegada com a pousada e reserve margem para trânsito, estacionamento, bagagens e embarque."
+      },
+      {
+        "type": "h2",
+        "text": "Mala leve e cuidados que evitam imprevistos"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Salve a reserva, os contatos e o ponto de desembarque para consultar sem conexão.",
+          "Leve lanterna, proteção para chuva, água, proteção solar e calçado adequado aos caminhos de areia.",
+          "Quem viaja com crianças, idosos ou dificuldade de locomoção deve perguntar sobre o trajeto a pé e acesso ao quarto antes do pagamento.",
+          "Não deixe a volta para decidir após a festa: confirme a travessia de retorno e evite compromissos com conexão apertada.",
+          "Respeite os moradores, recolha seu lixo e siga a sinalização e as orientações locais."
+        ]
       }
     ],
     "faq": [
       {
-        "q": "Como consultar hospedagem para esta viagem?",
-        "a": "Informe suas datas, o número de hóspedes e a acomodação desejada à Pousada Coração da Ilha. Aguarde a confirmação de disponibilidade e condições antes de considerar a reserva concluída."
+        "q": "A pousada oferece ceia ou festa incluída?",
+        "a": "Este guia não confirma ceia ou festa. Consulte a equipe sobre o que está incluído na proposta das suas datas antes de reservar."
+      },
+      {
+        "q": "Qual destino devo consultar para o barco?",
+        "a": "Confirme desembarque em Encantadas e os horários da ida e da volta diretamente com o operador. A pousada fica na Praia de Encantadas."
+      },
+      {
+        "q": "Posso voltar de uma festa no continente de madrugada?",
+        "a": "Não presuma travessia noturna disponível. Confirme a operação e organize uma alternativa antes de comprar ingresso."
+      },
+      {
+        "q": "Há quartos disponíveis para o feriado?",
+        "a": "A disponibilidade depende das datas e da quantidade de hóspedes. Consulte a equipe ou o canal de reservas; ler este guia não garante vaga nem preço."
       }
     ],
     "related": [
       "reveillon-ilha-do-mel-2027",
       "feriados-de-novembro-ilha-do-mel-2026",
       "melhor-epoca-para-visitar-ilha-do-mel"
+    ],
+    "sourceCheckedAt": "2026-11-15",
+    "sources": [
+      {
+        "label": "ABALINE: travessia e confirmação de horários",
+        "url": "https://abaline.com.br/"
+      },
+      {
+        "label": "Governo do Paraná: Verão Maior 2026/2027",
+        "url": "https://www.verao.pr.gov.br/Pagina/Apresentacao"
+      },
+      {
+        "label": "Prefeitura de Paranaguá: avisos e programação municipal",
+        "url": "https://www.paranagua.pr.gov.br/"
+      }
     ]
   },
   {
     "slug": "reveillon-ilha-do-mel-2027",
-    "title": "Réveillon na Ilha do Mel 2026/2027: planeje a virada",
-    "seoTitle": "Réveillon na Ilha do Mel 2026/2027: planeje a virada | Coração da Ilha",
+    "title": "Réveillon na Ilha do Mel 2026/2027: festas, travessia e planejamento",
+    "seoTitle": "Réveillon na Ilha do Mel 2026/2027: festas, travessia e planejamento | Coração da Ilha",
     "metaDescription": "Consulte hospedagem e organize a virada de 2026 para 2027 na Ilha do Mel. Festas, transporte e refeições precisam de confirmação separada.",
     "excerpt": "Consulte hospedagem e organize a virada de 2026 para 2027 na Ilha do Mel. Festas, transporte e refeições precisam de confirmação separada.",
     "category": "Datas festivas",
-    "datePublished": "2026-11-25",
-    "dateModified": "2026-11-05",
-    "readingTime": "3 min",
-    "image": "/images/blog/reveillon-ilha-do-mel-2027.png",
-    "imageAlt": "Queima de fogos na virada do ano sobre a praia da Ilha do Mel, Paraná",
+    "datePublished": "2026-11-15",
+    "dateModified": "2026-11-15",
+    "readingTime": "5 min",
+    "image": "/images/blog/reveillon-planejamento-2027-v2.webp",
+    "imageAlt": "Ilustração gerada por IA de itens para planejar a viagem, com logo Coração da Ilha e telefone (41) 3426-9043; não representa a pousada.",
     "content": [
       {
-        "type": "h2",
-        "text": "Hospedagem para a virada"
-      },
-      {
         "type": "p",
-        "text": "Para o Réveillon, consulte as datas exatas de entrada e saída, possíveis mínimos de permanência e o valor total da estadia. Compare unidades pelo número de hóspedes e pelos itens oferecidos em cada acomodação."
+        "text": "A virada abordada neste guia é a noite de 31 de dezembro de 2026 para 1º de janeiro de 2027. Hospedar-se em Encantadas permite organizar a estadia na ilha, mas o planejamento da noite deve começar pelo retorno à pousada, e não apenas pela escolha da festa."
       },
       {
         "type": "h2",
-        "text": "Festas e fogos dependem de confirmação"
+        "text": "Festas em Encantadas: o que está confirmado?"
       },
       {
         "type": "p",
-        "text": "Esta página é um guia de planejamento, não um anúncio de evento. Não confirma festas, shows, ceias ou fogos na ilha. Verifique a programação e as regras diretamente com os organizadores e autoridades locais."
+        "text": "Na consulta editorial de 15/11/2026, não foi confirmada uma programação específica de Réveillon em Encantadas para anunciar aqui. Isso não significa que não haverá eventos. Antes de comprar ingresso, confira o organizador, o endereço, a data, a classificação etária, os serviços incluídos e as regras de cancelamento. A presença de uma festa no continente não significa que ela acontece na Ilha do Mel."
       },
       {
         "type": "h2",
-        "text": "Volta e deslocamento noturno"
+        "text": "Verão Maior 2026/2027: ilha e continente não são o mesmo roteiro"
       },
       {
         "type": "p",
-        "text": "Se pretende sair à noite, planeje o retorno à hospedagem e leve iluminação. Não conte com transporte disponível a qualquer hora. Consulte os horários dos barcos para a ida e a volta da viagem antes de fechar outros compromissos."
+        "text": "O portal oficial do Governo do Paraná informa atividades do Verão Maior de 28/12/2026 a 01/02/2027, com shows nacionais em Matinhos e Pontal do Paraná. Consulte a programação oficial para escolher local e data. Essa divulgação regional não confirma show, fogos ou festa na Praia de Encantadas, nem transporte noturno de volta à ilha. Se pretende ir ao continente, planeje o deslocamento e onde passar a noite antes de assumir que conseguirá retornar."
+      },
+      {
+        "type": "h2",
+        "text": "Uma virada confortável para crianças e idosos"
+      },
+      {
+        "type": "p",
+        "text": "Pergunte sobre ruído e distância das atividades que pretende frequentar. Combine um ponto de encontro, leve iluminação e tenha uma alternativa de descanso. Não conte com barco a qualquer hora. Para o primeiro dia de janeiro, confirme alimentação e travessia antes de sair; o roteiro pode precisar mudar conforme o tempo."
+      },
+      {
+        "type": "h2",
+        "text": "Fogos, shows e pacotes: evite expectativas erradas"
+      },
+      {
+        "type": "p",
+        "text": "Este conteúdo não anuncia queima de fogos, palco, ceia ou pacote especial da pousada. Confirme cada serviço separadamente. Imagens desta página são ilustrações de planejamento, não registros de eventos nem fotografias de instalações da hospedagem."
+      },
+      {
+        "type": "h2",
+        "text": "Antes de pagar: confirme o que está incluído"
+      },
+      {
+        "type": "p",
+        "text": "Peça uma proposta com entrada, saída, quantidade e idade dos hóspedes, categoria do quarto, valor total e regras de alteração e cancelamento. A hospedagem não deve ser confundida com pacote de festa: ceia, música, passeios, barco e refeições especiais precisam de confirmação separada. Informe necessidades alimentares, de mobilidade ou de descanso antes de reservar."
+      },
+      {
+        "type": "h2",
+        "text": "Do continente a Encantadas: organize ida e volta"
+      },
+      {
+        "type": "p",
+        "text": "A Pousada Coração da Ilha fica na Praia de Encantadas, na Ilha do Mel, em Paranaguá. Ao consultar a travessia, confirme o desembarque em Encantadas, e não em Nova Brasília. Consulte o operador para suas datas e reconfirme próximo da saída: a ABALINE informa que os horários estão sujeitos à maré e às condições do tempo. Combine a previsão de chegada com a pousada e reserve margem para trânsito, estacionamento, bagagens e embarque."
+      },
+      {
+        "type": "h2",
+        "text": "Mala leve e cuidados que evitam imprevistos"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Salve a reserva, os contatos e o ponto de desembarque para consultar sem conexão.",
+          "Leve lanterna, proteção para chuva, água, proteção solar e calçado adequado aos caminhos de areia.",
+          "Quem viaja com crianças, idosos ou dificuldade de locomoção deve perguntar sobre o trajeto a pé e acesso ao quarto antes do pagamento.",
+          "Não deixe a volta para decidir após a festa: confirme a travessia de retorno e evite compromissos com conexão apertada.",
+          "Respeite os moradores, recolha seu lixo e siga a sinalização e as orientações locais."
+        ]
       }
     ],
     "faq": [
       {
-        "q": "Como consultar hospedagem para esta viagem?",
-        "a": "Informe suas datas, o número de hóspedes e a acomodação desejada à Pousada Coração da Ilha. Aguarde a confirmação de disponibilidade e condições antes de considerar a reserva concluída."
+        "q": "A pousada oferece ceia ou festa incluída?",
+        "a": "Este guia não confirma ceia ou festa. Consulte a equipe sobre o que está incluído na proposta das suas datas antes de reservar."
+      },
+      {
+        "q": "Qual destino devo consultar para o barco?",
+        "a": "Confirme desembarque em Encantadas e os horários da ida e da volta diretamente com o operador. A pousada fica na Praia de Encantadas."
+      },
+      {
+        "q": "Posso voltar de uma festa no continente de madrugada?",
+        "a": "Não presuma travessia noturna disponível. Confirme a operação e organize uma alternativa antes de comprar ingresso."
+      },
+      {
+        "q": "Há quartos disponíveis para o feriado?",
+        "a": "A disponibilidade depende das datas e da quantidade de hóspedes. Consulte a equipe ou o canal de reservas; ler este guia não garante vaga nem preço."
       }
     ],
     "related": [
       "natal-na-ilha-do-mel-2026",
       "como-chegar-na-ilha-do-mel-guia-completo",
       "melhor-epoca-para-visitar-ilha-do-mel"
+    ],
+    "sourceCheckedAt": "2026-11-15",
+    "sources": [
+      {
+        "label": "ABALINE: travessia e confirmação de horários",
+        "url": "https://abaline.com.br/"
+      },
+      {
+        "label": "Governo do Paraná: Verão Maior 2026/2027",
+        "url": "https://www.verao.pr.gov.br/Pagina/Apresentacao"
+      },
+      {
+        "label": "Prefeitura de Paranaguá: avisos e programação municipal",
+        "url": "https://www.paranagua.pr.gov.br/"
+      }
     ]
   },
   {
