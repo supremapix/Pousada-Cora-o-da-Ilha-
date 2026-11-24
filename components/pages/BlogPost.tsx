@@ -96,6 +96,8 @@ const BlogPost: React.FC<BlogPostProps> = ({ post, onNavigate }) => {
                 return <h2 key={i} className="text-2xl md:text-3xl font-black mt-12 mb-4 text-ocean text-balance">{block.text}</h2>;
               case 'h3':
                 return <h3 key={i} className="text-xl font-black mt-8 mb-3 text-white text-balance">{block.text}</h3>;
+              case 'link':
+                return <p key={i} className="my-5"><a href={block.href} className="text-lime font-bold underline underline-offset-4">{block.text}</a></p>;
               case 'ul':
                 return (
                   <ul key={i} className="my-5 space-y-3">

@@ -16,7 +16,23 @@ const faqs = [
 export default function GuiaIlha({ onNavigate }: { onNavigate: (page:string)=>void }) {
  useSEO(PAGE_SEO.guiaIlha);
  return <main id="conteudo" tabIndex={-1} className="pt-24 bg-deep-navy text-white">
- <header className="container mx-auto px-4 py-16 max-w-4xl"><nav aria-label="Trilha de navegação"><a href="/">Início</a> / Guia da Ilha do Mel</nav><h1 className="text-4xl md:text-6xl font-serif font-bold my-6">Guia da Ilha do Mel: planeje sua estadia</h1><p className="text-lg text-gray-300">Como chegar a Encantadas, escolher a acomodação e organizar os passeios a partir da Pousada Coração da Ilha.</p></header>
+ <section id="travessia-encantadas" aria-labelledby="travessia-encantadas-titulo" className="container mx-auto px-4 py-16 max-w-4xl scroll-mt-28">
+  <h2 id="travessia-encantadas-titulo" className="text-3xl font-bold mb-6">Como chegar a Encantadas</h2>
+  <p className="leading-relaxed mb-4">O acesso à ilha é feito de barco. Pontal do Sul e Paranaguá são pontos de embarque no continente. Para chegar à Coração da Ilha, confirme que a embarcação desembarca em Encantadas, não em Nova Brasília.</p>
+  <h3 className="text-xl font-bold mb-3">Checklist da travessia</h3>
+  <ul className="list-disc pl-6 space-y-2 mb-6">
+   <li>Confirme o terminal de origem, o destino Encantadas e as instruções de embarque com a operadora.</li>
+   <li>Confira as saídas e o último horário de retorno nas datas da viagem. Os horários podem mudar com a maré e o tempo.</li>
+   <li>Deixe margem para chegar ao terminal, organizar a bagagem e embarcar. Se for de carro, planeje onde deixá-lo no continente.</li>
+   <li>Avise a pousada sobre sua previsão de chegada e peça orientação para o trajeto a pé desde o trapiche.</li>
+  </ul>
+  <div className="rounded-2xl border border-white/20 bg-white/5 p-5 mb-6">
+   <h3 className="text-xl font-bold mb-2">Controle de acesso à Ilha do Mel</h3>
+   <p className="leading-relaxed mb-2"><strong>Conferido em 24/11/2026:</strong> o IAT e a Unadim iniciaram o cadastro de moradores. A etapa para turistas foi anunciada para depois, sem data de início informada no comunicado. Antes de viajar, confira se o IAT publicou novas orientações para visitantes.</p>
+   <a href="https://www.iat.pr.gov.br/Noticia/IAT-inicia-cadastramento-de-moradores-para-sistema-de-controle-de-acesso-Ilha-do-Mel" target="_blank" rel="noopener noreferrer" className="underline text-lime">Ler o comunicado do IAT</a>
+  </div>
+  <div className="flex flex-wrap gap-4"><a href="https://abaline.com.br/travessia/pontal-encantadas" target="_blank" rel="noopener noreferrer" className="underline text-lime">Conferir Pontal do Sul a Encantadas: ida e volta</a><a href="/blog#cidades" className="underline text-lime">Ver guias de 151 cidades</a><a href="/blog/como-chegar-na-ilha-do-mel-guia-completo" className="underline text-lime">Passo a passo da viagem</a></div>
+ </section>
  <SobreIlha />
  <section className="container mx-auto px-4 py-16 max-w-4xl"><h2 className="text-3xl font-bold mb-6">Como chegar a Encantadas</h2><p className="leading-relaxed mb-4">O acesso à ilha é feito de barco. Pontal do Sul e Paranaguá são pontos de embarque. Para chegar à Coração da Ilha, confirme com a operadora a linha para Encantadas, o último horário de saída e as condições da travessia.</p><p className="leading-relaxed mb-6">Deixe o carro no continente e leve bagagem adequada aos caminhos de areia. Avise a pousada sobre sua previsão de chegada e peça orientação para o trajeto a pé desde o trapiche.</p><div className="flex flex-wrap gap-4"><a href="https://www.abaline.com.br/" target="_blank" rel="noopener noreferrer" className="underline text-lime">Consultar a operadora de travessia</a><a href="/blog#cidades" className="underline text-lime">Ver guias de 151 cidades</a><a href="/blog/como-chegar-na-ilha-do-mel-guia-completo" className="underline text-lime">Passo a passo da viagem</a></div></section>
  <section className="bg-white text-deep-navy py-16"><div className="container mx-auto px-4 max-w-4xl"><h2 className="text-3xl font-bold mb-6">Passeios para organizar com calma</h2><div className="grid md:grid-cols-3 gap-6">{[
