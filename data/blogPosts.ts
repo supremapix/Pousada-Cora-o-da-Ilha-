@@ -4,6 +4,7 @@ export type BlogBlock =
   | { type: 'h2'; text: string }
   | { type: 'h3'; text: string }
   | { type: 'p'; text: string }
+  | { type: 'link'; text: string; href: string }
   | { type: 'ul'; items: string[] };
 
 export interface BlogFaq {
@@ -348,7 +349,7 @@ export const EDITORIAL_POSTS: BlogPost[] = [
     "excerpt": "Planeje o Natal na Ilha do Mel com informações claras sobre hospedagem, alimentação e travessia. Consulte condições da Coração da Ilha.",
     "category": "Datas festivas",
     "datePublished": "2026-11-15",
-    "dateModified": "2026-11-15",
+    "dateModified": "2026-11-24",
     "readingTime": "5 min",
     "image": "/images/blog/natal-planejamento-2026-v2.webp",
     "imageAlt": "Ilustração gerada por IA de itens para planejar a viagem, com logo Coração da Ilha e telefone (41) 3426-9043; não representa a pousada.",
@@ -395,7 +396,12 @@ export const EDITORIAL_POSTS: BlogPost[] = [
       },
       {
         "type": "p",
-        "text": "A Pousada Coração da Ilha fica na Praia de Encantadas, na Ilha do Mel, em Paranaguá. Ao consultar a travessia, confirme o desembarque em Encantadas, e não em Nova Brasília. Consulte o operador para suas datas e reconfirme próximo da saída: a ABALINE informa que os horários estão sujeitos à maré e às condições do tempo. Combine a previsão de chegada com a pousada e reserve margem para trânsito, estacionamento, bagagens e embarque."
+        "text": "A Pousada Coração da Ilha fica na Praia de Encantadas, em Paranaguá. Confirme com a operadora a ida e a volta nas datas da viagem e combine a previsão de chegada com a pousada."
+      },
+      {
+        "type": "link",
+        "text": "Ver o checklist da travessia e as orientações de acesso à ilha",
+        "href": "/guia-ilha-do-mel#travessia-encantadas"
       },
       {
         "type": "h2",
@@ -459,7 +465,7 @@ export const EDITORIAL_POSTS: BlogPost[] = [
     "excerpt": "Consulte hospedagem e organize a virada de 2026 para 2027 na Ilha do Mel. Festas, transporte e refeições precisam de confirmação separada.",
     "category": "Datas festivas",
     "datePublished": "2026-11-15",
-    "dateModified": "2026-11-15",
+    "dateModified": "2026-11-24",
     "readingTime": "5 min",
     "image": "/images/blog/reveillon-planejamento-2027-v2.webp",
     "imageAlt": "Ilustração gerada por IA de itens para planejar a viagem, com logo Coração da Ilha e telefone (41) 3426-9043; não representa a pousada.",
@@ -514,7 +520,12 @@ export const EDITORIAL_POSTS: BlogPost[] = [
       },
       {
         "type": "p",
-        "text": "A Pousada Coração da Ilha fica na Praia de Encantadas, na Ilha do Mel, em Paranaguá. Ao consultar a travessia, confirme o desembarque em Encantadas, e não em Nova Brasília. Consulte o operador para suas datas e reconfirme próximo da saída: a ABALINE informa que os horários estão sujeitos à maré e às condições do tempo. Combine a previsão de chegada com a pousada e reserve margem para trânsito, estacionamento, bagagens e embarque."
+        "text": "A Pousada Coração da Ilha fica na Praia de Encantadas, em Paranaguá. Confirme com a operadora a ida e a volta nas datas da viagem e combine a previsão de chegada com a pousada."
+      },
+      {
+        "type": "link",
+        "text": "Ver o checklist da travessia e as orientações de acesso à ilha",
+        "href": "/guia-ilha-do-mel#travessia-encantadas"
       },
       {
         "type": "h2",
